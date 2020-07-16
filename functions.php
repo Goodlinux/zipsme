@@ -10,12 +10,12 @@ function prepOutputText($text) {
 	return $output;
 }
 
-function redirect($url, $type) {
+function redirect($url, $type='internal') {
 	if (!headers_sent()) {
 		if ($type == '301') {
-			header("301 Moved Permanently HTTP/1.1");
+			header("HTTP/1.1 301 Moved Permanently");
 		}
-		header("location: $url");
+		header("Location: $url");
 	} else {
 		echo '<script type="text/javascript">window.location = "' . $url . '"</script>';
 	}

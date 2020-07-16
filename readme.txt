@@ -1,5 +1,5 @@
 Z.ips.ME
-Version 1.0
+Version 1.1
 Requirements: Developed for PHP 5+ / MySQL 4.1.22+, however it may work on earlier versions
 
 --------------------------------------------------------------------------------------------------
@@ -17,3 +17,8 @@ Enjoy!
 --------------------------------------------------------------------------------------------------
 
 Questions, comments, suggestions, bugs: email info@ips.me
+
+Change log:
+
+1.1
+*modified header code in 301 redirect function 
