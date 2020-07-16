@@ -1,5 +1,4 @@
- zipsme
-#Z.ips.ME
+Z.ips.ME
 Version 1.0
 Requirements: Developed for PHP 5+ / MySQL 4.1.22+, however it may work on earlier versions
 
