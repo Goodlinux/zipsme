@@ -34,7 +34,7 @@ function insertLink($url_name, $url, $type)
 { 
     $DbConnect = mysqli_connect(ZIPSME_DB_HOST, ZIPSME_DB_USER, ZIPSME_DB_PASSWORD, ZIPSME_DB_NAME);
     $query = "INSERT INTO tbl_links (url_name, url, type, active) VALUES ('{$url_name}',  '{$url}', '{$type}', 'y')"; 
-    $result = $DbConect->query($query);
+    $result = $DbConnect->query($query);
     mysqli_close($DbConnect);
 }
 
