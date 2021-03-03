@@ -59,14 +59,12 @@ function deleteLink($url_name)
 function linkAvailable($url_name) 
 { 
     $DbConnect = mysqli_connect(ZIPSME_DB_HOST, ZIPSME_DB_USER, ZIPSME_DB_PASSWORD, ZIPSME_DB_NAME);
-    $query = "SELECT * FROM tbl_links WHERE url_name = '{$url_name}' LIMIT 1"; 
-    $result = $DbConnect->query($query); 
-    $row = mysqli_fetch_assoc($result); 
-    $num = mysqli_num_rows($result); 
-    if ($num == 0) {
-        return true;  } 
-    else {
-        return false;
+    $query = "SELECT count(*) as NbLine FROM  tbl_links WHERE url_name = '{$url_name}'";
+    $result = $DbConnect->query($query);
+    $row = mysqli_fetch_array($result);
+    if ($row['NbLine'] != 0) {
+        return true; }
+    else { return false;
     }
     mysqli_close($DbConnect);
 }
@@ -102,7 +100,7 @@ function redirectClick($url_name)
     $DbConnect = mysqli_connect(ZIPSME_DB_HOST, ZIPSME_DB_USER, ZIPSME_DB_PASSWORD, ZIPSME_DB_NAME);
     $query = "SELECT * FROM tbl_links WHERE url_name = '{$url_name}' LIMIT 1"; 
     $result = $DbConnect->query($query); 
-    $row = mysqli_fetch_assoc($result); 
+    $row = mysqli_fetch_array($result); 
     redirect($row['url'], $row['type']);
     mysqli_close($DbConnect);
 }
@@ -115,45 +113,29 @@ function stripLink($url_name)
 function showLinkHistory() 
 { 
     $DbConnect = mysqli_connect(ZIPSME_DB_HOST, ZIPSME_DB_USER, ZIPSME_DB_PASSWORD, ZIPSME_DB_NAME);
-    $query = 'SELECT *, COUNT(tbl_clicks.click_id) AS totalCount FROM tbl_clicks, tbl_links WHERE 
-                   tbl_clicks.url_name = tbl_links.url_name GROUP BY tbl_links.url_name ORDER BY totalCount DESC'; 
+    $query = 'SELECT *, COUNT(tbl_clicks.click_id) AS totalCount 
+				FROM tbl_links left join tbl_clicks ON tbl_links.url_name = tbl_clicks.url_name
+				GROUP BY tbl_links.url_name ORDER BY totalCount DESC'; 
     $result = $DbConnect->query($query); 
-    $row = mysqli_fetch_assoc($result); 
+    $row = mysqli_fetch_array($result); 
     $num = mysqli_num_rows($result); 
-    $query_zero = 'SELECT *,tbl_links.url_name AS noClick FROM tbl_clicks, tbl_links WHERE tbl_links.url_name NOT IN 
-         (SELECT tbl_clicks.url_name  FROM tbl_clicks WHERE tbl_clicks.url_name = tbl_links.url_name) GROUP BY noClick'; 
-    $result_zero = $DbConect->query($query_zero); 
-    $row_zero = mysqli_fetch_assoc($result_zero); 
-    $num_zero = mysqli_num_rows($result_zero); 
-    if ($num > 0 ||  $num_zero > 0) {
-        if ($num > 0) { 
-              do { echo '<tr>' . ' '; echo '<td class="border">' . SITE_URL . prepOutputText($row['url_name']) . '</td>' . ''; 
-		   echo '<td class="border">' . prepOutputText($row['totalCount']) . '</td>' . ' '; 
-		   echo '<td class="border"><ahref="admin.php?summary=' . $row['url_name'] . '">View Stats</a> | 
-                            <a href="admin.php?edit=' . $row['url_name'] .'">Edit</a> | 
+    
+    while ($data = mysqli_fetch_array($res)) {
+    	// on affiche les résultats
+		echo '<tr>' . ' '; echo '<td class="border">' . SITE_URL . prepOutputText($row['url_name']) . '</td>' . ''; 
+		echo '<td class="border">' . prepOutputText($row['totalCount']) . '</td>' . ' '; 
+		echo '<td class="border"><ahref="admin.php?summary=' . $row['url_name'] . '">View Stats</a> | 
+                <a href="admin.php?edit=' . $row['url_name'] .'">Edit</a> | 
 			    <a href="admin.php?pre_delete=' . $row['url_name'] . '">Delete</a>' . '</td>' . ''; 
-		   echo '</tr>' . ' ';
-            	} 
-		while ($row = mysqli_fetch_assoc($result));
-        }
-        if ($num_zero > 0) 
-		{ do {  echo '<tr>' . ' '; 
-			echo '<td class="border">' . SITE_URL . prepOutputText($row_zero['noClick']) . '</td>' . ''; 
-			echo '<td class="border">0</td>' . ' '; 
-			echo '<td class="border"><a href="admin.php?summary=' . $row_zero['noClick'] . '">View  Stats</a> | 
-				<a href="admin.php?edit=' . $row_zero['noClick'] . '">Edit</a> | 
-				<a href="admin.php?pre_delete=' . $row_zero['noClick'] . '">Delete</a>' . '</td>' . ''; 
-			echo '</tr>' . ' ';
-            	} 
-		while ($row_zero = mysqli_fetch_assoc($result_zero));
-        }
-    } else {
-        echo '<tr>' . ' '; 
+		echo '</tr>' . ' ';
+	}
+    
+    echo '<tr>' . ' '; 
 	echo '<td class="border">None</td>' . ' '; 
 	echo '<td class="border"> </td>' . ' '; 
 	echo '<td class="border"> </td>' . ''; 
 	echo '</tr>' . ' ';
-    }
+	
     mysqli_close($DbConnect);
 }
 ?>
