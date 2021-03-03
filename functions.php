@@ -120,7 +120,7 @@ function showLinkHistory()
     $row = mysqli_fetch_array($result); 
     $num = mysqli_num_rows($result); 
     
-    while ($data = mysqli_fetch_array($res)) {
+    while ($row = mysqli_fetch_array($result)) {
     	// on affiche les résultats
 		echo '<tr>' . ' '; echo '<td class="border">' . SITE_URL . prepOutputText($row['url_name']) . '</td>' . ''; 
 		echo '<td class="border">' . prepOutputText($row['totalCount']) . '</td>' . ' '; 
