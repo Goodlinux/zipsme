@@ -28,7 +28,7 @@ function insertClick($url_name, $referrer, $user_agent, $ip_address)
 { 
   $DbConnect = mysqli_connect(ZIPSME_DB_HOST, ZIPSME_DB_USER, ZIPSME_DB_PASSWORD, ZIPSME_DB_NAME);
   $query = "INSERT INTO tbl_clicks (click_time, url_name, referrer, user_agent, ip_address) VALUES (NOW(), 
-     '{$url_name}', '{$referrer}', '{$user_agent}', '{$ip_address}')"; 
+     strtolower($url_name), '{$referrer}', '{$user_agent}', '{$ip_address}')"; 
   $result =  $DbConnect->query($query);
   mysqli_close($DbConnect);
 }
@@ -36,7 +36,7 @@ function insertClick($url_name, $referrer, $user_agent, $ip_address)
 function insertLink($url_name, $url, $type) 
 { 
     $DbConnect = mysqli_connect(ZIPSME_DB_HOST, ZIPSME_DB_USER, ZIPSME_DB_PASSWORD, ZIPSME_DB_NAME);
-    $query = "INSERT INTO tbl_links (url_name, url, type, active) VALUES ('{$url_name}',  '{$url}', '{$type}', 'y')"; 
+    $query = "INSERT INTO tbl_links (url_name, url, type, active) VALUES (strtolower($url_name),  '{$url}', '{$type}', 'y')"; 
     $result = $DbConnect->query($query);
     mysqli_close($DbConnect);
 }
@@ -44,7 +44,7 @@ function insertLink($url_name, $url, $type)
 function updateLink($url_name, $url, $type) 
 { 
     $DbConnect = mysqli_connect(ZIPSME_DB_HOST, ZIPSME_DB_USER, ZIPSME_DB_PASSWORD, ZIPSME_DB_NAME);
-    $query = "UPDATE tbl_links SET url = '{$url}', type = '{$type}' WHERE url_name =  '{$url_name}'"; 
+    $query = "UPDATE tbl_links SET url = '{$url}', type = '{$type}' WHERE url_name =  strtolower($url_name)"; 
     $result = $DbConnect->query($query);
     mysqli_close($DbConnect);
 }
@@ -52,9 +52,9 @@ function updateLink($url_name, $url, $type)
 function deleteLink($url_name) 
 { 
     $DbConnect = mysqli_connect(ZIPSME_DB_HOST, ZIPSME_DB_USER, ZIPSME_DB_PASSWORD, ZIPSME_DB_NAME);
-    $query = "DELETE FROM tbl_links WHERE url_name = '{$url_name}'"; 
+    $query = "DELETE FROM tbl_links WHERE url_name = strtolower($url_name)"; 
     $result = $DbConnect->query($query); 
-    $query = "DELETE FROM tbl_clicks WHERE url_name = '{$url_name}'"; 
+    $query = "DELETE FROM tbl_clicks WHERE url_name = strtolower($url_name)"; 
     $result = $DbConnect->query($query);
     mysqli_close($DbConnect);
 }
@@ -62,7 +62,7 @@ function deleteLink($url_name)
 function linkAvailable($url_name) 
 { 
     $DbConnect = mysqli_connect(ZIPSME_DB_HOST, ZIPSME_DB_USER, ZIPSME_DB_PASSWORD, ZIPSME_DB_NAME);
-    $query = "SELECT count(*) as NbLine FROM  tbl_links WHERE url_name = '{$url_name}'";
+    $query = "SELECT count(*) as NbLine FROM  tbl_links WHERE url_name = strtolower($url_name)";
     $result = $DbConnect->query($query);
     $row = mysqli_fetch_array($result);
     if ($row['NbLine'] != 0) {
@@ -87,7 +87,7 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) { $ip = $_SERVER['HTTP_CLIENT_IP'];
 function linkExists($url_name) 
 { 
     $DbConnect = mysqli_connect(ZIPSME_DB_HOST, ZIPSME_DB_USER, ZIPSME_DB_PASSWORD, ZIPSME_DB_NAME);
-    $query = "SELECT * FROM tbl_links WHERE url_name = '{$url_name}' AND active = 'y' LIMIT 1"; 
+    $query = "SELECT * FROM tbl_links WHERE url_name = strtolower($url_name) AND active = 'y' LIMIT 1"; 
     $result = $DbConnect->query($query); 
     $num = mysqli_num_rows($result); 
         if ($num == 1) {
@@ -101,7 +101,7 @@ function linkExists($url_name)
 function redirectClick($url_name) 
 { 
     $DbConnect = mysqli_connect(ZIPSME_DB_HOST, ZIPSME_DB_USER, ZIPSME_DB_PASSWORD, ZIPSME_DB_NAME);
-    $query = "SELECT * FROM tbl_links WHERE url_name = '{$url_name}' LIMIT 1"; 
+    $query = "SELECT * FROM tbl_links WHERE url_name = strtolower($url_name) LIMIT 1"; 
     $result = $DbConnect->query($query); 
     $row = mysqli_fetch_array($result); 
     redirect($row['url'], $row['type']);
