@@ -1,3 +1,10 @@
+2021-03-01 
+Evolution and migration to PHP 8
+available also with nginx
+in dev.
+
+--------------------------------------------------------------------------------------------------
+
 #Z.ips.ME
 Version 1.1
 Requirements: Developed for PHP 5+ / MySQL 4.1.22+, however it may work on earlier versions
