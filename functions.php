@@ -1,8 +1,11 @@
 <?php 
 
 function prepQueryText($text) 
-{ $insert = mysqli_real_escape_string($Dbconnect, trim($text)); 
-  return $insert;
+{
+	$DbConnect = mysqli_connect(ZIPSME_DB_HOST, ZIPSME_DB_USER, ZIPSME_DB_PASSWORD, ZIPSME_DB_NAME);
+	$insert = $DbConnect->real_escape_string(trim($text)); 
+	return $insert;
+	mysqli_close($DbConnect);
 }
 
 function prepOutputText($text) 
