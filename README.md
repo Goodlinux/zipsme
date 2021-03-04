@@ -3,6 +3,8 @@ Evolution and migration to PHP 8
 available also with nginx
 in dev.
 
+Docker packages needed for it : 
+
 --------------------------------------------------------------------------------------------------
 
 #Z.ips.ME
