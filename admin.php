@@ -190,10 +190,10 @@ if ( ((isset($_POST['login_submitted'])) && ($_POST['username'] == ZIPSME_USERNA
                 <h2>Link History</h2>
                 <table cellspacing="0" cellpadding="0" border="0" width="100%" class="border"><tbody>                	
                     <tr>
-					    <td class="border"><strong>Link Name</strong></td>
+			<td class="border"><strong>Link Name</strong></td>
                         <td class="border"><strong>Clicks</strong></td>
                         <td class="border"><strong>Options</strong></td>                        
-					</tr>
+		    </tr>
                     <?php showLinkHistory(); ?>
                 </tbody></table>
 				<?php } ?>
