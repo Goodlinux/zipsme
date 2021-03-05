@@ -70,7 +70,7 @@ function linkAvailable($url_name)
     $query = "SELECT count(*) as NbLine FROM  tbl_links WHERE url_name = '{$url_name}'";
     $result = $DbConnect->query($query);
     $row = mysqli_fetch_array($result);
-    if ($row['NbLine'] != 0) {
+    if ($row['NbLine'] == 0) {
         return true; }
     else { return false;
     }
