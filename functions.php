@@ -123,7 +123,7 @@ function stripLink($url_name)
 function showLinkHistory() 
 { 
     $DbConnect = mysqli_connect(ZIPSME_DB_HOST, ZIPSME_DB_USER, ZIPSME_DB_PASSWORD, ZIPSME_DB_NAME);
-    $query = 'SELECT *, COUNT(tbl_clicks.click_id) AS totalCount 
+    $query = 'SELECT tbl_links.*, COUNT(tbl_clicks.click_id) AS totalCount 
 				FROM tbl_links left join tbl_clicks ON tbl_links.url_name = tbl_clicks.url_name
 				GROUP BY tbl_links.url_name ORDER BY totalCount DESC'; 
     $result = $DbConnect->query($query); 
