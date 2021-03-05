@@ -127,9 +127,8 @@ function showLinkHistory()
 				FROM tbl_links left join tbl_clicks ON tbl_links.url_name = tbl_clicks.url_name
 				GROUP BY tbl_links.url_name ORDER BY totalCount DESC'; 
     $result = $DbConnect->query($query); 
-    $row = mysqli_fetch_array($result); 
-    $num = mysqli_num_rows($result); 
-    
+    //$row = mysqli_fetch_array($result); 
+    //$num = mysqli_num_rows($result); 
     while ($row = mysqli_fetch_array($result)) {
     	// on affiche les résultats
 		echo '<tr>' . ' '; echo '<td class="border">' . SITE_URL . prepOutputText($row['url_name']) . '</td>' . ''; 
