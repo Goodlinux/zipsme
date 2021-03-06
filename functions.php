@@ -133,17 +133,16 @@ function showLinkHistory()
     	// on affiche les résultats
 		echo '<tr>' . ' '; echo '<td class="border">' . SITE_URL . prepOutputText($row['url_name']) . '</td>' . ''; 
 		echo '<td class="border">' . prepOutputText($row['totalCount']) . '</td>' . ' '; 
-		echo '<td class="border"><ahref="admin.php?summary=' . $row['url_name'] . '">View Stats</a> | 
-                <a href="admin.php?edit=' . $row['url_name'] .'">Edit</a> | 
+		echo '<td class="border"><a href="admin.php?summary=' . $row['url_name'] . '">View Stats</a> | <a href="admin.php?edit=' . $row['url_name'] .'">Edit</a> | 
 			    <a href="admin.php?pre_delete=' . $row['url_name'] . '">Delete</a>' . '</td>' . ''; 
 		echo '</tr>' . ' ';
 	}
     
-    echo '<tr>' . ' '; 
-	echo '<td class="border">None</td>' . ' '; 
-	echo '<td class="border"> </td>' . ' '; 
-	echo '<td class="border"> </td>' . ''; 
-	echo '</tr>' . ' ';
+    //echo '<tr>' . ' '; 
+    //echo '<td class="border">None</td>' . ' '; 
+    //echo '<td class="border"> </td>' . ' '; 
+    //echo '<td class="border"> </td>' . ''; 
+    //echo '</tr>' . ' ';
 	
     mysqli_close($DbConnect);
 }
