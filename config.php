@@ -5,8 +5,8 @@ define('ZIPSME_DB_USER', 'database_user'); //Your database user name
 define('ZIPSME_DB_PASSWORD', 'database_password'); //Your database password
 define('ZIPSME_DB_NAME', 'database_name'); //Your database name
 define('ZIPSME_DB_HOST', 'localhost'); //99% chance you won't need to change this
-define ('SITE_NAME', 'Your Site'); //The name of your site
-define ('SITE_URL', 'http://www.yoursite.com/zipsme/');  //The full URL of the site where Z.ips.ME is installed (including trailing slash)
+define('SITE_NAME', 'Your Site'); //The name of your site
+define('SITE_URL', 'http://www.yoursite.com/zipsme/');  //The full URL of the site where Z.ips.ME is installed (including trailing slash)
 define('ZIPSME_USERNAME', 'username'); //Admin username. You'll use this to log in to Z.ips.ME.  Max length 100 characters.
 define('ZIPSME_PASSWORD', 'password'); //Admin password. You'll use this to log in to Z.ips.ME.  Max length 100 characters.
 //You shouldn't need to modify anything below this.
