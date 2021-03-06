@@ -127,23 +127,16 @@ function showLinkHistory()
 				FROM tbl_links left join tbl_clicks ON tbl_links.url_name = tbl_clicks.url_name
 				GROUP BY tbl_links.url_name ORDER BY totalCount DESC'; 
     $result = $DbConnect->query($query); 
-    //$row = mysqli_fetch_array($result); 
-    //$num = mysqli_num_rows($result); 
+
     while ($row = mysqli_fetch_array($result)) {
     	// on affiche les résultats
-		echo '<tr>' . ' '; echo '<td class="border">' . SITE_URL . prepOutputText($row['url_name']) . '</td>' . ''; 
+		echo '<tr>' . ' '; 
+	        echo '<td class="border">' . SITE_URL . prepOutputText($row['url_name']) . '</td>' . ''; 
 		echo '<td class="border">' . prepOutputText($row['totalCount']) . '</td>' . ' '; 
 		echo '<td class="border"><a href="admin.php?summary=' . $row['url_name'] . '">View Stats</a> | <a href="admin.php?edit=' . $row['url_name'] .'">Edit</a> | 
 			    <a href="admin.php?pre_delete=' . $row['url_name'] . '">Delete</a>' . '</td>' . ''; 
 		echo '</tr>' . ' ';
 	}
-    
-    //echo '<tr>' . ' '; 
-    //echo '<td class="border">None</td>' . ' '; 
-    //echo '<td class="border"> </td>' . ' '; 
-    //echo '<td class="border"> </td>' . ''; 
-    //echo '</tr>' . ' ';
-	
     mysqli_close($DbConnect);
 }
 ?>
