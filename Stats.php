@@ -73,7 +73,6 @@ class Stats {
 		$DbConnect = mysqli_connect(ZIPSME_DB_HOST, ZIPSME_DB_USER, ZIPSME_DB_PASSWORD, ZIPSME_DB_NAME);
 		$query = "SELECT user_agent FROM tbl_clicks WHERE url_name = '" . $this->url_name . "'";
 		$result = $DbConnect->query($query);
-		$row = mysql_fetch_assoc($result);
 		while ($row = mysqli_fetch_array($result)) 
 		{
 			$userAgent = strtolower($row['user_agent']);       
