@@ -1,7 +1,7 @@
 <?php 
 include('config.php'); 
 
-$url_name = prepQueryText($_GET['url_name']);
+$url_name = strtolower(prepQueryText($_GET['url_name']));
 if (linkExists($url_name)) {
 	$referrer = $_SERVER['HTTP_REFERER'];
 	$user_agent = $_SERVER['HTTP_USER_AGENT'];
