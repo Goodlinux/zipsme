@@ -131,7 +131,8 @@ function showLinkHistory()
     while ($row = mysqli_fetch_array($result)) {
     	// on affiche les résultats
 		echo '<tr>' . ' '; 
-	        echo '<td class="border">' . SITE_URL . prepOutputText($row['url_name']) . '</td>' . ''; 
+	    	echo '<tr>' . ' '; echo '<td class="border"> 
+		     <a href="redirect.php?url_name=' . $row['url_name'] . '">' . SITE_URL . prepOutputText($row['url_name']) . '</a></td>' . ''; 
 		echo '<td class="border">' . prepOutputText($row['totalCount']) . '</td>' . ' '; 
 		echo '<td class="border"><a href="admin.php?summary=' . $row['url_name'] . '">View Stats</a> | <a href="admin.php?edit=' . $row['url_name'] .'">Edit</a> | 
 			    <a href="admin.php?pre_delete=' . $row['url_name'] . '">Delete</a>' . '</td>' . ''; 
