@@ -37,7 +37,6 @@ class Stats {
 		$DbConnect = mysqli_connect(ZIPSME_DB_HOST, ZIPSME_DB_USER, ZIPSME_DB_PASSWORD, ZIPSME_DB_NAME);
 		$query = "SELECT click_time, COUNT(url_name) AS monthCount FROM tbl_clicks WHERE url_name = '" . $this->url_name . "' GROUP BY EXTRACT(MONTH FROM click_time) ORDER BY click_time DESC";
 		$result = $DbConnect->query($query);
-		//$row =  mysqli_fetch_array($result); 
 		while ($row = mysqli_fetch_array($result)) 
 		 {
 			$month = strtotime($row['click_time']);
@@ -53,7 +52,6 @@ class Stats {
 		$DbConnect = mysqli_connect(ZIPSME_DB_HOST, ZIPSME_DB_USER, ZIPSME_DB_PASSWORD, ZIPSME_DB_NAME);
 		$query = "SELECT referrer, COUNT(referrer) AS refCount FROM tbl_clicks WHERE url_name = '" . $this->url_name . "' GROUP BY referrer ORDER BY refCount DESC";
 		$result = $DbConnect->query($query);
-		//$row = mysql_fetch_assoc($result);
 		while ($row = mysqli_fetch_array($result)) 
 		{
 			$referrer = str_replace('http://', '',$row['referrer']);
@@ -95,7 +93,6 @@ class Stats {
 		$DbConnect = mysqli_connect(ZIPSME_DB_HOST, ZIPSME_DB_USER, ZIPSME_DB_PASSWORD, ZIPSME_DB_NAME);
 		$query = "SELECT user_agent FROM tbl_clicks WHERE url_name = '" . $this->url_name . "'";
 		$result = $DbConnect->query($query);
-		//$row = mysql_fetch_assoc($result);
 		while ($row = mysqli_fetch_array($result)) 
 		{
 			$userAgent = strtolower($row['user_agent']);       
