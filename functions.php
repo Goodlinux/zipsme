@@ -124,13 +124,12 @@ function showLinkHistory()
 { 
     $DbConnect = mysqli_connect(ZIPSME_DB_HOST, ZIPSME_DB_USER, ZIPSME_DB_PASSWORD, ZIPSME_DB_NAME);
     $query = 'SELECT tbl_links.*, COUNT(tbl_clicks.click_id) AS totalCount 
-				FROM tbl_links left join tbl_clicks ON tbl_links.url_name = tbl_clicks.url_name
-				GROUP BY tbl_links.url_name ORDER BY totalCount DESC'; 
+		FROM tbl_links left join tbl_clicks ON tbl_links.url_name = tbl_clicks.url_name
+		GROUP BY tbl_links.url_name ORDER BY totalCount DESC'; 
     $result = $DbConnect->query($query); 
-
     while ($row = mysqli_fetch_array($result)) {
     	// on affiche les résultats
-		echo '<tr>' . ' '; 
+		echo '<tr>' . ' ';
 	    	echo '<tr>' . ' '; echo '<td class="border"> 
 		     <a href="redirect.php?url_name=' . $row['url_name'] . '">' . SITE_URL . prepOutputText($row['url_name']) . '</a></td>' . ''; 
 		echo '<td class="border">' . prepOutputText($row['totalCount']) . '</td>' . ' '; 
