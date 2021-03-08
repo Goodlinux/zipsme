@@ -44,10 +44,10 @@ if ( ((isset($_POST['login_submitted'])) && ($_POST['username'] == ZIPSME_USERNA
 		$view = 'edit';
 	}
 	                                                                                                                                           
-        if (isset($_GET['newzip'])) {                                                                                                      
+        if (isset($_GET['newlink'])) {                                                                                                      
                 $url_name = prepQueryText($_GET['newzip']);                                                                                
                 $alert = $url_name . ' do not exist. Do you Want to shorten it ?';                                                         
-                $view = 'newzip';                                                                                                          
+                $view = 'newlink';                                                                                                          
         }                                                                                                                                  
 	
 	if (isset($_GET['delete'])) { 
@@ -186,7 +186,7 @@ if ( ((isset($_POST['login_submitted'])) && ($_POST['username'] == ZIPSME_USERNA
                     </form>
                 <?php } else { ?>               	
                 <h2>Shorten a New Link</h2>
-                <form action="admin.php" method="post" id="newlinkm">
+                <form action="admin.php" method="post" id="newlink">
                     <label>Original Link</label><input type="text" name="url" size="50" /><br />
                     <label>New Link Name</label><input maxlength="255" type="text" name="url_name" value="<?php echo $url_name; ?>" /><br />
                     <label>Type</label><select name="type"><option selected="selected" value="301">301 Permanent Redirect</option><option value="302">302 Temporary Redirect</option></select><br />
