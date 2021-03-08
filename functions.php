@@ -28,8 +28,8 @@ function insertClick($url_name, $referrer, $user_agent, $ip_address)
 { 
   $url_name = strtolower($url_name);
   $DbConnect = mysqli_connect(ZIPSME_DB_HOST, ZIPSME_DB_USER, ZIPSME_DB_PASSWORD, ZIPSME_DB_NAME);
-  $query = "INSERT INTO tbl_clicks (click_time, url_name, referrer, user_agent, ip_address) VALUES (NOW(), 
-     '{$url_name}', '{$referrer}', '{$user_agent}', '{$ip_address}')"; 
+  $query = "INSERT INTO tbl_clicks (click_time, url_name, referrer, user_agent, ip_address) 
+  	VALUES (NOW(), '{$url_name}', '{$referrer}', '{$user_agent}', '{$ip_address}')"; 
   $result =  $DbConnect->query($query);
   mysqli_close($DbConnect);
 }
