@@ -45,7 +45,7 @@ if ( ((isset($_POST['login_submitted'])) && ($_POST['username'] == ZIPSME_USERNA
 	}
 	                                                                                                                                           
         if (isset($_GET['newlink'])) {                                                                                                      
-                $url_name = prepQueryText($_GET['newzip']);                                                                                
+                $url_name = prepQueryText($_GET['newlink']);                                                                                
                 $alert = $url_name . ' do not exist. Do you Want to shorten it ?';                                                         
                 $view = 'newlink';                                                                                                          
         }                                                                                                                                  
