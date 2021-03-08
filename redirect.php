@@ -10,6 +10,6 @@ if (linkExists($url_name)) {
 	redirectClick($url_name);
 } else {
 	//redirect(SITE_URL, '301');
-	echo '<script type="text/javascript">window.location = "admin.php?newzip=' . $url_name .'" </script>';
+	echo '<script type="text/javascript">window.location = "admin.php?newlink=' . $url_name .'" </script>';
 }
 ?>
