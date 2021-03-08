@@ -9,6 +9,7 @@ if (linkExists($url_name)) {
 	insertClick($url_name, $referrer, $user_agent, $ip_address);
 	redirectClick($url_name);
 } else {
-	redirect(SITE_URL, '301');
+	//redirect(SITE_URL, '301');
+	echo '<script type="text/javascript">window.location = "admin.php?newzip=' . $url_name .'" </script>';
 }
 ?>
