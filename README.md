@@ -1,6 +1,10 @@
 2021-03-01 
-Evolution and migration to PHP 8
-available also with nginx
+Evolution and migration to PHP 8 available also with nginx
+
+Running in dowker with alpine 3.13 nginx server and php8
+packages to load are : 
+apk -U add php8 php8-fpm  php8-mysqli nginx git tzdata
+php8-zlib php8-gd php8-opcache php8-curl curl nano
 in dev.
 
 Docker packages needed for it : 
