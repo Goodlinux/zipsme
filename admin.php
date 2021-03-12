@@ -17,7 +17,7 @@ if ( ((isset($_POST['login_submitted'])) && ($_POST['username'] == ZIPSME_USERNA
 		$type = $_POST['type'];
 		if (linkAvailable($url_name)) {
 			insertLink($url_name, $url, $type);
-			$alert = 'Link created successfully! <a target="_blank" href="' . SITE_URL . $url_name . '">' . SITE_URL . $url_name . '</a> now redirects to ' . $url;		
+			$alert = 'Link created successfully! <a target="_blank" href="'. $url_name . '">' . SITE_URL . $url_name . '</a> now redirects to ' . $url;		
 		} else {
 			$alert = 'The link name ' . $url_name . ' is already being used.  Try a different name or edit the existing link';
 		}
@@ -43,13 +43,13 @@ if ( ((isset($_POST['login_submitted'])) && ($_POST['username'] == ZIPSME_USERNA
 		$edit = new Info($url_name);
 		$view = 'edit';
 	}
-	                                                                                                                                           
-        if (isset($_GET['newlink'])) {                                                                                                      
-                $url_name = prepQueryText($_GET['newlink']);                                                                                
-                $alert = $url_name . ' do not exist. Do you Want to shorten it ?';                                                         
-                $view = 'newlink';                                                                                                          
-        }                                                                                                                                  
 	
+	if (isset($_GET['newlink'])) {
+		$url_name = prepQueryText($_GET['newlink']);
+		$alert = $url_name . ' do not exist. Do you Want to shorten it ?';
+		$view = 'url-form';
+	}
+
 	if (isset($_GET['delete'])) { 
 		$url_name = prepQueryText($_GET['delete']);
 		deleteLink($url_name);
@@ -186,7 +186,7 @@ if ( ((isset($_POST['login_submitted'])) && ($_POST['username'] == ZIPSME_USERNA
                     </form>
                 <?php } else { ?>               	
                 <h2>Shorten a New Link</h2>
-                <form action="admin.php" method="post" id="newlink">
+                <form action="admin.php" method="post" id="url-form">
                     <label>Original Link</label><input type="text" name="url" size="50" /><br />
                     <label>New Link Name</label><input maxlength="255" type="text" name="url_name" value="<?php echo $url_name; ?>" /><br />
                     <label>Type</label><select name="type"><option selected="selected" value="301">301 Permanent Redirect</option><option value="302">302 Temporary Redirect</option></select><br />
@@ -196,10 +196,10 @@ if ( ((isset($_POST['login_submitted'])) && ($_POST['username'] == ZIPSME_USERNA
                 <h2>Link History</h2>
                 <table cellspacing="0" cellpadding="0" border="0" width="100%" class="border"><tbody>                	
                     <tr>
-			<td class="border"><strong>Link Name</strong></td>
+					    <td class="border"><strong>Link Name</strong></td>
                         <td class="border"><strong>Clicks</strong></td>
                         <td class="border"><strong>Options</strong></td>                        
-		    </tr>
+					</tr>
                     <?php showLinkHistory(); ?>
                 </tbody></table>
 				<?php } ?>
