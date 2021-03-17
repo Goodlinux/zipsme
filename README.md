@@ -3,12 +3,11 @@ Evolution and migration to PHP 8 and Mysqli php extention available also with ng
 
 Running it in docker with alpine 3.13 nginx server and php8
 packages to load are : 
-apk -U add php8 php8-fpm php8-mysqli nginx git tzdata
-php8-zlib php8-gd php8-opcache php8-curl curl nano
+ - apk -U add php8 php8-fpm php8-mysqli nginx git tzdata 
 
 In Docker, 
 Copy nginx.conf in the /etc/nginx/conf.d/default.conf
-cp /var/wwww/zipsme/nginx.conf /etc/nginx/conf.d/default.conf
+ - cp /var/wwww/zipsme/nginx.conf /etc/nginx/conf.d/default.conf
 
 in Dockerfie, you can parameter things to be able to connect to your MysqlSgbd
 (personaly I use Mariadb)
