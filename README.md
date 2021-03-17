@@ -12,15 +12,15 @@ cp /var/wwww/zipsme/nginx.conf /etc/nginx/conf.d/default.conf
 
 in Dockerfie, you can parameter things to be able to connect to your MysqlSgbd
 (personaly I use Mariadb)
- DB_USER=Data Base Username 
- DB_PASSWORD=Data Base Password 
- DB_NAME=Name Of Base 
- DB_SERVER=Url of the Database server ex : 192.168.110.55:3306 or localhost:3306
- SITE_NAME=Name of you website
- SITE_URL=Url to access to your Site ex : http://go/ or https://My.Personal.Dns/
- ZIPSME_ADMIN_USER=Name of the user to administrate your zipsme site
- ZIPSME_ADMIN_PASSWORD=Password to administrate your zipsme site
- TZ=Europe/Paris
+ - DB_USER=Data Base Username 
+ - DB_PASSWORD=Data Base Password 
+ - DB_NAME=Name Of Base 
+ - DB_SERVER=Url of the Database server ex : 192.168.110.55:3306 or localhost:3306
+ - SITE_NAME=Name of you website
+ - SITE_URL=Url to access to your Site ex : http://go/ or https://My.Personal.Dns/
+ - ZIPSME_ADMIN_USER=Name of the user to administrate your zipsme site
+ - ZIPSME_ADMIN_PASSWORD=Password to administrate your zipsme site
+ - TZ=Europe/Paris
 
 
 
