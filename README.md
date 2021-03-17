@@ -1,5 +1,5 @@
 2021-03-01 
-Evolution and migration to PHP 8 and Mysqli extention available also with nginx
+Evolution and migration to PHP 8 and Mysqli php extention available also with nginx
 
 Running it in docker with alpine 3.13 nginx server and php8
 packages to load are : 
