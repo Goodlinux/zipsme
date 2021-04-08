@@ -1,4 +1,4 @@
-# INFO
+# INFO 
   Create your own url shortener running in docker. 
   Based on the work of agussuhartono https://github.com/zipsme/zipsme
  
@@ -7,8 +7,7 @@
   I have update the code to use  with alpine 3.13 nginx server and php8  
   I have change the mysql-php by msqli-php library
  
-
-# INSTALL
+# INSTALL 
   First create a MySQL database and MySQL user.
  
   Make sure the user has permission to SELECT, INSERT, UPDATE, DELETE, and CREATE. 
@@ -17,18 +16,21 @@
   Launch the container, and modify the environments variables to full fill your
   Database Name, User and Password and the others parameters
  
-  in Dockerfie or when you run the container, you can parameter things to be able to connect to your Mysql Sgbd (personaly I use Mariadb) 
+ You can change variables creating before the container in the DockerFile, 
+ then create the container docker build -t containername .    
+ in Dockerfie or when you run the container, you can parameter things to be able to connect to your Mysql Sgbd (personaly I use Mariadb) 
 
 # ENV VARIABLES 
-  DB_USER=Data Base Username 
-  DB_PASSWORD=Data Base Password  
-  DB_NAME=Name Of Base  
-  DB_SERVER=Url of the Database server ex : 192.168.110.55:3306 o r localhost:3306  
-  SITE_NAME=Name of you website  
-  SITE_URL=Url to access to your Site ex : http://go/ or https://My.Personal.Dns/  
-  ZIPSME_ADMIN_USER=Name of the user to administrate your zipsme site  
-  ZIPSME_ADMIN_PASSWORD=Password to administrate your zipsme site  
-  TZ=Europe/Paris  
+
+ DB_USER=Data Base Username  
+ DB_PASSWORD=Data Base Password  
+ DB_NAME=Name Of Base   
+ DB_SERVER=Url of the Database server ex : 192.168.110.55:3306 or localhost:3306  
+ SITE_NAME=Name of you website  
+ SITE_URL=Url to access to your Site ex : http://go/ or https://My.Personal.Dns/  
+ ZIPSME_ADMIN_USER=Name of the user to administrate your zipsme site  
+ ZIPSME_ADMIN_PASSWORD=Password to administrate your zipsme site  
+ TZ=Europe/Paris  
  
  # First Launch 
   When your conatiner is alive and the envoronments variable are ok,  
