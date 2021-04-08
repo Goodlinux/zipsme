@@ -3,20 +3,19 @@ MAINTAINER Ludovic MAILLET <Ludoivc@maillet.me>
 
 RUN apk update && apk -U add php8 php8-fpm php8-mysqli nginx git tzdata
 
-#php8-zlib php8-gd php8-opcache php8-curl curl nano
-
 EXPOSE 80
 
 ENV DB_USER=zipsme \
     DB_PASSWORD=DbPassword \
-	DB_NAME=zipsme \
-	DB_SERVER=192.168.10.159:3306 \
-	SITE_NAME='URL Shortener' \
-	SITE_URL=http://go  \
-	ZIPSME_ADMIN_USER=ZipAdminUser \
-	ZIPSME_ADMIN_PASSWORD=ZipAdminPassword \
+    DB_NAME=zipsme \
+    DB_SERVER=192.168.10.159:3306 \
+    SITE_NAME='URL Shortener' \
+    SITE_URL=http://go  \
+    ZIPSME_ADMIN_USER=ZipAdminUser \
+    ZIPSME_ADMIN_PASSWORD=ZipAdminPassword \
     TZ=Europe/Paris
 
+#Construction of rediection and php uses for nginx
 RUN echo "server { " > /etc/nginx/conf.d/default.conf  \
     &&  echo "        listen 80 default_server; " >> /etc/nginx/conf.d/default.conf	\
     &&  echo "        listen [::]:80 default_server; " >> /etc/nginx/conf.d/default.conf	\
@@ -35,11 +34,12 @@ RUN echo "server { " > /etc/nginx/conf.d/default.conf  \
 RUN mkdir /run/nginx 
 RUN git clone https://github.com/Goodlinux/zipsme.git /var/www/zipsme/ 
 
+#Construction of entrypoint
 RUN echo "#! /bin/sh" > /usr/local/bin/entrypoint.sh \
 	&& echo "echo lancement de nginx" >> /usr/local/bin/entrypoint.sh  \
 	&& echo "nginx" >> /usr/local/bin/entrypoint.sh  \
 	&& echo "echo lancement de php" >> /usr/local/bin/entrypoint.sh  \
-    && echo "php-fpm8" >> /usr/local/bin/entrypoint.sh  \
+    	&& echo "php-fpm8" >> /usr/local/bin/entrypoint.sh  \
 	&& echo "echo Timezone $TZ" >> /usr/local/bin/entrypoint.sh  \
 	&& echo "cp /usr/share/zoneinfo/\$TZ /etc/localtime && echo \$TZ >  /etc/timezone" >> /usr/local/bin/entrypoint.sh \
 	&& echo "cd /var/www/zipsme" >> /usr/local/bin/entrypoint.sh  \
@@ -58,4 +58,3 @@ RUN echo "#! /bin/sh" > /usr/local/bin/entrypoint.sh \
 	&& chmod a+x /usr/local/bin/*
 
 CMD /usr/local/bin/entrypoint.sh
-
