@@ -2,23 +2,23 @@
   Create your own url shortener running in docker. 
   Based on the work of agussuhartono https://github.com/zipsme/zipsme
  
-  You can find the sources  here : https://github.com/Goodlinux/zipsme
+  You can find the modified sources for docker here : https://github.com/Goodlinux/zipsme
 
-  I have update the code to use  with alpine 3.13 nginx server and php8  
-  I have change the mysql-php by msqli-php library
+  I have update the code to use with alpine 3.13, nginx server, php8   
+  I have also change the mysql-php by msqli-php library in all the code
  
 # INSTALL 
   First create a MySQL database and MySQL user.
  
   Make sure the user has permission to SELECT, INSERT, UPDATE, DELETE, and CREATE. 
-  Make note of the database name, the database user name, and the password.
+  Note of the database name, the database user name, and the password.
  
   Launch the container, and modify the environments variables to full fill your
   Database Name, User and Password and the others parameters
  
- You can change variables creating before the container in the DockerFile, 
- then create the container docker build -t containername .    
- in Dockerfie or when you run the container, you can parameter things to be able to connect to your Mysql Sgbd (personaly I use Mariadb) 
+ You can change variables before building the container in the DockerFile, 
+ then create the container whith the command line : docker build -t containername.     
+ Or change the variable when you run the container, to be able to connect to your Mysql sgbd (personaly I use Mariadb) 
 
 # ENV VARIABLES 
 
