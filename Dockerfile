@@ -1,5 +1,5 @@
 FROM alpine:latest
-MAINTAINER Ludovic MAILLET <Ludoivc@maillet.me>
+MAINTAINER Ludovic MAILLET <Ludo.goodlinux@gmail.com>
 
 RUN apk -U add php8 php8-fpm php8-mysqli nginx git tzdata
 
