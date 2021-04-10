@@ -52,7 +52,7 @@ RUN echo "#! /bin/sh" > /usr/local/bin/entrypoint.sh \
  	&& echo sed -i '"'"s|http://www.yoursite.com/zipsme|\$SITE_URL|"'"'  /var/www/zipsme/config.php    >> /usr/local/bin/entrypoint.sh  \
  	&& echo sed -i '"'"s|username|\$ZIPSME_ADMIN_USER|"'"' /var/www/zipsme/config.php       >> /usr/local/bin/entrypoint.sh  \
  	&& echo sed -i '"'"s|password|\$ZIPSME_ADMIN_PASSWORD|"'"' /var/www/zipsme/config.php   >> /usr/local/bin/entrypoint.sh  \
- 	&& echo sed -i '"' "s|America/New_York|getenv('TZ')|"'"'   /var/www/zipsme/config.php   >> /usr/local/bin/entrypoint.sh  \
+ 	&& echo sed -i '"' "s|'America/New_York'|getenv('TZ')|"'"'   /var/www/zipsme/config.php   >> /usr/local/bin/entrypoint.sh  \
 	&& echo "exec /bin/sh" >> /usr/local/bin/entrypoint.sh  \
 	&& chmod a+x /usr/local/bin/*
 
