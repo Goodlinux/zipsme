@@ -56,4 +56,4 @@ RUN echo "#! /bin/sh" > /usr/local/bin/entrypoint.sh \
 	&& echo "exec /bin/sh" >> /usr/local/bin/entrypoint.sh  \
 	&& chmod a+x /usr/local/bin/*
 
-CMD /usr/local/bin/entrypoint.sh
+CMD /usr/local/bin/entrypoint.sh 
