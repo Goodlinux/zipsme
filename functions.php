@@ -129,6 +129,6 @@ function showLinkHistory() {
 		echo '</tr>' . "\n";
 	}			
 
-	mysqli_close($DbConnect);
-}
+	mysqli_close($DbConnect); 
+} 
 ?>
