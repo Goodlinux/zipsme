@@ -1,3 +1,12 @@
+2021-03 Goodlinux
+change code to be compliant with PHP 8 and Mysqli-php8 library
+change to run with nginx web server
+and running in a docker container
+Added a functionality to make shortcut available on the admin board
+Added a functionality to add a new shortcut if the one you enter does not exist
+
+--------------------------------------------------------------------------------------------------
+
 Z.ips.ME
 Version 1.1
 Requirements: Developed for PHP 5+ / MySQL 4.1.22+, however it may work on earlier versions
