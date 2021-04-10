@@ -54,7 +54,6 @@ RUN echo "#! /bin/sh" > /usr/local/bin/entrypoint.sh \
  	&& echo sed -i '"'"s|'password'|'$ZIPSME_ADMIN_PASSWORD'|"'"' /var/www/zipsme/config.php   >> /usr/local/bin/entrypoint.sh  \
  	&& echo sed -i '"' "s|'America/New_York'|getenv('TZ')|"'"'   /var/www/zipsme/config.php   >> /usr/local/bin/entrypoint.sh  \
 	&& echo "exec /bin/sh" >> /usr/local/bin/entrypoint.sh  \
-	&& echo "ls -la \$1"   > /usr/local/bin/ll   \
 	&& chmod a+x /usr/local/bin/*
 
 CMD /usr/local/bin/entrypoint.sh
