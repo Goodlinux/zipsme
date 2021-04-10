@@ -44,14 +44,14 @@ RUN echo "#! /bin/sh" > /usr/local/bin/entrypoint.sh \
 	&& echo "cp /usr/share/zoneinfo/\$TZ /etc/localtime && echo \$TZ >  /etc/timezone" >> /usr/local/bin/entrypoint.sh \
 	&& echo "cd /var/www/zipsme" >> /usr/local/bin/entrypoint.sh  \
 	&& echo "echo mise a jour de la config php"  >>  /usr/local/bin/entrypoint.sh  \
-	&& echo sed -i '"'"s|'database_user'|'$DB_USER'|"'"' /var/www/zipsme/config.php >> /usr/local/bin/entrypoint.sh  \
-	&& echo sed -i '"'"s|'database_password'|'$DB_PASSWORD'|"'"' /var/www/zipsme/config.php  >> /usr/local/bin/entrypoint.sh  \
- 	&& echo sed -i '"'"s|'database_name'|'$DB_NAME'|"'"' /var/www/zipsme/config.php    >> /usr/local/bin/entrypoint.sh  \
- 	&& echo sed -i '"'"s|'localhost'|'$DB_SERVER'|"'"' /var/www/zipsme/config.php      >> /usr/local/bin/entrypoint.sh  \
- 	&& echo sed -i '"'"s|'Your Site'|'$SITE_NAME'|"'"' /var/www/zipsme/config.php      >> /usr/local/bin/entrypoint.sh  \
- 	&& echo sed -i '"'"s|'http://www.yoursite.com/zipsme'|'$SITE_URL'|"'"'  /var/www/zipsme/config.php    >> /usr/local/bin/entrypoint.sh  \
- 	&& echo sed -i '"'"s|'username'|'$ZIPSME_ADMIN_USER'|"'"' /var/www/zipsme/config.php       >> /usr/local/bin/entrypoint.sh  \
- 	&& echo sed -i '"'"s|'password'|'$ZIPSME_ADMIN_PASSWORD'|"'"' /var/www/zipsme/config.php   >> /usr/local/bin/entrypoint.sh  \
+	&& echo sed -i '"'"s|'database_user'|'\$DB_USER'|"'"' /var/www/zipsme/config.php >> /usr/local/bin/entrypoint.sh  \
+	&& echo sed -i '"'"s|'database_password'|'\$DB_PASSWORD'|"'"' /var/www/zipsme/config.php  >> /usr/local/bin/entrypoint.sh  \
+ 	&& echo sed -i '"'"s|'database_name'|'\$DB_NAME'|"'"' /var/www/zipsme/config.php    >> /usr/local/bin/entrypoint.sh  \
+ 	&& echo sed -i '"'"s|'localhost'|'\$DB_SERVER'|"'"' /var/www/zipsme/config.php      >> /usr/local/bin/entrypoint.sh  \
+ 	&& echo sed -i '"'"s|'Your Site'|'\$SITE_NAME'|"'"' /var/www/zipsme/config.php      >> /usr/local/bin/entrypoint.sh  \
+ 	&& echo sed -i '"'"s|'http://www.yoursite.com/zipsme'|'\$SITE_URL'|"'"'  /var/www/zipsme/config.php    >> /usr/local/bin/entrypoint.sh  \
+ 	&& echo sed -i '"'"s|'username'|'\$ZIPSME_ADMIN_USER'|"'"' /var/www/zipsme/config.php       >> /usr/local/bin/entrypoint.sh  \
+ 	&& echo sed -i '"'"s|'password'|'\$ZIPSME_ADMIN_PASSWORD'|"'"' /var/www/zipsme/config.php   >> /usr/local/bin/entrypoint.sh  \
  	&& echo sed -i '"' "s|'America/New_York'|getenv('TZ')|"'"'   /var/www/zipsme/config.php   >> /usr/local/bin/entrypoint.sh  \
 	&& echo "exec /bin/sh" >> /usr/local/bin/entrypoint.sh  \
 	&& chmod a+x /usr/local/bin/*
