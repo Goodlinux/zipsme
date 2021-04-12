@@ -15,7 +15,7 @@ ENV DB_USER=zipsme \
     ZIPSME_ADMIN_PASSWORD=ZipAdminPassword \
     TZ=Europe/Paris
 
-#Construction of rediection and php uses for nginx
+#Construction of redirection and php use for nginx
 RUN echo "server { " > /etc/nginx/conf.d/default.conf  \
     &&  echo "        listen 80 default_server; " >> /etc/nginx/conf.d/default.conf	\
     &&  echo "        listen [::]:80 default_server; " >> /etc/nginx/conf.d/default.conf	\
@@ -31,8 +31,8 @@ RUN echo "server { " > /etc/nginx/conf.d/default.conf  \
     &&  echo "        include fastcgi_params;    } " >> /etc/nginx/conf.d/default.conf	\
     &&  echo "}  " >> /etc/nginx/conf.d/default.conf
 
-RUN mkdir /run/nginx 
-RUN git clone https://github.com/Goodlinux/zipsme.git /var/www/zipsme/ 
+#Import project from GitHub
+RUN mkdir /run/nginx && git clone https://github.com/Goodlinux/zipsme.git /var/www/zipsme/ && rm /var/www/zipsme/Dockerfile
 
 #Construction of entrypoint
 RUN echo "#! /bin/sh" > /usr/local/bin/entrypoint.sh \
