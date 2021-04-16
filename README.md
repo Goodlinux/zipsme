@@ -1,6 +1,6 @@
 # INFO 
 
-[![zipsme](https://img.shields.io/static/v1?label=based on&message=zipsme&color=blue)](link=https://github.com/zipsme/zipsme,float="left")
+[![zipsme](https://img.shields.io/static/v1?label=based_on&message=zipsme&color=blue)](link=https://github.com/zipsme/zipsme,float="left")
 
 [![alpine](https://img.shields.io/static/v1?label=using&message=alpine&color=orange)](https://alpinelinux.org)
 [![php](https://img.shields.io/static/v1?label=using&message=php-8&color=orange)](link=https://www.php.net/)
