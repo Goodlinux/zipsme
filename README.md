@@ -2,10 +2,10 @@
 
 [![zipsme](https://img.shields.io/static/v1?label=based_on&message=zipsme&color=blue)](link=https://github.com/zipsme/zipsme,float="left")
 
-[![alpine](https://img.shields.io/static/v1?label=using&message=alpine&color=orange)](https://alpinelinux.org)
-[![php](https://img.shields.io/static/v1?label=using&message=php-8&color=orange)](link=https://www.php.net/)
-[![mysqli](https://img.shields.io/static/v1?label=using&message=mysqli-php&color=orange)](link=https://www.php.net/manual/en/class.mysqli)
-[![nginx](https://img.shields.io/static/v1?label=using&message=nginx&color=orange)](link=https://www.nginx.com/)
+[![alpine](https://img.shields.io/static/v1?label=using&message=alpine&color=orange)](https://alpinelinux.org,float="left")
+[![php](https://img.shields.io/static/v1?label=using&message=php-8&color=orange)](link=https://www.php.net,float="left")
+[![mysqli](https://img.shields.io/static/v1?label=using&message=mysqli-php&color=orange)](link=https://www.php.net/manual/en/class.mysqli,float="left")
+[![nginx](https://img.shields.io/static/v1?label=using&message=nginx&color=orange)](link=https://www.nginx.com,float="left")
 
 
 Create your own url shortener running on docker. 
