@@ -1,29 +1,26 @@
 # INFO 
 
-image:https://img.shields.io/static/v1?label=based on&message=zipsme&color=blue[link=https://github.com/zipsme/zipsme,float="left"]
-
-Methode 1 
-image:https://img.shields.io/static/v1?label=using&message=alpine&color=orange[link=https://alpinelinux.org/,float="left"] 
-image:https://img.shields.io/static/v1?label=using&message=php 8&color=orange[link=https://www.php.net/,float="left"]
-
+[![zipsme](https://img.shields.io/static/v1?label=based on&message=zipsme&color=blue)](link=https://github.com/zipsme/zipsme,float="left")
 
 [![alpine](https://img.shields.io/static/v1?label=using&message=alpine&color=orange)](https://alpinelinux.org)
+[![php](https://img.shields.io/static/v1?label=using&message=php 8&color=orange)](link=https://www.php.net/)
+[![mysqli](https://img.shields.io/static/v1?label=using&message=mysqli-php&color=orange)](link=https://www.php.net/manual/en/class.mysqli)
+[![nginx](https://img.shields.io/static/v1?label=using&message=nginx&color=orange)](link=https://www.nginx.com/)
 
-Methode 1 
-image:https://img.shields.io/static/v1?label=using&message=mysqli-php&color=orange[link=https://www.php.net/manual/en/class.mysqli,float="left"]
-image:https://img.shields.io/static/v1?label=using&message=nginx&color=orange[link=https://www.nginx.com/,float="left"]
+
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/RocketChat/Rocket.Chat/raw/master/LICENSE)
 
 Create your own url shortener running on docker. 
 
 You can find the modified sources for docker here :  
-image:https://img.shields.io/static/v1?label=sources&message=zipsme for docker&color=green[link=https://github.com/Goodlinux/zipsme,float="left"] 
+[![src](https://img.shields.io/static/v1?label=sources&message=zipsme for docker&color=green)](link=https://github.com/Goodlinux/zipsme,float="left")
 
 I have update the code to use with alpine 3.13, nginx server, php8   
 I have also change the mysql-php by msqli-php library in all the code
  
 # INSTALL 
   
-image::https://img.shields.io/static/v1?label=docker&message=zipsme&color=green[link=https://hub.docker.com/r/goodlinux/zipsme,float="left"] 
+[![docker](https://img.shields.io/static/v1?label=docker&message=zipsme&color=green)](link=https://hub.docker.com/r/goodlinux/zipsme,float="left") 
  
  First create a MySQL database and MySQL user.
  Make sure the user has permission to SELECT, INSERT, UPDATE, DELETE, and CREATE. 
