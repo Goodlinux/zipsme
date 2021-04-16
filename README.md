@@ -3,12 +3,10 @@
 [![zipsme](https://img.shields.io/static/v1?label=based on&message=zipsme&color=blue)](link=https://github.com/zipsme/zipsme,float="left")
 
 [![alpine](https://img.shields.io/static/v1?label=using&message=alpine&color=orange)](https://alpinelinux.org)
-[![php](https://img.shields.io/static/v1?label=using&message="php 8"&color=orange)](link=https://www.php.net/)
+[![php](https://img.shields.io/static/v1?label=using&message=php-8&color=orange)](link=https://www.php.net/)
 [![mysqli](https://img.shields.io/static/v1?label=using&message=mysqli-php&color=orange)](link=https://www.php.net/manual/en/class.mysqli)
 [![nginx](https://img.shields.io/static/v1?label=using&message=nginx&color=orange)](link=https://www.nginx.com/)
 
-
-[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/RocketChat/Rocket.Chat/raw/master/LICENSE)
 
 Create your own url shortener running on docker. 
 
