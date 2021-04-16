@@ -2,6 +2,11 @@
 
 image:https://img.shields.io/static/v1?label=based on&message=zipsme&color=blue[link=https://github.com/zipsme/zipsme,float="left"]
 
+image:https://img.shields.io/static/v1?label=using&message=alpine&color=orange[link=https://alpinelinux.org/,float="left"] 
+image:https://img.shields.io/static/v1?label=using&message=php 8&color=orange[link=https://www.php.net/,float="left"] 
+image:https://img.shields.io/static/v1?label=using&message=mysqli-php&color=orange[link=https://www.php.net/manual/en/class.mysqli,float="left"] 
+image:https://img.shields.io/static/v1?label=using&message=nginx&color=orange[link=https://www.nginx.com/,float="left"] 
+
 Create your own url shortener running on docker. 
 
 You can find the modified sources for docker here : https://github.com/Goodlinux/zipsme
