@@ -11,7 +11,7 @@
 Create your own url shortener running on docker. 
 
 You can find the modified sources for docker here :  
-[![src](https://img.shields.io/static/v1?label=sources&message=zipsme for docker&color=green)](link=https://github.com/Goodlinux/zipsme,float="left")
+[![src](https://img.shields.io/static/v1?label=sources&message=zipsme_for_docker&color=green)](link=https://github.com/Goodlinux/zipsme,float="left")
 
 I have update the code to use with alpine 3.13, nginx server, php8   
 I have also change the mysql-php by msqli-php library in all the code
