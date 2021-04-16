@@ -42,7 +42,7 @@ image:https://img.shields.io/static/v1?label=docker&message=zipsme&color=orange[
  ZIPSME_ADMIN_PASSWORD=Password to administrate your zipsme site  
  TZ=Europe/Paris  
  
- # First Launch 
+# First Launch 
   
  When your conatiner is alive and the envoronments variable are ok,  
  Run the install.php file in your browser. If your URL shortener is http://go/,  
