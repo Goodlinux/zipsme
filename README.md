@@ -1,12 +1,10 @@
 # INFO 
-
 [![zipsme](https://img.shields.io/static/v1?label=based_on&message=zipsme&color=blue)](link=https://github.com/zipsme/zipsme,float="left")
 
 [![alpine](https://img.shields.io/static/v1?label=using&message=alpine&color=orange)](https://alpinelinux.org,float="left")
 [![php](https://img.shields.io/static/v1?label=using&message=php-8&color=orange)](link=https://www.php.net,float="left")
 [![mysqli](https://img.shields.io/static/v1?label=using&message=mysqli-php&color=orange)](link=https://www.php.net/manual/en/class.mysqli,float="left")
 [![nginx](https://img.shields.io/static/v1?label=using&message=nginx&color=orange)](link=https://www.nginx.com,float="left")
-
 
 Create your own url shortener running on docker. 
 
@@ -17,7 +15,6 @@ I have update the code to use with alpine 3.13, nginx server, php8
 I have also change the mysql-php by msqli-php library in all the code
  
 # INSTALL 
-  
 [![docker](https://img.shields.io/static/v1?label=docker&message=zipsme&color=green)](link=https://hub.docker.com/r/goodlinux/zipsme,float="left") 
  
  First create a MySQL database and MySQL user.
@@ -31,8 +28,7 @@ I have also change the mysql-php by msqli-php library in all the code
  then create the container whith the command line : docker build -t containername.     
  Or change the variable when you run the container, to be able to connect to your Mysql sgbd (personaly I use Mariadb) 
 
-# ENV VARIABLES 
-
+# ENV VARIABLES  
  DB_USER=Data Base Username  
  DB_PASSWORD=Data Base Password  
  DB_NAME=Name Of Base   
@@ -44,7 +40,6 @@ I have also change the mysql-php by msqli-php library in all the code
  TZ=Europe/Paris  
  
 # First Launch 
-  
  When your conatiner is alive and the envoronments variable are ok,  
  Run the install.php file in your browser. If your URL shortener is http://go/,  
  the file will be located at http://go/install.php.  
