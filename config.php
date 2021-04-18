@@ -7,6 +7,10 @@ define('ZIPSME_DB_NAME', 'database_name'); //Your database name
 define('ZIPSME_DB_HOST', 'localhost'); //Url of the mysql server ex : 192.168.10.105:3306 or localhost:3306
 define('SITE_NAME', 'Your Site'); //The name of your site
 define('SITE_URL', 'http://www.yoursite.com/zipsme/');  //The full URL of the site where Z.ips.ME is installed (including trailing slash)
+define('LDAP_SRV', 'ldaphost');  // serveur LDAP
+define('LDAP_USER', 'ldap-user');   // User admin LDAP
+define('LDAP_ROOT', 'cn=ldap_admin, o=commentcamarche, c=fr');   //ldap root
+define('LDAP_PWD', 'ldapsecret');   // ldap admin password
 define('ZIPSME_USERNAME', 'username'); //Admin username. You'll use this to log in to Z.ips.ME.  Max length 100 characters.
 define('ZIPSME_PASSWORD', 'password'); //Admin password. You'll use this to log in to Z.ips.ME.  Max length 100 characters.
 //You shouldn't need to modify anything below this.
