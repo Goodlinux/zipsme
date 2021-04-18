@@ -1,7 +1,7 @@
 FROM alpine:latest
 MAINTAINER Ludovic MAILLET <Ludo.goodlinux@gmail.com>
 
-RUN apk -U add php8 php8-fpm php8-mysqli nginx git tzdata
+RUN apk -U add php8 php8-fpm php8-mysqli php8-ldap nginx git tzdata
 
 EXPOSE 80
 
