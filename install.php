@@ -9,7 +9,7 @@ $query = "CREATE TABLE IF NOT EXISTS tbl_clicks (click_id int(11) NOT NULL auto_
 $result = $DbConnect->query($query);
 
 //create links table
-$query = "CREATE TABLE IF NOT EXISTS tbl_links (url_name varchar(255) NOT NULL,url text NOT NULL,type varchar(255) NOT NULL,active char(1) NOT NULL, PRIMARY KEY  (url_name))";
+$query = "CREATE TABLE IF NOT EXISTS tbl_links (url_name varchar(255) NOT NULL,url text NOT NULL,user text NOT NULL,type varchar(255) NOT NULL,active char(1) NOT NULL, PRIMARY KEY  (url_name))";
 $result = $DbConnect->query($query);
 
 mysqli_close($DbConnect);
