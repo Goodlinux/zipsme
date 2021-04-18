@@ -131,4 +131,23 @@ function showLinkHistory() {
 
 	mysqli_close($DbConnect);
 } 
+
+function searchUser($person) {                                                                                                                                                                             
+        $ds=ldap_connect(LDAP_SRV);                                                                                                                                                                         
+                                                                                                                                                                                                            
+        if ($ds) {                                                                                                                                                                                          
+                $r=ldap_bind($ds, LDAP_ROOT, LDAP_PWD);                                                                                                                                                     
+                                                                                                                                                                                                            
+                $filtre="(|(sn=$person*)(cn=$person*))";                                                                                                                                                    
+                $restriction = array( "cn", "sn", "mail");                                                                                                                                                  
+                $sr=ldap_search($ds, LDAP_RACINE, $filtre, $restriction);                                                                                                                                   
+                $info = ldap_get_entries($ds, $sr);                                                                                                                                                         
+                print   $info["count"]." enregistrements trouves";                                                                                                                                          
+        }                                                                                                                                                                                                   
+        else {                                                                                                                                                                                              
+                echo "Connexion au serveur LDAP impossible";                                                                                                                                                
+        }                                                                                                                                                                                                   
+        ldap_close($ds);                                                                                                                                                                                    
+                                                                                                                                                                                                            
+} 
 ?>
