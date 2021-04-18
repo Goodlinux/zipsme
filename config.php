@@ -8,8 +8,9 @@ define('ZIPSME_DB_HOST', 'localhost'); //Url of the mysql server ex : 192.168.10
 define('SITE_NAME', 'Your Site'); //The name of your site
 define('SITE_URL', 'http://www.yoursite.com/zipsme/');  //The full URL of the site where Z.ips.ME is installed (including trailing slash)
 define('LDAP_SRV', 'ldaphost');  // serveur LDAP
-define('LDAP_USER', 'ldap-user');   // User admin LDAP
-define('LDAP_ROOT', 'cn=ldap_admin, o=commentcamarche, c=fr');   //ldap root
+define('LDAP_ADM', 'ldapadm');   //  ldap user admin
+define('LDAP_RACINE', 'o=domain, c=fr');  // ldap racine
+define('LDAP_ROOT', 'cn=' . LDAP_ADM . ', ' . LDA_RACINE);   //ldap root
 define('LDAP_PWD', 'ldapsecret');   // ldap admin password
 define('ZIPSME_USERNAME', 'username'); //Admin username. You'll use this to log in to Z.ips.ME.  Max length 100 characters.
 define('ZIPSME_PASSWORD', 'password'); //Admin password. You'll use this to log in to Z.ips.ME.  Max length 100 characters.
@@ -18,6 +19,8 @@ define('ZIPSME_PASSWORD', 'password'); //Admin password. You'll use this to log 
 //set true if production environment else false for development
 define ('IS_ENV_PRODUCTION', true); 
 //establish a connection to the database server
+
+echo LADP_ROOT;
 
 $DbConnect = mysqli_connect(ZIPSME_DB_HOST, ZIPSME_DB_USER, ZIPSME_DB_PASSWORD, ZIPSME_DB_NAME);
 if (!$DbConnect) 
