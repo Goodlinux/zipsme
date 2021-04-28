@@ -1,21 +1,21 @@
 # INFO 
-[![zipsme](https://img.shields.io/static/v1?label=based_on&message=zipsme&color=blue)](link=https://github.com/zipsme/zipsme,float="left")
+[![zipsme](https://img.shields.io/static/v1?label=based_on&message=zipsme&color=blue)](https://github.com/zipsme/zipsme)
 
-[![alpine](https://img.shields.io/static/v1?label=using&message=alpine&color=orange)](https://alpinelinux.org,float="left")
-[![php](https://img.shields.io/static/v1?label=using&message=php-8&color=orange)](link=https://www.php.net,float="left")
-[![mysqli](https://img.shields.io/static/v1?label=using&message=mysqli-php&color=orange)](link=https://www.php.net/manual/en/class.mysqli,float="left")
-[![nginx](https://img.shields.io/static/v1?label=using&message=nginx&color=orange)](link=https://www.nginx.com,float="left")
+[![alpine](https://img.shields.io/static/v1?label=using&message=alpine&color=orange)](https://alpinelinux.org)
+[![php](https://img.shields.io/static/v1?label=using&message=php-8&color=orange)](link=https://www.php.net)
+[![mysqli](https://img.shields.io/static/v1?label=using&message=mysqli-php&color=orange)](https://www.php.net/manual/en/class.mysqli)
+[![nginx](https://img.shields.io/static/v1?label=using&message=nginx&color=orange)](https://www.nginx.com,float="left")
 
 Create your own url shortener running on docker. 
 
 You can find the modified sources for docker here :  
-[![src](https://img.shields.io/static/v1?label=sources&message=zipsme_for_docker&color=green)](link=https://github.com/Goodlinux/zipsme,float="left")
+[![src](https://img.shields.io/static/v1?label=sources&message=zipsme_for_docker&color=green)](link=https://github.com/Goodlinux/zipsme)
 
 I have update the code to use with alpine 3.13, nginx server, php8   
 I have also change the mysql-php by msqli-php library in all the code
  
 # INSTALL 
-[![docker](https://img.shields.io/static/v1?label=docker&message=zipsme&color=green)](link=https://hub.docker.com/r/goodlinux/zipsme,float="left") 
+[![docker](https://img.shields.io/static/v1?label=docker&message=zipsme&color=green)](https://hub.docker.com/r/goodlinux/zipsme) 
  
  First create a MySQL database and MySQL user.
  Make sure the user has permission to SELECT, INSERT, UPDATE, DELETE, and CREATE. 
