@@ -31,11 +31,21 @@ function insertClick($url_name, $referrer, $user_agent, $ip_address) {
 	mysqli_close($DbConnect);
 }
 
-function insertLink($url_name, $url, $type) {
+function insertLink($url_name, $url, $user, $type) {
 	$url_name = strtolower($url_name);
 	$DbConnect = mysqli_connect(ZIPSME_DB_HOST, ZIPSME_DB_USER, ZIPSME_DB_PASSWORD, ZIPSME_DB_NAME);
-	$query = "INSERT INTO tbl_links (url_name, url, type, active) VALUES ('{$url_name}', '{$url}', '{$type}', 'y')";
+	$query = "INSERT INTO tbl_links (url_name, url, user, type, active) VALUES ('{$url_name}', '{$url}', '{$user}', '{$type}', 'y')";
 	$result = $DbConnect->query($query);
+	mysqli_close($DbConnect);
+}
+
+function getUserLink($url_name) {
+	$url_name = strtolower($url_name);
+	$DbConnect = mysqli_connect(ZIPSME_DB_HOST, ZIPSME_DB_USER, ZIPSME_DB_PASSWORD, ZIPSME_DB_NAME);
+	$query = "SELECT user FROM tbl_links WHERE url_name = '{$url_name}'";
+	$result = $DbConnect->query($query);
+	$row = mysqli_fetch_array($result);
+	return $row['user'];
 	mysqli_close($DbConnect);
 }
 
@@ -113,41 +123,76 @@ function stripLink($url_name) {
 
 function showLinkHistory() {
 	$DbConnect = mysqli_connect(ZIPSME_DB_HOST, ZIPSME_DB_USER, ZIPSME_DB_PASSWORD, ZIPSME_DB_NAME);
-//	$query = "SELECT tbl_links.*, COUNT(tbl_clicks.click_id) AS totalCount 
-	$query = "SELECT tbl_links.url_name, tbl_links.url, COUNT(tbl_clicks.click_id) AS totalCount 
+
+	$query = "SELECT tbl_links.url_name, tbl_links.url, tbl_links.user, COUNT(tbl_clicks.click_id) AS clicks 
 		FROM tbl_links left join tbl_clicks ON tbl_links.url_name = tbl_clicks.url_name
-		GROUP BY tbl_links.url_name ORDER BY totalCount DESC";
+		GROUP BY tbl_links.url_name ORDER BY clicks DESC";
 	$result = $DbConnect->query($query);
+	
 //	echo '<td class="border">' . prepOutputText($result->num_rows) . '</td>' . "\n";
 	while ($row = mysqli_fetch_array($result))
 	{
-		echo '<tr>' . $row['url_name'] . ":" . $row['url'] . ":" . $row['totalcount'] . "\n";
+		echo '<tr>' . $row['url_name'] . ":" . $row['url'] . ":" . $row['user'] . ":" . $row['clicks'] . "\n";
 		echo '<td class="border">
-			<a href="redirect.php?url_name=' . $row['url_name'] . '">' . SITE_URL . prepOutputText($row['url_name']) . '</a></td>' . ''; 
-		echo '<td class="border">' . prepOutputText($row['totalCount']) . '</td>' . "\n";
+			<a href="redirect.php?url_name=' . $row['url_name'] . '">' . SITE_URL . prepOutputText($row['url_name']) . '</a></td>' . '';
+		echo '<td class="border">' . prepOutputText($row['clicks']) . '</td>' . "\n";
+		echo '<td class="border">' . $row['user'] . '</td>' . "\n"; 
 		echo '<td class="border"><a href="admin.php?summary=' . $row['url_name'] . '">View Stats</a> | <a href="admin.php?edit=' . $row['url_name'] . '">Edit</a> | <a href="admin.php?pre_delete=' . $row['url_name'] . '">Delete</a>' . '</td>' . "\n";	
 		echo '</tr>' . "\n";
 	}			
 
 	mysqli_close($DbConnect);
+	return "x";
 } 
 
-function searchUser($person) {                                                                                                                                                                             
-        $ds=ldap_connect(LDAP_SRV);                                                                                                                                                                         
-                                                                                                                                                                                                            
-        if ($ds) {                                                                                                                                                                                          
-                $r=ldap_bind($ds, LDAP_ROOT, LDAP_PWD);                                                                                                                                                     
-                                                                                                                                                                                                            
-                $filtre="(|(sn=$person*)(cn=$person*))";                                                                                                                                                    
-                $restriction = array( "cn", "sn", "mail");                                                                                                                                                  
-                $sr=ldap_search($ds, LDAP_RACINE, $filtre, $restriction);                                                                                                                                   
-                $info = ldap_get_entries($ds, $sr);                                                                                                                                                         
-                print   $info["count"]." enregistrements trouves";                                                                                                                                          
-        }                                                                                                                                                                                                   
-        else {                                                                                                                                                                                              
-                echo "Connexion au serveur LDAP impossible";                                                                                                                                                
-        }                                                                                                                                                                                                   
-        ldap_close($ds);                                                                                                                                                                                    
-                                                                                                                                                                                                            
-} 
+
+function searchUser($person) {
+	$ds=ldap_connect(LDAP_SRV);   
+ 
+	if ($ds) { 
+		$r=ldap_bind($ds, LDAP_ROOT, LDAP_PWD);   		     
+		 
+		$filtre="(|(sn=$person*)(cn=$person*))"; 
+		$restriction = array( "cn", "sn", "mail"); 
+		$sr=ldap_search($ds, LDAP_RACINE, $filtre, $restriction); 
+		$info = ldap_get_entries($ds, $sr); 
+		print 	$info["count"]." enregistrements trouves"; 
+	}
+	else {
+		echo "Connexion au serveur LDAP impossible";
+	}
+	ldap_close($ds);
+
+}
+
+
+function authenticate($username, $password) { 
+	$ldap_Userdn = getUserDN($username); 
+	if($ldap_Userdn!="") 
+	{
+		$ldap_con = ldap_connect(LDAP_SRV); 
+		ldap_set_option($ldap_con, LDAP_OPT_PROTOCOL_VERSION, 3); 
+        	if(ldap_bind($ldap_con, $ldap_Userdn, $password)) 
+			{ return true; } 
+		else { return false; }
+	}
+    	else { echo "Error to find user DN" . ldap_error($ldap_con); }
+	ldap_close($ldap_con);
+}
+
+function getUserDN($username)
+{ 
+	$data = ""; 
+	$ldap_con = ldap_connect(LDAP_SRV); 
+	ldap_set_option($ldap_con, LDAP_OPT_PROTOCOL_VERSION, 3); 
+	ldap_set_option($ldap_con, LDAP_OPT_REFERRALS, 0); 
+    	
+   	$filter="(cn=$username)"; 
+	$res = ldap_search($ldap_con, LDAP_RACINE, $filter); 
+	$first = ldap_first_entry($ldap_con, $res); 
+	$data = ldap_get_dn($ldap_con, $first);
+   	ldap_close($ldap_con); 
+	return $data;
+}
+
 ?>
