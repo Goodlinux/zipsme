@@ -108,6 +108,6 @@ class Stats {
 			}
 		}
 		mysqli_close($DbConnect);
-	}		
+	}	
 }
 ?>
