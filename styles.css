@@ -137,6 +137,10 @@ td.border {
 	padding-left:5px;
 }
 
+#login-link {
+	float:right;
+	padding-left:5px;
+}
 #click-summary h3 {
 	color:#C60000; 
 	margin:5px 0 2px 0;
