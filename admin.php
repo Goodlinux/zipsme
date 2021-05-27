@@ -281,7 +281,6 @@
                 	 <?php break; ?>
     <!-- End Case -->
         <?php  endswitch;  ?>
- 
         </div>
         <div id="footer">Powered by <a href="http://z.ips.me">Z.ips.ME</a></div>
 	</div>
