@@ -35,7 +35,7 @@ I have also change the mysql-php by msqli-php library in all the code
  DB_SERVER = Url of the Database server ex : 192.168.110.55:3306 or localhost:3306  
  SITE_NAME = Name of you website  
  SITE_URL = Url to access to your Site ex : http://go/ or https://My.Personal.Dns/  
- LDAP_SRV = ldap://192.168.10.159:389 LDAP adress   
+ LDAP_SRV = url of the LDAP server ex : ldap://192.168.10.159:389 or ldap://localhost:389     
  LDAP_RACINE = 'dc=maillet, dc=me' root adress for ldapaccess  
  TZ=Europe/Paris  
  
