@@ -29,14 +29,14 @@ I have also change the mysql-php by msqli-php library in all the code
  Or change the variable when you run the container, to be able to connect to your Mysql sgbd (personaly I use Mariadb) 
 
 # ENV VARIABLES  
- DB_USER=Data Base Username  
- DB_PASSWORD=Data Base Password  
- DB_NAME=Name Of Base   
- DB_SERVER=Url of the Database server ex : 192.168.110.55:3306 or localhost:3306  
- SITE_NAME=Name of you website  
- SITE_URL=Url to access to your Site ex : http://go/ or https://My.Personal.Dns/  
- ZIPSME_ADMIN_USER=Name of the user to administrate your zipsme site  
- ZIPSME_ADMIN_PASSWORD=Password to administrate your zipsme site  
+ DB_USER = Data Base Username  
+ DB_PASSWORD = Data Base Password  
+ DB_NAME = Name Of Base   
+ DB_SERVER = Url of the Database server ex : 192.168.110.55:3306 or localhost:3306  
+ SITE_NAME = Name of you website  
+ SITE_URL = Url to access to your Site ex : http://go/ or https://My.Personal.Dns/  
+ LDAP_SRV = ldap://192.168.10.159:389 LDAP adress   
+ LDAP_RACINE = 'dc=maillet, dc=me' root adress for ldapaccess  
  TZ=Europe/Paris  
  
 # First Launch 
@@ -46,7 +46,8 @@ I have also change the mysql-php by msqli-php library in all the code
 
  After the install script has created the database,  
  it will display a link to the admin section (located at http://go/admin.php).  
- You can now log in with the username/password combination that you entered into 
- the ZIPSME_ADMIN_USER and  ZIPSME_ADMIN_PASSWORD variables. 
+ You can now log in with the username/password combination from your LDAP.  
+ You can create, delete or update shortcuts only if you are connected to the ldap  
+ but you can use the shortcuts even if you have not create them or without connecting.  
 
  Enjoy!
