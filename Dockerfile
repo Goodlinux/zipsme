@@ -11,8 +11,8 @@ ENV DB_USER=zipsme \
     DB_SERVER=192.168.10.159:3306 \
     SITE_NAME='URL Shortener' \
     SITE_URL=http://go  \
-    ZIPSME_ADMIN_USER=ZipAdminUser \
-    ZIPSME_ADMIN_PASSWORD=ZipAdminPassword \
+    LDAP_SRV=ldap://192.168.10.159:389   \
+    LDAP_RACINE='dc=maillet, dc=me'  \
     TZ=Europe/Paris
 
 #Construction of redirection and php use for nginx
