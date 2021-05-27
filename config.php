@@ -1,12 +1,12 @@
 <?php
 
 //This is where you enter in your information
-define('ZIPSME_DB_USER', 'zipsme'); //Your database user name
-define('ZIPSME_DB_PASSWORD', 'sBZ2Goq2nsTlanFz?'); //Your database mfemaesc
-define('ZIPSME_DB_NAME', 'zipsme2'); //Your database name
-define('ZIPSME_DB_HOST', 'localhost:3307'); //Url of the mysql server ex : 192.168.10.105:3306 or 192.168.1.10:3307:3306
-define('SITE_NAME', 'URL Shortener'); //The name of your site
-define('SITE_URL', 'go2/');  //The full URL of the site where Z.ips.ME is installed (including trailing slash)
+define('ZIPSME_DB_USER', 'database_user'); //Your database user name
+define('ZIPSME_DB_PASSWORD', 'database_password'); //Your database mfemaesc
+define('ZIPSME_DB_NAME', 'database_name'); //Your database name
+define('ZIPSME_DB_HOST', 'localhost'); //Url of the mysql server ex : 192.168.10.105:3306 or 192.168.1.10:3307:3306
+define('SITE_NAME', 'Your Site'); //The name of your site
+define('SITE_URL', 'http://www.yoursite.com/zipsme');  //The full URL of the site where Z.ips.ME is installed (including trailing slash)
 
 define('LDAP_SRV', 'ldap://localhost:389');  // serveur LDAP   //port du serveur ldap  ldaps == 636  lsap == 389
 define('LDAP_RACINE', 'dc=doamin,dc=extention');  // ldap racine
@@ -35,7 +35,7 @@ spl_autoload_register(function ($class)
 include('functions.php');
 
 // set time zone to use date/time functions without warnings
-date_default_timezone_set(getenv('TZ'));
+date_default_timezone_set(getenv('Europe/Paris'));
 
 
 // configure error reporting options
