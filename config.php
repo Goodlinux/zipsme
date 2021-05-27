@@ -4,12 +4,12 @@
 define('ZIPSME_DB_USER', 'zipsme'); //Your database user name
 define('ZIPSME_DB_PASSWORD', 'sBZ2Goq2nsTlanFz?'); //Your database mfemaesc
 define('ZIPSME_DB_NAME', 'zipsme2'); //Your database name
-define('ZIPSME_DB_HOST', '192.168.1.10:3307'); //Url of the mysql server ex : 192.168.10.105:3306 or 192.168.1.10:3307:3306
+define('ZIPSME_DB_HOST', 'localhost:3307'); //Url of the mysql server ex : 192.168.10.105:3306 or 192.168.1.10:3307:3306
 define('SITE_NAME', 'URL Shortener'); //The name of your site
 define('SITE_URL', 'go2/');  //The full URL of the site where Z.ips.ME is installed (including trailing slash)
 
-define('LDAP_SRV', 'ldap://192.168.1.10:389');  // serveur LDAP   //port du serveur ldap  ldaps == 636  lsap == 389
-define('LDAP_RACINE', 'dc=maillet, dc=me');  // ldap racine
+define('LDAP_SRV', 'ldap://localhost:389');  // serveur LDAP   //port du serveur ldap  ldaps == 636  lsap == 389
+define('LDAP_RACINE', 'dc=doamin,dc=extention');  // ldap racine
 
 //You shouldn't need to modify anything below this.
 
