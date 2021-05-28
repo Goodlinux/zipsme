@@ -52,7 +52,7 @@ RUN echo "#! /bin/sh" > /usr/local/bin/entrypoint.sh \
  	&& echo sed -i '"'"s|Your Site|\$SITE_NAME|"'"' /var/www/zipsme/config.php      >> /usr/local/bin/entrypoint.sh  \
  	&& echo sed -i '"'"s|http://www.yoursite.com/zipsme|\$SITE_URL|"'"'  /var/www/zipsme/config.php    >> /usr/local/bin/entrypoint.sh  \
  	&& echo sed -i '"'"s|localhost:389|\$LDAP_SRV|"'"' /var/www/zipsme/config.php       >> /usr/local/bin/entrypoint.sh  \
- 	&& echo sed -i '"'"s|dc=doamin,dc=extention|dc=\$LDAP_DOMAIN, dc=\$LDAP_EXT|"'"' /var/www/zipsme/config.php   >> /usr/local/bin/entrypoint.sh  \
+ 	&& echo sed -i '"'"s|dc=domain,dc=extention|dc=\$LDAP_DOMAIN, dc=\$LDAP_EXT|"'"' /var/www/zipsme/config.php   >> /usr/local/bin/entrypoint.sh  \
  	&& echo sed -i '"' "s|'Europe/Paris'|getenv('TZ')|"'"'   /var/www/zipsme/config.php   >> /usr/local/bin/entrypoint.sh  \
 	&& echo "exec /bin/sh" >> /usr/local/bin/entrypoint.sh  \
 	&& chmod a+x /usr/local/bin/*
