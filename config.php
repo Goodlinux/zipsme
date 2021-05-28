@@ -34,7 +34,7 @@ spl_autoload_register(function ($class)
 include('functions.php');
 
 // set time zone to use date/time functions without warnings
-date_default_timezone_set(getenv('Europe/Paris'));
+date_default_timezone_set('Europe/Paris');
 
 
 // configure error reporting options
