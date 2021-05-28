@@ -2,9 +2,9 @@
 
 //This is where you enter in your information
 define('ZIPSME_DB_USER', 'database_user'); //Your database user name
-define('ZIPSME_DB_PASSWORD', 'database_password'); //Your database mfemaesc
+define('ZIPSME_DB_PASSWORD', 'database_password'); //Your database user password
 define('ZIPSME_DB_NAME', 'database_name'); //Your database name
-define('ZIPSME_DB_HOST', 'localhost'); //Url of the mysql server ex : 192.168.10.105:3306 or 192.168.1.10:3307:3306
+define('ZIPSME_DB_HOST', 'localhost:3306'); //Url of the mysql server ex : 192.168.10.105:3306 OR localhost:3306
 define('SITE_NAME', 'Your Site'); //The name of your site
 define('SITE_URL', 'http://www.yoursite.com/zipsme');  //The full URL of the site where Z.ips.ME is installed (including trailing slash)
 define('LDAP_SRV', 'ldap://localhost:389');  // serveur LDAP   //port du serveur ldap  ldaps == 636  lsap == 389
