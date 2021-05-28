@@ -8,7 +8,7 @@ define('ZIPSME_DB_HOST', 'localhost:3306'); //Url of the mysql server ex : 192.1
 define('SITE_NAME', 'Your Site'); //The name of your site
 define('SITE_URL', 'http://www.yoursite.com/zipsme');  //The full URL of the site where Z.ips.ME is installed (including trailing slash)
 define('LDAP_SRV', 'ldap://localhost:389');  // serveur LDAP   //port du serveur ldap  ldaps == 636  lsap == 389
-define('LDAP_RACINE', 'dc=doamin,dc=extention');  // ldap racine
+define('LDAP_RACINE', 'dc=domain,dc=extention');  // ldap racine
 
 //You shouldn't need to modify anything below this.
 
