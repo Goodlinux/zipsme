@@ -1,9 +1,9 @@
 <?php include('config.php'); ?>
 <?php 
+	//init cookies
 	if ( ! isset($COOKIE['zipsme-user']) ) {
 		setcookie('zipsme-user', '');
 	}
-	
 	if ( ! isset($COOKIE['zipsme-login']) ) {
 		setcookie('zipsme-login', 'no');
 	}
