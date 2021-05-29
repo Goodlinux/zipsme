@@ -3,7 +3,6 @@ class Info {
 	public $url_name;
 	public $url;
 	public $type;
-	
 	function __construct($url_name) {
 		$this->url_name = strtolower($url_name);
 		$DbConnect = mysqli_connect(ZIPSME_DB_HOST, ZIPSME_DB_USER, ZIPSME_DB_PASSWORD, ZIPSME_DB_NAME);
