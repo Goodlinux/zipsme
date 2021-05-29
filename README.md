@@ -13,6 +13,12 @@ You can find the modified sources for docker here :
 
 I have update the code to use with alpine 3.13, nginx server, php8   
 I have also change the mysql-php by msqli-php library in all the code
+I have change from admin password a connection to a LDAP SERVER, each shortcut is the property of the one who created it  
+You don't have to be connected to use all the shortcuts even if it has been created by someone else 
+But to create a new shortcut, you have to be connected. 
+To Delete or Update an existing shortcut you have to be owner of it. 
+If you pass to the url http://go/xxx and xxx is not yet defined, it ask you if you want to create it. 
+
  
 # INSTALL 
 [![docker](https://img.shields.io/static/v1?label=docker&message=zipsme&color=green)](https://hub.docker.com/r/goodlinux/zipsme) 
