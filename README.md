@@ -19,14 +19,12 @@ But to create a new shortcut, you have to be connected.
 To Delete or Update an existing shortcut you have to be owner of it. 
 If you pass to the url http://go/xxx and xxx is not yet defined, it ask you if you want to create it. 
 
- 
 # INSTALL 
 [![docker](https://img.shields.io/static/v1?label=docker&message=zipsme&color=green)](https://hub.docker.com/r/goodlinux/zipsme) 
  
  First create a MySQL database and MySQL user.
  Make sure the user has permission to SELECT, INSERT, UPDATE, DELETE, and CREATE. 
- Note of the database name, the database user name, and the password.
- 
+ Note of the database name, the database user name, and the password.  
  Launch the container, and modify the environments variables to full fill your
  Database Name, User and Password and the others parameters
  
