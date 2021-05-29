@@ -1,8 +1,5 @@
 <?php include('config.php'); ?>
 <?php
-	
-	//echo "Connected user : " . $_COOKIE['zipsme-login'] . " | user : '" . $_COOKIE['zipsme-user'] . "'";
-	
 	// logout asked logout
 	if ((isset($_GET['logout'])) && ($_GET['logout'] == 'y')) {
 		setcookie('zipsme-login', 'n');
@@ -109,7 +106,7 @@
 	
 	$logged_in = $_COOKIE['zipsme-login'];
 	$user = $_COOKIE['zipsme-user'];
-	echo "Connected user : " . $logged_in . " | user : '" . $user . "'";
+	//echo "Connected user : " . $logged_in . " | user : '" . $user . "'";
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
