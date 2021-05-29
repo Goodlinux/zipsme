@@ -129,10 +129,8 @@ function showLinkHistory() {
 		GROUP BY tbl_links.url_name ORDER BY clicks DESC";
 	$result = $DbConnect->query($query);
 	
-//	echo '<td class="border">' . prepOutputText($result->num_rows) . '</td>' . "\n";
 	while ($row = mysqli_fetch_array($result))
 	{
-		echo '<tr>' . $row['url_name'] . ":" . $row['url'] . ":" . $row['user'] . ":" . $row['clicks'] . "\n";
 		echo '<td class="border">
 			<a href="redirect.php?url_name=' . $row['url_name'] . '">' . SITE_URL . prepOutputText($row['url_name']) . '</a></td>' . '';
 		echo '<td class="border">' . prepOutputText($row['clicks']) . '</td>' . "\n";
