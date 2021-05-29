@@ -1,5 +1,4 @@
 <?php
-
 //This is where you enter in your information
 define('ZIPSME_DB_USER', 'database_user'); //Your database user name
 define('ZIPSME_DB_PASSWORD', 'database_password'); //Your database user password
