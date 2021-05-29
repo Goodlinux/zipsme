@@ -36,7 +36,8 @@ I have also change the mysql-php by msqli-php library in all the code
  SITE_NAME = Name of you website  
  SITE_URL = Url to access to your Site (do not forget to end it with '/'). ex : http://go/ or https://My.domain.ext/  or go/
  LDAP_SRV = url of the LDAP server. ex : ldap://192.168.10.159:389 or ldap://localhost:389     
- LDAP_RACINE = 'dc=mydomain, dc=org' root adress for ldap access  
+ LDAP_DOMAIN = Domain of your ldap serveur 'mydomain' in the chain 'dc=mydomain, dc=com'    
+ LDAP_EXT = Extention of the domain of your LDAP 'com' in the chain 'dc=mydomain, dc=com'  
  TZ=Europe/Paris  
  
 # First Launch 
