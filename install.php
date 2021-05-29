@@ -18,7 +18,7 @@ else {
 	$query = "select user from tbl_links";
 	if ( !$DbConnect->query($query) ) {
 		if ( $DbConnect->errno == "1054" ) {
-      //#1054 - Champ 'user' inconnu dans field list
+      		//#1054 - Champ 'user' inconnu dans field list
 			printf( "Ajout de la colonne 'user' \n");
 			$query = "alter table tbl_links ADD COLUMN user varchar(255)";
 			$result = $DbConnect->query($query);
@@ -32,5 +32,4 @@ $result = $DbConnect->query($query);
 mysqli_close($DbConnect);
 
 echo 'Z.ips.ME installed successfully!  You can now log in to your Admin page <a href="admin.php">here</a>';
-
 ?>
