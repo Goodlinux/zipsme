@@ -2,9 +2,7 @@ FROM alpine:latest
 MAINTAINER Ludovic MAILLET <Ludo.goodlinux@gmail.com>
 
 RUN apk -U add php8 php8-fpm php8-mysqli php8-ldap nginx git tzdata
-
 EXPOSE 80
-
 ENV DB_USER=zipsme \
     DB_PASSWORD=DbPassword \
     DB_NAME=zipsme \
