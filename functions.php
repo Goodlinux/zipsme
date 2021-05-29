@@ -122,6 +122,8 @@ function stripLink($url_name) {
 }
 
 function showLinkHistory() {
+	$user_connected = $_COOKIE['zipsme-user'];
+	
 	$DbConnect = mysqli_connect(ZIPSME_DB_HOST, ZIPSME_DB_USER, ZIPSME_DB_PASSWORD, ZIPSME_DB_NAME);
 
 	$query = "SELECT tbl_links.url_name, tbl_links.url, tbl_links.user, COUNT(tbl_clicks.click_id) AS clicks 
@@ -135,7 +137,12 @@ function showLinkHistory() {
 			<a href="redirect.php?url_name=' . $row['url_name'] . '">' . SITE_URL . prepOutputText($row['url_name']) . '</a></td>' . '';
 		echo '<td class="border">' . prepOutputText($row['clicks']) . '</td>' . "\n";
 		echo '<td class="border">' . $row['user'] . '</td>' . "\n"; 
-		echo '<td class="border"><a href="admin.php?summary=' . $row['url_name'] . '">View Stats</a> | <a href="admin.php?edit=' . $row['url_name'] . '">Edit</a> | <a href="admin.php?pre_delete=' . $row['url_name'] . '">Delete</a>' . '</td>' . "\n";	
+		if ($user_connected == $row['user']) {
+			echo '<td class="border"><a href="admin.php?summary=' . $row['url_name'] . '">View Stats</a> | <a href="admin.php?edit=' . $row['url_name'] . '">Edit</a> | <a href="admin.php?pre_delete=' . $row['url_name'] . '">Delete</a>' . '</td>' . "\n";
+			}
+		else {
+			echo '<td class="border"><a href="admin.php?summary=' . $row['url_name'] . '">View Stats</a>' . '</td>' . "\n";
+		}
 		echo '</tr>' . "\n";
 	}			
 
