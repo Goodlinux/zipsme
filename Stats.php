@@ -46,7 +46,7 @@ class Stats {
 		} 
 		mysqli_close($DbConnect);
 	}
-	
+
 	function showReferrers() {
 		$DbConnect = mysqli_connect(ZIPSME_DB_HOST, ZIPSME_DB_USER, ZIPSME_DB_PASSWORD, ZIPSME_DB_NAME);
 		$query = "SELECT referrer, COUNT(referrer) AS refCount FROM tbl_clicks WHERE url_name = '" . $this->url_name . "' GROUP BY referrer ORDER BY refCount DESC";
@@ -65,7 +65,7 @@ class Stats {
 		}
 		mysqli_close($DbConnect);
 	}
-	
+
 	function calcBrowsers() {
 		$DbConnect = mysqli_connect(ZIPSME_DB_HOST, ZIPSME_DB_USER, ZIPSME_DB_PASSWORD, ZIPSME_DB_NAME);
 		$query = "SELECT user_agent FROM tbl_clicks WHERE url_name = '" . $this->url_name . "'";
@@ -89,7 +89,7 @@ class Stats {
 		}	
 		mysqli_close($DbConnect);	
 	}
-	
+
 	function calcOS() {
 		$DbConnect = mysqli_connect(ZIPSME_DB_HOST, ZIPSME_DB_USER, ZIPSME_DB_PASSWORD, ZIPSME_DB_NAME);
 		$query = "SELECT user_agent FROM tbl_clicks WHERE url_name = '" . $this->url_name . "'";
