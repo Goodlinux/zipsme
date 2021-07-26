@@ -15,20 +15,20 @@ ENV DB_USER=zipsme \
     TZ=Europe/Paris
 
 #Construction of redirection and php use for nginx
-RUN echo "server { " > /etc/nginx/conf.d/default.conf  \
-    &&  echo "        listen 80 default_server; " >> /etc/nginx/conf.d/default.conf	\
-    &&  echo "        listen [::]:80 default_server; " >> /etc/nginx/conf.d/default.conf	\
-    &&  echo "        index index.php index.html index.htm; " >> /etc/nginx/conf.d/default.conf	  \
-    &&  echo "        root /var/www/zipsme; " >> /etc/nginx/conf.d/default.conf		\
-    &&  echo "		if (!-e \$request_filename){ " >> /etc/nginx/conf.d/default.conf		\
-    &&  echo "			rewrite ^/([A-Za-z0-9-]+)/?$ /redirect.php?url_name=\$1 break; } " >> /etc/nginx/conf.d/default.conf	\
-    &&  echo "    location ~ \.php$ { " >> /etc/nginx/conf.d/default.conf	\
-    &&  echo "        try_files \$uri =404; " >> /etc/nginx/conf.d/default.conf	\
-    &&  echo "        fastcgi_pass localhost:9000; " >> /etc/nginx/conf.d/default.conf	\
-    &&  echo "        fastcgi_index index.php; " >> /etc/nginx/conf.d/default.conf	\
-    &&  echo "        fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name; " >> /etc/nginx/conf.d/default.conf		\
-    &&  echo "        include fastcgi_params;    } " >> /etc/nginx/conf.d/default.conf	\
-    &&  echo "}  " >> /etc/nginx/conf.d/default.conf
+RUN echo "server { " > /etc/nginx/http.d/default.conf  \
+    &&  echo "        listen 80 default_server; " >> /etc/nginx/http.d/default.conf	\
+    &&  echo "        listen [::]:80 default_server; " >> /etc/nginx/http.d/default.conf	\
+    &&  echo "        index index.php index.html index.htm; " >> /etc/nginx/http.d/default.conf	  \
+    &&  echo "        root /var/www/zipsme; " >> /etc/nginx/http.d/default.conf		\
+    &&  echo "		if (!-e \$request_filename){ " >> /etc/nginx/http.d/default.conf		\
+    &&  echo "			rewrite ^/([A-Za-z0-9-]+)/?$ /redirect.php?url_name=\$1 break; } " >> /etc/nginx/http.d/default.conf	\
+    &&  echo "    location ~ \.php$ { " >> /etc/nginx/http.d/default.conf	\
+    &&  echo "        try_files \$uri =404; " >> /etc/nginx/http.d/default.conf	\
+    &&  echo "        fastcgi_pass localhost:9000; " >> /etc/nginx/http.d/default.conf	\
+    &&  echo "        fastcgi_index index.php; " >> /etc/nginx/http.d/default.conf	\
+    &&  echo "        fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name; " >> /etc/nginx/http.d/default.conf		\
+    &&  echo "        include fastcgi_params;    } " >> /etc/http/conf.d/default.conf	\
+    &&  echo "}  " >> /etc/http/conf.d/default.conf
 
 #Import project from GitHub
 RUN mkdir /run/nginx && git clone https://github.com/Goodlinux/zipsme.git /var/www/zipsme/ && rm /var/www/zipsme/Dockerfile
