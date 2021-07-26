@@ -114,6 +114,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="robots" content="index,follow" />
+<link rel="icon" type="image/x-icon" href="/Go.ico" />
+<link rel="shortcut icon" type="image/x-icon" href="/Go.ico" />
 <link type="text/css" rel="stylesheet" href="reset-fonts-grids.css" />
 <link type="text/css" rel="stylesheet" href="styles.css" />
 <title><?php echo SITE_NAME; ?> - Powered by Z.ips.ME</title>
