@@ -31,7 +31,7 @@ RUN echo "server { " > /etc/nginx/http.d/default.conf  \
     &&  echo "}  " >> /etc/nginx/http.d/default.conf
 
 #Import project from GitHub
-RUN mkdir /run/nginx && git clone https://github.com/Goodlinux/zipsme.git /var/www/zipsme/ && rm /var/www/zipsme/Dockerfile
+RUN git clone https://github.com/Goodlinux/zipsme.git /var/www/zipsme/ && rm /var/www/zipsme/Dockerfile
 
 #Construction of entrypoint
 RUN echo "#! /bin/sh" > /usr/local/bin/entrypoint.sh \
