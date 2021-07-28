@@ -27,8 +27,8 @@ RUN echo "server { " > /etc/nginx/http.d/default.conf  \
     &&  echo "        fastcgi_pass localhost:9000; " >> /etc/nginx/http.d/default.conf	\
     &&  echo "        fastcgi_index index.php; " >> /etc/nginx/http.d/default.conf	\
     &&  echo "        fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name; " >> /etc/nginx/http.d/default.conf		\
-    &&  echo "        include fastcgi_params;    } " >> /etc/http/conf.d/default.conf	\
-    &&  echo "}  " >> /etc/http/conf.d/default.conf
+    &&  echo "        include fastcgi_params;    } " >> /etc/http/http.d/default.conf	\
+    &&  echo "}  " >> /etc/http/http.d/default.conf
 
 #Import project from GitHub
 RUN mkdir /run/nginx && git clone https://github.com/Goodlinux/zipsme.git /var/www/zipsme/ && rm /var/www/zipsme/Dockerfile
