@@ -2,10 +2,10 @@
 <?php 
 	//init cookies
 	if ( ! isset($COOKIE['zipsme-user']) ) {
-		setcookie('zipsme-user', '',time()+3600*24,,,true,true);
+		setcookie('zipsme-user', '');
 	}
 	if ( ! isset($COOKIE['zipsme-login']) ) {
-		setcookie('zipsme-login', 'no',time()+3600*24,,,true,true);
+		setcookie('zipsme-login', 'no');
 	}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
