@@ -87,6 +87,7 @@
 		$alert = $url_name . ' do not exist. Do you Want to shorten it ?';
 		$view = 'url-form';
 	}
+
 	if (isset($_GET['delete'])) {
 		if ($_COOKIE['zipsme-login'] == 'y') {
 			$url_name = prepQueryText($_GET['delete']);
@@ -107,6 +108,7 @@
 	$user = $_COOKIE['zipsme-user'];
 	//echo "Connected user : " . $logged_in . " | user : '" . $user . "'";
 ?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -280,7 +282,7 @@
     <!-- End Case -->
         <?php  endswitch;  ?>
         </div>
-        <div id="footer">Powered by <a href="http://z.ips.me">Z.ips.ME</a>    we are using cookies to identifie if you are connected or not </div>
+        <div id="footer">Powered by <a href="http://z.ips.me">Z.ips.ME</a>      we using cookies for connection purpose only</div>
 	</div>
     </center>
 </body>
