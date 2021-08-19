@@ -118,12 +118,12 @@
 <link rel="shortcut icon" type="image/x-icon" href="/Go.ico" />
 <link type="text/css" rel="stylesheet" href="reset-fonts-grids.css" />
 <link type="text/css" rel="stylesheet" href="styles.css" />
-<title><?php echo $SITE_NAME; ?> - Powered by Z.ips.ME</title>
+<title><?php echo SITE_NAME; ?> - Powered by Z.ips.ME</title>
 </head>
 <body>
 	<center>
     <div id="container">
-        <div id="header"><h1><?php echo $SITE_NAME; ?> Admin</h1></div>
+        <div id="header"><h1><?php echo SITE_NAME; ?> Admin</h1></div>
         <div id="content">
  <!-- Alert -->
         <?php if (isset($alert)) { ?><p class="alert"><?php echo $alert; ?></p><?php } ?>
