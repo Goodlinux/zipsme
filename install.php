@@ -3,7 +3,7 @@
 
 //Install script.  Run after completing config.php file
 //create clicks table
-$DbConnect = mysqli_connect(ZIPSME_DB_HOST, ZIPSME_DB_USER, ZIPSME_DB_PASSWORD, ZIPSME_DB_NAME);
+$DbConnect = mysqli_connect($ZIPSME_DB_HOST, $ZIPSME_DB_USER, $ZIPSME_DB_PASSWORD, $ZIPSME_DB_NAME);
 
 $query = "select * from tbl_links";
 if (!$DbConnect->query($query)) {
