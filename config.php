@@ -29,16 +29,29 @@ define('LDAP_RACINE', "dc=" . $_SERVER["LDAP_DOMAIN"] . ",dc=" . $_SERVER["LDAP_
 //$LDAP_SRV=$_SERVER["LDAP_SRV"]; 
 //$LDAP_RACINE= "dc=" . $_SERVER["LDAP_DOMAIN"] . ",dc=" . $_SERVER["LDAP_EXT"];                                                                                                                   
 
-   
-
 //You shouldn't need to modify anything below this.
 
 //set true if production environment else false for development
 define ('IS_ENV_PRODUCTION', true); 
 //establish a connection to the database server
 
-//echo "CONFIG --> LDAP Racine : " . LDAP_RACINE;
-//echo "\n";
+echo "ZIPSME_DB_USER : " . ZIPSME_DB_USER;
+echo "\n";
+echo "ZIPSME_DB_PASSWORD  : " . ZIPSME_DB_PASSWORD;
+echo "\n";
+echo "ZIPSME_DB_NAME  : " . ZIPSME_DB_NAME;
+echo "\n";
+echo "ZIPSME_DB_HOST  : " . ZIPSME_DB_HOST;
+echo "\n";
+echo "SITE_NAME  : " . SITE_NAME;
+echo "\n";
+echo "SITE_URL  : " . SITE_URL;
+echo "\n";
+echo "LDAP_SRV  : " . LDAP_SRV;
+echo "\n";
+echo "LDAP_RACINE  : " . LDAP_RACINE;
+echo "\n";
+
 
 $DbConnect = mysqli_connect(ZIPSME_DB_HOST, ZIPSME_DB_USER, ZIPSME_DB_PASSWORD, ZIPSME_DB_NAME);
 if (!$DbConnect) 
