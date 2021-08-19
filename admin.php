@@ -2,8 +2,8 @@
 <?php
 	// logout asked logout
 	if ((isset($_GET['logout'])) && ($_GET['logout'] == 'y')) {
-		setcookie('zipsme-login', 'n');
-		setcookie('zipsme-user', '');
+		setcookie('zipsme-login', 'n',time()+3600*24,,,true,true);
+		setcookie('zipsme-user', '',time()+3600*24,,,true,true);
 		$logged_in = 'n';
 		$alert = 'You\'ve successfully logged out';
 		header("Refresh:0; url=admin.php");
@@ -12,13 +12,13 @@
 	// login buton submited, check if the user exist in Ldap
 	if ( isset($_POST['login_submitted']) && $_POST['username'] != ""  )  {
 		if ( authenticate($_POST['username'],$_POST['password']) ) {
-			setcookie('zipsme-user', $_POST['username']);
-			setcookie('zipsme-login', 'y');
+			setcookie('zipsme-user', $_POST['username'],time()+3600*24,,,true,true);
+			setcookie('zipsme-login', 'y',time()+3600*24,,,true,true);
 			$logged_in = 'y'; 
 		}
 		else {
-			setcookie('zipsme-user', '');
-			setcookie('zipsme-login', 'n');
+			setcookie('zipsme-user', '',time()+3600*24,,,true,true);
+			setcookie('zipsme-login', 'n',time()+3600*24,,,true,true);
 			$alert = 'Connexion error, username or password is not valid';
 		}
 		header("Refresh:0; url=admin.php");
