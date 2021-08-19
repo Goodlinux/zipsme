@@ -271,8 +271,9 @@
                 	<h2>Link History</h2>
                 		<table cellspacing="0" cellpadding="0" border="0" width="100%" class="border"><tbody>                	
                     	<tr>
-					    	<td class="border"><strong>Link Name</strong></td>
+				<td class="border"><strong>Link Name</strong></td>
                         	<td class="border"><strong>Clicks</strong></td>
+				<td class="border"><strong>User</strong></td>
                         	<td class="border"><strong>Options</strong></td>                        
 						</tr>
                     	<?php showLinkHistory(); ?>
@@ -281,7 +282,9 @@
     <!-- End Case -->
         <?php  endswitch;  ?>
         </div>
-        <div id="footer">Powered by <a href="http://z.ips.me">Z.ips.ME</a></div>
+        <div id="footer">Powered by <a href="http://z.ips.me">Z.ips.ME</a>
+		<div we are using cookies to identifie if you are connected or not> </div>
+	</div>
 	</div>
     </center>
 </body>
