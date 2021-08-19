@@ -37,7 +37,7 @@ define('LDAP_RACINE', "dc=" . $_SERVER["LDAP_DOMAIN"] . ",dc=" . $_SERVER["LDAP_
 define ('IS_ENV_PRODUCTION', true); 
 //establish a connection to the database server
 
-//echo "CONFIG --> LDAP Racine : " . $LDAP_RACINE;
+//echo "CONFIG --> LDAP Racine : " . LDAP_RACINE;
 //echo "\n";
 
 $DbConnect = mysqli_connect(ZIPSME_DB_HOST, ZIPSME_DB_USER, ZIPSME_DB_PASSWORD, ZIPSME_DB_NAME);
