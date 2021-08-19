@@ -282,9 +282,7 @@
     <!-- End Case -->
         <?php  endswitch;  ?>
         </div>
-        <div id="footer">Powered by <a href="http://z.ips.me">Z.ips.ME</a>
-		<div we are using cookies to identifie if you are connected or not> </div>
-	</div>
+        <div id="footer">Powered by <a href="http://z.ips.me">Z.ips.ME</a>   we are using cookies to identifie if you are connected or not> </div>
 	</div>
     </center>
 </body>
