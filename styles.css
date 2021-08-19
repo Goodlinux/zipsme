@@ -12,18 +12,15 @@ body {
 h1, h2, h3 {
 	font-family:Georgia, "Times New Roman", Times, serif;
 }
-
 h1 {
 	font-size:16pt;
 	font-weight:bold;
 	color: #C60000;
 }
-
 h2 {
 	font-size:14pt;
 	text-align:left;	
 }
- 
 h3 {
 	font-size:12pt;
 }
