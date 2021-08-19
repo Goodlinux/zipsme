@@ -2,7 +2,7 @@
 
 function sqlConnect() {
 	$DbConnect = mysqli_connect(ZIPSME_DB_HOST, ZIPSME_DB_USER, ZIPSME_DB_PASSWORD, ZIPSME_DB_NAME);
-	return $DbConnect
+	return $DbConnect;
 }
 
 
