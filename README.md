@@ -33,7 +33,8 @@ If you pass to the url http://go/xxx and xxx is not yet defined, it ask you if y
  Or change the variable when you run the container, to be able to connect to your Mysql sgbd (personaly I use Mariadb) 
 
 # ENV VARIABLES  
- used in the config.php 
+ used in the config.php  
+ 
  DB_USER = Data Base Username  
  DB_PASSWORD = Data Base Password  
  DB_NAME = Name Of Base   
