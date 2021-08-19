@@ -130,7 +130,7 @@ function stripLink($url_name) {
 }
 
 function showLinkHistory() {
-	//$user_connected = $_COOKIE['zipsme-user'];
+	$user_connected = $_COOKIE['zipsme-user'];
 	
 	$DbConnect = sqlConnect();
 
