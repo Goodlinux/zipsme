@@ -14,7 +14,7 @@ class Stats {
 	
 	function __construct($url_name) {
 		$this->url_name = strtolower($url_name);
-		$DbConnect = mysqli_connect($ZIPSME_DB_HOST, $ZIPSME_DB_USER, $ZIPSME_DB_PASSWORD, $ZIPSME_DB_NAME);
+		$DbConnect = sqlConnect();
 		$query = "SELECT COUNT(url_name) AS urlCount FROM tbl_clicks WHERE url_name = '" . $this->url_name . "'";
 		$result = $DbConnect->query($query);
 		$row = mysqli_fetch_array($result);
@@ -33,7 +33,7 @@ class Stats {
 	}	
 	
 	function showClicks() {
-		$DbConnect = mysqli_connect($ZIPSME_DB_HOST, $ZIPSME_DB_USER, $ZIPSME_DB_PASSWORD, $ZIPSME_DB_NAME);
+		$DbConnect = sqlConnect();
 		$query = "SELECT click_time, COUNT(url_name) AS monthCount FROM tbl_clicks WHERE url_name = '" . $this->url_name . "' GROUP BY EXTRACT(MONTH FROM click_time) ORDER BY click_time DESC";
 		$result = $DbConnect->query($query);
 		while ($row = mysqli_fetch_array($result));
@@ -48,7 +48,7 @@ class Stats {
 	}
 
 	function showReferrers() {
-		$DbConnect = mysqli_connect($ZIPSME_DB_HOST, $ZIPSME_DB_USER, $ZIPSME_DB_PASSWORD, $ZIPSME_DB_NAME);
+		$DbConnect = sqlConnect();
 		$query = "SELECT referrer, COUNT(referrer) AS refCount FROM tbl_clicks WHERE url_name = '" . $this->url_name . "' GROUP BY referrer ORDER BY refCount DESC";
 		$result = $DbConnect->query($query);
 		while ($row = mysqli_fetch_array($result));
@@ -67,7 +67,7 @@ class Stats {
 	}
 
 	function calcBrowsers() {
-		$DbConnect = mysqli_connect($ZIPSME_DB_HOST, $ZIPSME_DB_USER, $ZIPSME_DB_PASSWORD, $ZIPSME_DB_NAME);
+		$DbConnect = sqlConnect();
 		$query = "SELECT user_agent FROM tbl_clicks WHERE url_name = '" . $this->url_name . "'";
 		$result = $DbConnect->query($query);
 		$row = mysqli_fetch_array($result);
@@ -91,7 +91,7 @@ class Stats {
 	}
 
 	function calcOS() {
-		$DbConnect = mysqli_connect($ZIPSME_DB_HOST, $ZIPSME_DB_USER, $ZIPSME_DB_PASSWORD, $ZIPSME_DB_NAME);
+		$DbConnect = sqlConnect();
 		$query = "SELECT user_agent FROM tbl_clicks WHERE url_name = '" . $this->url_name . "'";
 		$result = $DbConnect->query($query);
 		while ($row = mysqli_fetch_array($result));
