@@ -33,6 +33,19 @@ RUN echo "server { " > /etc/nginx/http.d/default.conf  \
 #Import project from GitHub
 RUN git clone https://github.com/Goodlinux/zipsme.git /var/www/zipsme/ && rm /var/www/zipsme/Dockerfile
 
+# before using env variables, replacement of text in config.php, obsolet, now using env variables in config.php
+#	&& echo sed -i '"'"s|database_user|\$DB_USER|"'"' /var/www/zipsme/config.php >> /usr/local/bin/entrypoint.sh  \
+#	&& echo sed -i '"'"s|database_password|\$DB_PASSWORD|"'"' /var/www/zipsme/config.php  >> /usr/local/bin/entrypoint.sh  \
+# 	&& echo sed -i '"'"s|database_name|\$DB_NAME|"'"' /var/www/zipsme/config.php    >> /usr/local/bin/entrypoint.sh  \
+# 	&& echo sed -i '"'"s|localhost:3306|\$DB_SERVER|"'"' /var/www/zipsme/config.php      >> /usr/local/bin/entrypoint.sh  \
+# 	&& echo sed -i '"'"s|Your Site|\$SITE_NAME|"'"' /var/www/zipsme/config.php      >> /usr/local/bin/entrypoint.sh  \
+# 	&& echo sed -i '"'"s|http://www.yoursite.com/zipsme|\$SITE_URL|"'"'  /var/www/zipsme/config.php    >> /usr/local/bin/entrypoint.sh  \
+# 	&& echo sed -i '"'"s|localhost:389|\$LDAP_SRV|"'"' /var/www/zipsme/config.php       >> /usr/local/bin/entrypoint.sh  \
+# 	&& echo sed -i '"'"s|dc=domain,dc=extention|dc=\$LDAP_DOMAIN, dc=\$LDAP_EXT|"'"' /var/www/zipsme/config.php   >> /usr/local/bin/entrypoint.sh  \
+# 	&& echo sed -i '"' "s|'Europe/Paris'|getenv('TZ')|"'"'   /var/www/zipsme/config.php   >> /usr/local/bin/entrypoint.sh  \
+	
+
+
 #Construction of entrypoint
 RUN echo "#! /bin/sh" > /usr/local/bin/entrypoint.sh \
 	&& echo "echo lancement de nginx" >> /usr/local/bin/entrypoint.sh  \
@@ -43,15 +56,6 @@ RUN echo "#! /bin/sh" > /usr/local/bin/entrypoint.sh \
 	&& echo "cp /usr/share/zoneinfo/\$TZ /etc/localtime && echo \$TZ >  /etc/timezone" >> /usr/local/bin/entrypoint.sh \
 	&& echo "cd /var/www/zipsme" >> /usr/local/bin/entrypoint.sh  \
 	&& echo "echo mise a jour de la config php"  >>  /usr/local/bin/entrypoint.sh  \
-	&& echo sed -i '"'"s|database_user|\$DB_USER|"'"' /var/www/zipsme/config.php >> /usr/local/bin/entrypoint.sh  \
-	&& echo sed -i '"'"s|database_password|\$DB_PASSWORD|"'"' /var/www/zipsme/config.php  >> /usr/local/bin/entrypoint.sh  \
- 	&& echo sed -i '"'"s|database_name|\$DB_NAME|"'"' /var/www/zipsme/config.php    >> /usr/local/bin/entrypoint.sh  \
- 	&& echo sed -i '"'"s|localhost:3306|\$DB_SERVER|"'"' /var/www/zipsme/config.php      >> /usr/local/bin/entrypoint.sh  \
- 	&& echo sed -i '"'"s|Your Site|\$SITE_NAME|"'"' /var/www/zipsme/config.php      >> /usr/local/bin/entrypoint.sh  \
- 	&& echo sed -i '"'"s|http://www.yoursite.com/zipsme|\$SITE_URL|"'"'  /var/www/zipsme/config.php    >> /usr/local/bin/entrypoint.sh  \
- 	&& echo sed -i '"'"s|localhost:389|\$LDAP_SRV|"'"' /var/www/zipsme/config.php       >> /usr/local/bin/entrypoint.sh  \
- 	&& echo sed -i '"'"s|dc=domain,dc=extention|dc=\$LDAP_DOMAIN, dc=\$LDAP_EXT|"'"' /var/www/zipsme/config.php   >> /usr/local/bin/entrypoint.sh  \
- 	&& echo sed -i '"' "s|'Europe/Paris'|getenv('TZ')|"'"'   /var/www/zipsme/config.php   >> /usr/local/bin/entrypoint.sh  \
 	&& echo "exec /bin/sh" >> /usr/local/bin/entrypoint.sh  \
 	&& chmod a+x /usr/local/bin/*
 
