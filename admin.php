@@ -2,8 +2,8 @@
 <?php
 	// logout asked logout
 	if ((isset($_GET['logout'])) && ($_GET['logout'] == 'y')) {
-		setcookie('zipsme-login', 'n',time()+3600*24,,,true,true);
-		setcookie('zipsme-user', '',time()+3600*24,,,true,true);
+		setcookie('zipsme-login', 'n');
+		setcookie('zipsme-user', '');
 		$logged_in = 'n';
 		$alert = 'You\'ve successfully logged out';
 		header("Refresh:0; url=admin.php");
@@ -12,13 +12,13 @@
 	// login buton submited, check if the user exist in Ldap
 	if ( isset($_POST['login_submitted']) && $_POST['username'] != ""  )  {
 		if ( authenticate($_POST['username'],$_POST['password']) ) {
-			setcookie('zipsme-user', $_POST['username'],time()+3600*24,,,true,true);
-			setcookie('zipsme-login', 'y',time()+3600*24,,,true,true);
+			setcookie('zipsme-user', $_POST['username']);
+			setcookie('zipsme-login', 'y');
 			$logged_in = 'y'; 
 		}
 		else {
-			setcookie('zipsme-user', '',time()+3600*24,,,true,true);
-			setcookie('zipsme-login', 'n',time()+3600*24,,,true,true);
+			setcookie('zipsme-user', '');
+			setcookie('zipsme-login', 'n');
 			$alert = 'Connexion error, username or password is not valid';
 		}
 		header("Refresh:0; url=admin.php");
@@ -87,7 +87,6 @@
 		$alert = $url_name . ' do not exist. Do you Want to shorten it ?';
 		$view = 'url-form';
 	}
-
 	if (isset($_GET['delete'])) {
 		if ($_COOKIE['zipsme-login'] == 'y') {
 			$url_name = prepQueryText($_GET['delete']);
@@ -108,7 +107,6 @@
 	$user = $_COOKIE['zipsme-user'];
 	//echo "Connected user : " . $logged_in . " | user : '" . $user . "'";
 ?>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -135,7 +133,7 @@
             <?php }  ?>
 <!-- Pre delet -->
 			<?php if (isset($_GET['pre_delete'])) { ?>
-            	<p class="alert">Are you sure you want to delete the link <strong><?php echo $SITE_URL; ?>/<?php echo prepOutputText($_GET['pre_delete']) ?></strong> ?  
+            	<p class="alert">Are you sure you want to delete the link <strong><?php echo SITE_URL; ?>/<?php echo prepOutputText($_GET['pre_delete']) ?></strong> ?  
             		<a href="admin.php?delete=<?php echo prepOutputText($_GET['pre_delete']) ?>">Yes</a> | <a href="admin.php">No</a></p>
             <?php } ?>
   
@@ -282,7 +280,7 @@
     <!-- End Case -->
         <?php  endswitch;  ?>
         </div>
-        <div id="footer">Powered by <a href="http://z.ips.me">Z.ips.ME</a>   we are using cookies to identifie if you are connected or not> </div>
+        <div id="footer">Powered by <a href="http://z.ips.me">Z.ips.ME</a>    we are using cookies to identifie if you are connected or not </div>
 	</div>
     </center>
 </body>
