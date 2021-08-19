@@ -17,7 +17,7 @@
 		<link rel="shortcut icon" type="image/x-icon" href="/Go.ico" />
 		<link type="text/css" rel="stylesheet" href="reset-fonts-grids.css" />
 		<link type="text/css" rel="stylesheet" href="styles.css" />
-		<title><?php echo SITE_NAME; ?> - Powered by Z.ips.ME</title>
+		<title><?php echo $SITE_NAME; ?> - Powered by Z.ips.ME</title>
 	</head>
 	<META HTTP-EQUIV=Refresh CONTENT="0; URL=admin.php">
 </html>
