@@ -2,7 +2,6 @@
 include('config.php'); 
 
 $url_name = prepQueryText($_GET['url_name']);
-
 if (linkExists($url_name)) {
 	// name exist, so add a new click for stats
 	$referrer = $_SERVER['HTTP_REFERER'];
@@ -12,7 +11,7 @@ if (linkExists($url_name)) {
 	insertClick($url_name, $referrer, $user_agent, $ip_address);
 	redirectClick($url_name);
 } else {
-	// propose to create a new link
+	// propose to create a new link with the name pass on the URL
 	echo '<script type="text/javascript">window.location = "admin.php?newlink=' . $url_name .'" </script>';
 }
 ?>
