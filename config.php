@@ -10,52 +10,16 @@
 //define('LDAP_RACINE', 'dc=domain,dc=extention');  // ldap racine
 
 
-define('ZIPSME_DB_USER', $_SERVER["DB_USER"]); //Your database user name
-define('ZIPSME_DB_PASSWORD', $_SERVER["DB_PASSWORD"]); //Your database user password
-define('ZIPSME_DB_NAME', $_SERVER["DB_NAME"]); //Your database name
-define('ZIPSME_DB_HOST', $_SERVER["DB_SERVER"]); //Url of the mysql server ex : 192.168.10.105:3306 OR localhost:3306
-define('SITE_NAME', $_SERVER["SITE_NAME"]); //The name of your site
-define('SITE_URL', $_SERVER["SITE_URL"]);  //The full URL of the site where Z.ips.ME is installed (including trailing slash)
-define('LDAP_SRV', $_SERVER["LDAP_SRV"]);  // serveur LDAP   //port du serveur ldap  ldaps == 636  lsap == 389
-define('LDAP_RACINE', "dc=" . $_SERVER["LDAP_DOMAIN"] . ",dc=" . $_SERVER["LDAP_EXT"]);  // ldap racine
-
-
-//$ZIPSME_DB_USER=$_SERVER["DB_USER"];
-//$ZIPSME_DB_PASSWORD=$_SERVER["DB_PASSWORD"];                                                                                       
-//$ZIPSME_DB_NAME=$_SERVER["DB_NAME"];                                                                                                      
-//$ZIPSME_DB_HOST=$_SERVER["DB_SERVER"];   
-//$SITE_NAME=$_SERVER["SITE_NAME"];  
-//$SITE_URL=$_SERVER["SITE_URL"]; 
-//$LDAP_SRV=$_SERVER["LDAP_SRV"]; 
-//$LDAP_RACINE= "dc=" . $_SERVER["LDAP_DOMAIN"] . ",dc=" . $_SERVER["LDAP_EXT"];                                                                                                                   
-
 //You shouldn't need to modify anything below this.
 
 //set true if production environment else false for development
 define ('IS_ENV_PRODUCTION', true); 
 //establish a connection to the database server
 
-echo "ZIPSME_DB_USER : " . ZIPSME_DB_USER;
-echo "\n";
-echo "ZIPSME_DB_PASSWORD  : " . ZIPSME_DB_PASSWORD;
-echo "\n";
-echo "ZIPSME_DB_NAME  : " . ZIPSME_DB_NAME;
-echo "\n";
-echo "ZIPSME_DB_HOST  : " . ZIPSME_DB_HOST;
-echo "\n";
-echo "SITE_NAME  : " . SITE_NAME;
-echo "\n";
-echo "SITE_URL  : " . SITE_URL;
-echo "\n";
-echo "LDAP_SRV  : " . LDAP_SRV;
-echo "\n";
-echo "LDAP_RACINE  : " . LDAP_RACINE;
-echo "\n";
-
 //include common functions
 include('functions.php');
 
-$DbConnect = sqlConnect();
+$DbConnect = mysqli_connect($_SERVER["DB_SERVER"], $_SERVER["DB_USER"], $_SERVER["DB_PASSWORD"], $_SERVER["DB_NAME"]);
 if (!$DbConnect) 
    { die("Could not connect. Please make sure that you have configured the config.php file correctly : " . mysqli_error());  }
 
