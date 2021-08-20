@@ -1,7 +1,8 @@
 <?php
 
 function sqlConnect() {
-	$DbConnect = mysqli_connect(ZIPSME_DB_HOST, ZIPSME_DB_USER, ZIPSME_DB_PASSWORD, ZIPSME_DB_NAME);
+	//$DbConnect = mysqli_connect(ZIPSME_DB_HOST, ZIPSME_DB_USER, ZIPSME_DB_PASSWORD, ZIPSME_DB_NAME);
+	$DbConnect = mysqli_connect($_SERVER["DB_SERVER"], $_SERVER["DB_USER"], $_SERVER["DB_PASSWORD"], $_SERVER["DB_NAME"]);
 	if (!$DbConnect) 
    		{ print_r("Could not connect. Please make sure that you have configured the config.php file correctly : " . mysqli_error());  }
 	return $$DbConnect;
@@ -158,31 +159,30 @@ function showLinkHistory() {
 } 
 
 
-function searchUser($person) {
-	$ds=ldap_connect(LDAP_SRV);   
- 
-	if ($ds) { 
-		$r=ldap_bind($ds, LDAP_ROOT, LDAP_PWD);   		     
-		 
-		$filtre="(|(sn=$person*)(cn=$person*))"; 
-		$restriction = array( "cn", "sn", "mail"); 
-		$sr=ldap_search($ds, LDAP_RACINE, $filtre, $restriction); 
-		$info = ldap_get_entries($ds, $sr); 
-		print 	$info["count"]." enregistrements trouves"; 
-	}
-	else {
-		echo "Connexion au serveur LDAP impossible";
-	}
-	ldap_close($ds);
-
-}
-
+//function searchUser($person) {
+	//$ds=ldap_connect(LDAP_SRV);
+//	$ds=ldap_connect($_SERVER["LDAP_SRV"]);
+//	if ($ds) { 
+//		$r=ldap_bind($ds, LDAP_ROOT, LDAP_PWD);   		     		 
+//		$filtre="(|(sn=$person*)(cn=$person*))"; 
+//		$restriction = array( "cn", "sn", "mail"); 
+//		$sr=ldap_search($ds, LDAP_RACINE, $filtre, $restriction); 
+//		$info = ldap_get_entries($ds, $sr); 
+//		print 	$info["count"]." enregistrements trouves"; 
+//	}
+//	else {
+//		echo "Connexion au serveur LDAP impossible";
+//	}
+//	ldap_close($ds);
+//}
 
 function authenticate($username, $password) { 
 	$ldap_Userdn = getUserDN($username); 
 	if($ldap_Userdn!="") 
 	{
-		$ldap_con = ldap_connect(LDAP_SRV); 
+		//$ldap_con = ldap_connect(LDAP_SRV);
+		$ldap_con = ldap_connect($_SERVER["LDAP_SRV"]);
+
 		ldap_set_option($ldap_con, LDAP_OPT_PROTOCOL_VERSION, 3); 
         	if(ldap_bind($ldap_con, $ldap_Userdn, $password)) 
 			{ return true; } 
@@ -195,12 +195,14 @@ function authenticate($username, $password) {
 function getUserDN($username)
 { 
 	$data = ""; 
-	$ldap_con = ldap_connect(LDAP_SRV); 
+	//$ldap_con = ldap_connect(LDAP_SRV); 
+	$ldap_con = ldap_connect($_SERVER["LDAP_SRV"]); 
 	ldap_set_option($ldap_con, LDAP_OPT_PROTOCOL_VERSION, 3); 
 	ldap_set_option($ldap_con, LDAP_OPT_REFERRALS, 0); 
     	
    	$filter="(cn=$username)"; 
-	$res = ldap_search($ldap_con, LDAP_RACINE, $filter); 
+	//$res = ldap_search($ldap_con, LDAP_RACINE, $filter); 
+	$res = ldap_search($ldap_con, "dc=" . $_SERVER["LDAP_DOMAIN"] . ",dc=" . $_SERVER["LDAP_EXT"], $filter); 
 	$first = ldap_first_entry($ldap_con, $res); 
 	$data = ldap_get_dn($ldap_con, $first);
    	ldap_close($ldap_con); 
