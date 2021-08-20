@@ -52,8 +52,10 @@ echo "\n";
 echo "LDAP_RACINE  : " . LDAP_RACINE;
 echo "\n";
 
+//include common functions
+include('functions.php');
 
-$DbConnect = mysqli_connect(ZIPSME_DB_HOST, ZIPSME_DB_USER, ZIPSME_DB_PASSWORD, ZIPSME_DB_NAME);
+$DbConnect = sqlConnect();
 if (!$DbConnect) 
    { die("Could not connect. Please make sure that you have configured the config.php file correctly : " . mysqli_error());  }
 
@@ -64,8 +66,7 @@ mysqli_close($DbConnect);
 spl_autoload_register(function ($class) 
 { include $class . '.php';});
 
-//include common functions
-include('functions.php');
+
 
 // set time zone to use date/time functions without warnings
 date_default_timezone_set('Europe/Paris');
