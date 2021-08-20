@@ -142,7 +142,7 @@ function showLinkHistory() {
 	while ($row = mysqli_fetch_array($result))
 	{
 		echo '<td class="border">
-			<a href="redirect.php?url_name=' . $row['url_name'] . '">' . SITE_URL . prepOutputText($row['url_name']) . '</a></td>' . '';
+			<a href="redirect.php?url_name=' . $row['url_name'] . '">' . $_SERVER["SITE_URL"] . prepOutputText($row['url_name']) . '</a></td>' . '';
 		echo '<td class="border">' . prepOutputText($row['clicks']) . '</td>' . "\n";
 		echo '<td class="border">' . $row['user'] . '</td>' . "\n"; 
 		if ($user_connected == $row['user']) {
