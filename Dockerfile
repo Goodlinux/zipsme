@@ -34,6 +34,7 @@ RUN echo "server { " > /etc/nginx/http.d/default.conf  \
 RUN git clone https://github.com/Goodlinux/zipsme.git /var/www/zipsme/ && rm /var/www/zipsme/Dockerfile
 
 # before using env variables, replacement of text in config.php, obsolet, now using env variables in config.php
+#	&& echo "echo mise a jour de la config php"  >>  /usr/local/bin/entrypoint.sh  \
 #	&& echo sed -i '"'"s|database_user|\$DB_USER|"'"' /var/www/zipsme/config.php >> /usr/local/bin/entrypoint.sh  \
 #	&& echo sed -i '"'"s|database_password|\$DB_PASSWORD|"'"' /var/www/zipsme/config.php  >> /usr/local/bin/entrypoint.sh  \
 # 	&& echo sed -i '"'"s|database_name|\$DB_NAME|"'"' /var/www/zipsme/config.php    >> /usr/local/bin/entrypoint.sh  \
@@ -55,7 +56,7 @@ RUN echo "#! /bin/sh" > /usr/local/bin/entrypoint.sh \
 	&& echo "echo Timezone $TZ" >> /usr/local/bin/entrypoint.sh  \
 	&& echo "cp /usr/share/zoneinfo/\$TZ /etc/localtime && echo \$TZ >  /etc/timezone" >> /usr/local/bin/entrypoint.sh \
 	&& echo "cd /var/www/zipsme" >> /usr/local/bin/entrypoint.sh  \
-	&& echo "echo mise a jour de la config php"  >>  /usr/local/bin/entrypoint.sh  \
+	&& echo "echo Connectez vous sur le site \$SITE_URLinstall.php pour installer la base de donnée"  >>  /usr/local/bin/entrypoint.sh  \
 	&& echo "exec /bin/sh" >> /usr/local/bin/entrypoint.sh  \
 	&& chmod a+x /usr/local/bin/*
 
