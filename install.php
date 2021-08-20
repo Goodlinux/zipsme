@@ -3,7 +3,7 @@
 
 //Install script.  Run after completing config.php file
 //create clicks table
-$DbConnect = sqlConnect();
+$DbConnect = mysqli_connect($_SERVER["DB_SERVER"], $_SERVER["DB_USER"], $_SERVER["DB_PASSWORD"], $_SERVER["DB_NAME"]);
 
 $query = "select * from tbl_links";
 if (!$DbConnect->query($query)) {
