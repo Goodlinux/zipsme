@@ -15,4 +15,5 @@ if (linkExists($url_name)) {
 	// propose to create a new link
 	echo '<script type="text/javascript">window.location = "admin.php?newlink=' . $url_name .'" </script>';
 }
+
 ?>
