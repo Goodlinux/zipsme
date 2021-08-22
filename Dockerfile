@@ -49,6 +49,9 @@ RUN git clone https://github.com/Goodlinux/zipsme.git /var/www/zipsme/ && rm /va
 
 #Construction of entrypoint
 RUN echo "#! /bin/sh" > /usr/local/bin/entrypoint.sh \
+	&& echo "echo mise a jour de la config php"  >>  /usr/local/bin/entrypoint.sh  \
+	&& echo "chmod a+x /var/www/zipsme/CreateConf.sh"  >>  /usr/local/bin/entrypoint.sh  \
+	&& echo "/var/www/zipsme/CreateConf.sh"  >>  /usr/local/bin/entrypoint.sh  \
 	&& echo "echo lancement de nginx" >> /usr/local/bin/entrypoint.sh  \
 	&& echo "nginx" >> /usr/local/bin/entrypoint.sh  \
 	&& echo "echo lancement de php" >> /usr/local/bin/entrypoint.sh  \
