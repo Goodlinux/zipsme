@@ -12,7 +12,8 @@
 	// login buton submited, check if the user exist in Ldap
 	if ( isset($_POST['login_submitted']) && $_POST['username'] != ""  )  {
 		if ( authenticate($_POST['username'],$_POST['password']) ) {
-			setcookie('zipsme-user', $_POST['username']);
+			//setcookie('zipsme-user', $_POST['username']);
+			setcookie('zipsme-user', md5($_POST['username']);
 			setcookie('zipsme-login', 'y');
 			$logged_in = 'y'; 
 		}
@@ -37,7 +38,8 @@
 			$url = prepQueryText($_POST['url']);
 			$url_name = prepQueryText($_POST['url_name']);
 			$url_name = stripLink($url_name);
-			$user = $_COOKIE['zipsme-user'];
+			//$user = $_COOKIE['zipsme-user'];
+			$user = getUserName($_COOKIE['zipsme-user']);
 			$type = $_POST['type'];
 			if (linkAvailable($url_name)) {
 				insertLink($url_name, $url, $user, $type);
@@ -55,7 +57,7 @@
 	if (isset($_POST['edit_submitted'])) {
 		if ($_COOKIE['zipsme-login'] == 'y') {
 			$url_name = prepQueryText($_POST['url_name']);
-			if (getUserLink($url_name) == $_COOKIE["zipsme-user"]) {
+			if (getUserLink($url_name) == getUserName($_COOKIE['zipsme-user']) {
 				$url = prepQueryText($_POST['url']);
 				$type = $_POST['type'];
 				updateLink($url_name, $url, $type);
@@ -91,7 +93,7 @@
 	if (isset($_GET['delete'])) {
 		if ($_COOKIE['zipsme-login'] == 'y') {
 			$url_name = prepQueryText($_GET['delete']);
-			if (getUserLink($url_name) == $_COOKIE["zipsme-user"]) {
+			if (getUserLink($url_name) == getUserName($_COOKIE['zipsme-user'])) {
 				deleteLink($url_name);
 				$alert = $url_name . ' has been permanently deleted.';
 				}
@@ -105,7 +107,7 @@
 	}
 	
 	$logged_in = $_COOKIE['zipsme-login'];
-	$user = $_COOKIE['zipsme-user'];
+	$user = getUserName($_COOKIE['zipsme-user']);
 	//echo "Connected user : " . $logged_in . " | user : '" . $user . "'";
 ?>
 
