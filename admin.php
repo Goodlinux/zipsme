@@ -41,7 +41,7 @@
 			$type = $_POST['type'];
 			if (linkAvailable($url_name)) {
 				insertLink($url_name, $url, $user, $type);
-				$alert = 'Link created successfully! <a target="_blank" href="'. $url_name . '">' . $_SERVER["SITE_URL"] . $url_name . '</a> now redirects to ' . $url;		
+				$alert = 'Link created successfully! <a target="_blank" href="'. $url_name . '">' . SITE_URL . $url_name . '</a> now redirects to ' . $url;		
 				}
 			else {
 				$alert = 'The link name ' . $url_name . ' is already being used.  Try a different name or edit the existing link';
@@ -118,12 +118,12 @@
 <link rel="shortcut icon" type="image/x-icon" href="/Go.ico" />
 <link type="text/css" rel="stylesheet" href="reset-fonts-grids.css" />
 <link type="text/css" rel="stylesheet" href="styles.css" />
-<title><?php echo $_SERVER["SITE_NAME"]; ?> - Powered by Z.ips.ME</title>
+<title><?php echo SITE_NAME; ?> - Powered by Z.ips.ME</title>
 </head>
 <body>
 	<center>
     <div id="container">
-        <div id="header"><h1><?php echo $_SERVER["SITE_NAME"]; ?> Admin</h1></div>
+        <div id="header"><h1><?php echo SITE_NAME; ?> Admin</h1></div>
         <div id="content">
  <!-- Alert -->
         <?php if (isset($alert)) { ?><p class="alert"><?php echo $alert; ?></p><?php } ?>
@@ -135,7 +135,7 @@
             <?php }  ?>
 <!-- Pre delet -->
 			<?php if (isset($_GET['pre_delete'])) { ?>
-            	<p class="alert">Are you sure you want to delete the link <strong><?php echo $_SERVER["SITE_URL"]; ?>/<?php echo prepOutputText($_GET['pre_delete']) ?></strong> ?  
+            	<p class="alert">Are you sure you want to delete the link <strong><?php echo SITE_URL; ?>/<?php echo prepOutputText($_GET['pre_delete']) ?></strong> ?  
             		<a href="admin.php?delete=<?php echo prepOutputText($_GET['pre_delete']) ?>">Yes</a> | <a href="admin.php">No</a></p>
             <?php } ?>
   
