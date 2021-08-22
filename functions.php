@@ -1,15 +1,14 @@
 <?php
 
 function sqlConnect() {
-	//$DbConnect = mysqli_connect(ZIPSME_DB_HOST, ZIPSME_DB_USER, ZIPSME_DB_PASSWORD, ZIPSME_DB_NAME);
-	$DbConnect = mysqli_connect($_SERVER["DB_SERVER"], $_SERVER["DB_USER"], $_SERVER["DB_PASSWORD"], $_SERVER["DB_NAME"]);
+	$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
 	if (!$DbConnect) 
    		{ print_r("Could not connect. Please make sure that you have configured the config.php file correctly : " . mysqli_error());  }
 	return $$DbConnect;
 }
 
 function prepQueryText($text) {
-	$DbConnect = mysqli_connect($_SERVER["DB_SERVER"], $_SERVER["DB_USER"], $_SERVER["DB_PASSWORD"], $_SERVER["DB_NAME"]);
+	$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
 	$insert = $DbConnect->real_escape_string(trim($text));
 	mysqli_close($DbConnect);
 	return $insert;
@@ -33,7 +32,7 @@ function redirect($url, $type='internal') {
 
 function insertClick($url_name, $referrer, $user_agent, $ip_address) {
 	$url_name = strtolower($url_name);
-	$DbConnect = mysqli_connect($_SERVER["DB_SERVER"], $_SERVER["DB_USER"], $_SERVER["DB_PASSWORD"], $_SERVER["DB_NAME"]);
+	$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
 	$query = "INSERT INTO tbl_clicks (click_time, url_name, referrer, user_agent, ip_address) VALUES (NOW(), '{$url_name}', '{$referrer}', '{$user_agent}', '{$ip_address}')";
 	$result = $DbConnect->query($query);
 	mysqli_close($DbConnect);
@@ -41,7 +40,7 @@ function insertClick($url_name, $referrer, $user_agent, $ip_address) {
 
 function insertLink($url_name, $url, $user, $type) {
 	$url_name = strtolower($url_name);
-	$DbConnect = mysqli_connect($_SERVER["DB_SERVER"], $_SERVER["DB_USER"], $_SERVER["DB_PASSWORD"], $_SERVER["DB_NAME"]);
+	$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
 	$query = "INSERT INTO tbl_links (url_name, url, user, type, active) VALUES ('{$url_name}', '{$url}', '{$user}', '{$type}', 'y')";
 	$result = $DbConnect->query($query);
 	mysqli_close($DbConnect);
@@ -49,7 +48,7 @@ function insertLink($url_name, $url, $user, $type) {
 
 function getUserLink($url_name) {
 	$url_name = strtolower($url_name);
-	$DbConnect = mysqli_connect($_SERVER["DB_SERVER"], $_SERVER["DB_USER"], $_SERVER["DB_PASSWORD"], $_SERVER["DB_NAME"]);
+	$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
 	$query = "SELECT user FROM tbl_links WHERE url_name = '{$url_name}'";
 	$result = $DbConnect->query($query);
 	$row = mysqli_fetch_array($result);
@@ -59,7 +58,7 @@ function getUserLink($url_name) {
 
 function updateLink($url_name, $url, $type) {
 	$url_name = strtolower($url_name);
-	$DbConnect = mysqli_connect($_SERVER["DB_SERVER"], $_SERVER["DB_USER"], $_SERVER["DB_PASSWORD"], $_SERVER["DB_NAME"]);
+	$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
 	$query = "UPDATE tbl_links SET url = '{$url}', type = '{$type}' WHERE url_name = '{$url_name}'";
 	$result = $DbConnect->query($query);
 	mysqli_close($DbConnect);
@@ -67,7 +66,7 @@ function updateLink($url_name, $url, $type) {
 
 function deleteLink($url_name) {
 	$url_name = strtolower($url_name);
-	$DbConnect = mysqli_connect($_SERVER["DB_SERVER"], $_SERVER["DB_USER"], $_SERVER["DB_PASSWORD"], $_SERVER["DB_NAME"]);
+	$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
 	$query = "DELETE FROM tbl_links WHERE url_name = '{$url_name}'";
 	$result = $DbConnect->query($query);
 	$query = "DELETE FROM tbl_clicks WHERE url_name = '{$url_name}'";
@@ -77,7 +76,7 @@ function deleteLink($url_name) {
 
 function linkAvailable($url_name) {
 	$url_name = strtolower($url_name);
-	$DbConnect = mysqli_connect($_SERVER["DB_SERVER"], $_SERVER["DB_USER"], $_SERVER["DB_PASSWORD"], $_SERVER["DB_NAME"]);
+	$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
 	$query = "SELECT * FROM tbl_links WHERE url_name = '{$url_name}' LIMIT 1";
 	$result = $DbConnect->query($query);
 	if ($result->num_rows == 0) {
@@ -102,7 +101,7 @@ function getIpAddress() {
 
 function linkExists($url_name) {
 	$url_name = strtolower($url_name);
-	$DbConnect = mysqli_connect($_SERVER["DB_SERVER"], $_SERVER["DB_USER"], $_SERVER["DB_PASSWORD"], $_SERVER["DB_NAME"]);
+	$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
 	$query = "SELECT * FROM tbl_links WHERE url_name = '{$url_name}' AND active = 'y' LIMIT 1";
 	$result = $DbConnect->query($query);
 	if ($result->num_rows > 0) {
@@ -115,7 +114,7 @@ function linkExists($url_name) {
 
 function redirectClick($url_name) {
 	$url_name = strtolower($url_name);
-	$DbConnect = mysqli_connect($_SERVER["DB_SERVER"], $_SERVER["DB_USER"], $_SERVER["DB_PASSWORD"], $_SERVER["DB_NAME"]);
+	$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
 	$query = "SELECT * FROM tbl_links WHERE url_name = '{$url_name}' LIMIT 1";
 	$result = $DbConnect->query($query);
 	$row = mysqli_fetch_array($result);
@@ -132,7 +131,7 @@ function stripLink($url_name) {
 function showLinkHistory() {
 	$user_connected = $_COOKIE['zipsme-user'];
 	
-	$DbConnect = mysqli_connect($_SERVER["DB_SERVER"], $_SERVER["DB_USER"], $_SERVER["DB_PASSWORD"], $_SERVER["DB_NAME"]);
+	$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
 
 	$query = "SELECT tbl_links.url_name, tbl_links.url, tbl_links.user, COUNT(tbl_clicks.click_id) AS clicks 
 		FROM tbl_links left join tbl_clicks ON tbl_links.url_name = tbl_clicks.url_name
@@ -142,7 +141,7 @@ function showLinkHistory() {
 	while ($row = mysqli_fetch_array($result))
 	{
 		echo '<td class="border">
-			<a href="redirect.php?url_name=' . $row['url_name'] . '">' . $_SERVER["SITE_URL"] . prepOutputText($row['url_name']) . '</a></td>' . '';
+			<a href="redirect.php?url_name=' . $row['url_name'] . '">' . SITE_URL . prepOutputText($row['url_name']) . '</a></td>' . '';
 		echo '<td class="border">' . prepOutputText($row['clicks']) . '</td>' . "\n";
 		echo '<td class="border">' . $row['user'] . '</td>' . "\n"; 
 		if ($user_connected == $row['user']) {
@@ -180,8 +179,7 @@ function authenticate($username, $password) {
 	$ldap_Userdn = getUserDN($username); 
 	if($ldap_Userdn!="") 
 	{
-		//$ldap_con = ldap_connect(LDAP_SRV);
-		$ldap_con = ldap_connect($_SERVER["LDAP_SRV"]);
+		$ldap_con = ldap_connect(LDAP_SRV);
 
 		ldap_set_option($ldap_con, LDAP_OPT_PROTOCOL_VERSION, 3); 
         	if(ldap_bind($ldap_con, $ldap_Userdn, $password)) 
@@ -195,8 +193,8 @@ function authenticate($username, $password) {
 function getUserDN($username)
 { 
 	$data = ""; 
-	//$ldap_con = ldap_connect(LDAP_SRV); 
-	$ldap_con = ldap_connect($_SERVER["LDAP_SRV"]); 
+	$ldap_con = ldap_connect(LDAP_SRV); 
+	
 	ldap_set_option($ldap_con, LDAP_OPT_PROTOCOL_VERSION, 3); 
 	ldap_set_option($ldap_con, LDAP_OPT_REFERRALS, 0); 
     	
