@@ -199,8 +199,7 @@ function getUserDN($username)
 	ldap_set_option($ldap_con, LDAP_OPT_REFERRALS, 0); 
     	
    	$filter="(cn=$username)"; 
-	//$res = ldap_search($ldap_con, LDAP_RACINE, $filter); 
-	$res = ldap_search($ldap_con, "dc=" . $_SERVER["LDAP_DOMAIN"] . ",dc=" . $_SERVER["LDAP_EXT"], $filter); 
+	$res = ldap_search($ldap_con, LDAP_RACINE, $filter); 
 	$first = ldap_first_entry($ldap_con, $res); 
 	$data = ldap_get_dn($ldap_con, $first);
    	ldap_close($ldap_con); 
