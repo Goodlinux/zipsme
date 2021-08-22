@@ -241,7 +241,13 @@ function getUserDN($username)
 { 
 	$data = ""; 
 	$ldap_con = ldap_connect(LDAP_SRV); 
-	
+	if (substr(LDAP_SRV,0,4) == "ldap") {                                                                                                                                                            
+                $srv = LDAP_SRV;}                                                                                                                                                                           
+        else {                                                                                                                                                                                              
+                $srv = "ldaps://" . LDAP_SRV;                                                                                                                                                               
+        }                                                                                                                                                                                                   
+ 	$ldap_con = ldap_connect($srv); 
+
 	ldap_set_option($ldap_con, LDAP_OPT_PROTOCOL_VERSION, 3); 
 	ldap_set_option($ldap_con, LDAP_OPT_REFERRALS, 0); 
     	
