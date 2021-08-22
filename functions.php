@@ -204,7 +204,7 @@ function existUser ($username) {
 	$query = "Select count(user_id) as userid from users where username = '{$username}'";
 	$result = $DbConnect->query($query);
 	$row = mysqli_fetch_array($result);
-	return ($row['userid'] != 1);
+	return ($row['userid']);
 	mysqli_close($DbConnect);
 }
 
@@ -212,7 +212,8 @@ function existUser ($username) {
 function addUser ($username) {
 	if (! existUser($username)) { 
 		$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
-		$query = "insert into users (user_id, username) VALUES (md5({$username}), '{$username}'";
+		$id = md5($username);                                                                                                                                                                       
+                $query = "insert into users (user_id, username) VALUES ('{$id}', '{$username}')"; 
 		$result = $DbConnect->query($query);
 		mysqli_close($DbConnect);
 	}
