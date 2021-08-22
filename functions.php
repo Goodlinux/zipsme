@@ -129,7 +129,7 @@ function stripLink($url_name) {
 }
 
 function showLinkHistory() {
-	$user_connected = $_COOKIE['zipsme-user'];
+	$user_connected = getUserName($_COOKIE['zipsme-user']);
 	
 	$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
 
