@@ -13,7 +13,7 @@
 	if ( isset($_POST['login_submitted']) && $_POST['username'] != ""  )  {
 		if ( authenticate($_POST['username'],$_POST['password']) ) {
 			//setcookie('zipsme-user', $_POST['username']);
-			setcookie('zipsme-user', md5($_POST['username']);
+			setcookie('zipsme-user', md5($_POST['username']));
 			setcookie('zipsme-login', 'y');
 			$logged_in = 'y'; 
 		}
@@ -57,7 +57,7 @@
 	if (isset($_POST['edit_submitted'])) {
 		if ($_COOKIE['zipsme-login'] == 'y') {
 			$url_name = prepQueryText($_POST['url_name']);
-			if (getUserLink($url_name) == getUserName($_COOKIE['zipsme-user']) {
+			if (getUserLink($url_name) == getUserName($_COOKIE['zipsme-user'])) {
 				$url = prepQueryText($_POST['url']);
 				$type = $_POST['type'];
 				updateLink($url_name, $url, $type);
