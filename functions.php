@@ -199,7 +199,6 @@ function getUserName ($userid) {
 	mysqli_close($DbConnect);
 }
 
-
 function existUser ($username) {
 	$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
 	$query = "Select count(user_id) as userid from users where username = '{$username}'";
@@ -207,6 +206,16 @@ function existUser ($username) {
 	$row = mysqli_fetch_array($result);
 	return ($row['userid'] != 1);
 	mysqli_close($DbConnect);
+}
+
+
+function addUser ($username) {
+	if (! existUser($username)) { 
+		$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
+		$query = "insert into users (user_id, username) VALUES (md5({$username}), '{$username}'";
+		$result = $DbConnect->query($query);
+		mysqli_close($DbConnect);
+	}
 }
 
 function authenticate($username, $password) { 
@@ -217,12 +226,8 @@ function authenticate($username, $password) {
 
 		ldap_set_option($ldap_con, LDAP_OPT_PROTOCOL_VERSION, 3); 
         	if(ldap_bind($ldap_con, $ldap_Userdn, $password)) 
-			{ 	
-				if (! existUser($username)) { 
-					$query = "insert into users (user_id, username) VALUES (md5({$username}), '{$username}'";
-					$result = $DbConnect->query($query);
-				}
-				mysqli_close($DbConnect);
+			{ 
+				addUser($usernam);
 				return true; 
 			} 
 		else { return false; }
