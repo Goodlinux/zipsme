@@ -70,7 +70,7 @@ class Stats {
 		$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
 		$query = "SELECT user_agent FROM tbl_clicks WHERE url_name = '" . $this->url_name . "'";
 		$result = $DbConnect->query($query);
-		$row = mysqli_fetch_array($result);
+		//$row = mysqli_fetch_array($result);
 		
 		while ($row = mysqli_fetch_array($result))
 		{
