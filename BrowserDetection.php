@@ -110,5 +110,7 @@ function getInfo() {
               "<strong>Browser User Agent String:</strong> {$this->getUserAgent()}<br/>\n" .
               "<strong>Platform:</strong> {$this->getPlatform()}<br/>";
 }
+    
+}  // End of class
 
 ?>
