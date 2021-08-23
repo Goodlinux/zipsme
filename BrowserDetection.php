@@ -112,6 +112,3 @@ function getInfo() {
 }
 
 ?>
-
-$obj = new BrowserDetection();
-echo $obj->detect()->getInfo();
