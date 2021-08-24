@@ -20,7 +20,7 @@ else {
 		if ( $DbConnect->errno == "1054" ) {
       		//#1054 - Champ 'user' inconnu dans field list
 			echo  "Ajout de la colonne 'user' \n";
-			$query = "alter table tbl_links ADD COLUMN user varchar(255)";
+			$query = "ALTER TABLE tbl_links ADD COLUMN `user` varchar(255)";
 			$result = $DbConnect->query($query);
 		}
 	}
@@ -43,7 +43,7 @@ else {
 		if ( $DbConnect->errno == "1054" ) {
       		//#1054 - Champ 'referrer' inconnu dans field list
 			echo  "Renommage de la colonne 'referrer' en 'os' \n";
-			$query = "alter table tbl_links MODIFY COLUMN 'referrer' 'os' varchar(255)";
+			$query = "ALTER TABLE tbl_clicks CHANGE `referrer` `os` VARCHAR(255)";
 			$result = $DbConnect->query($query);
 		}
 	}
@@ -53,7 +53,7 @@ else {
 		if ( $DbConnect->errno == "1054" ) {
       		//#1054 - Champ 'user_agent' inconnu dans field list
 			echo  "Renommage de la colonne 'user_agent ' en 'browser' \n";
-			$query = "alter table tbl_links MODIFY COLUMN 'user_agent' 'browser' varchar(255)";
+			$query = "ALTER TABLE tbl_clicks CHANGE `user_agent` `browser` VARCHAR(255)";
 			$result = $DbConnect->query($query);
 		}
 	}
