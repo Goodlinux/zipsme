@@ -6,7 +6,7 @@
 define ('IS_ENV_PRODUCTION', true); 
 error_reporting(E_ALL ^ E_NOTICE);
 ini_set('display_errors', !IS_ENV_PRODUCTION);
-ini_set('error_log', '/var/www/zipsme/log/phperror.txt');
+ini_set('error_log', '/var/www/zipsme/error.txt');
 // set time zone to use date/time functions without warnings
 date_default_timezone_set('Europe/Paris');
 
