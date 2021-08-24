@@ -26,9 +26,7 @@ else {
 	}
 }
 
-
 //create links table
-
 $query = "select * from tbl_clicks";
 if (!$DbConnect->query($query)) {
 	if ( $DbConnect->error == "1146" ) {
@@ -61,11 +59,9 @@ else {
 	}
 }
 
-		       
 // create table users to store id for cookies purpose		       
 $query = "CREATE TABLE IF NOT EXISTS users (user_id varchar(255) NOT NULL, username varchar(255) NOT NULL,  PRIMARY KEY (user_id))";
 $result = $DbConnect->query($query);
-
 
 mysqli_close($DbConnect);
 
