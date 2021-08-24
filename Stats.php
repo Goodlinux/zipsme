@@ -2,15 +2,6 @@
 class Stats {
 	public $url_name;
 	public $total_clicks;
-	public $b_opera = 0;
-	public $b_webkit = 0;
-	public $b_ie = 0;
-	public $b_firefox = 0;
-	public $b_none = 0;
-	public $o_linux = 0;
-	public $o_mac = 0;
-	public $o_win = 0;
-	public $o_none = 0;
 	
 	function __construct($url_name) {
 		$this->url_name = strtolower($url_name);
@@ -38,14 +29,14 @@ class Stats {
     		$tot = 0;
 		while ($row = mysqli_fetch_array($result));
 		{
-			//$month = strtotime($row['click_time']);
 			echo '<tr>' . "\n";
-			//echo '<td class="border">' . date('F Y', $month) . '</td>' . "\n";
       			echo '<td class="border">' . $row['date'] . '</td>' . "\n";
       			echo '<td class="border">' . $row['monthCount'] . '</td>' . "\n";
+			echo '</tr>' . "\n";
       			$tot=$tot + $row['monthCount'];
 		} 
-      		echo '<td class="border">' . 'Total' . '</td>' . "\n";
+		echo '<tr>' . "\n";
+      		echo '<td class="border"><strong>Total</td>' . "\n";
       		echo '<td class="border">' . $tot . '</td>' . "\n";
     		echo '</tr>' . "\n";
 		mysqli_close($DbConnect);
@@ -60,15 +51,17 @@ class Stats {
 			echo '<tr>' . "\n";
 			echo '<td class="border">' . $row['os'] . '</td>' . "\n";
 			echo '<td class="border">' . $row['osCount'] . '</td>' . "\n";
+			echo '</tr>' . "\n";
       			$tot=$tot+$row['osCount'];
 		}
-    		echo '<td class="border">' . 'Total' . '</td>' . "\n";
+		echo '<tr>' . "\n";
+    		echo '<td class="border"><strong>Total</td>' . "\n";
     		echo '<td class="border">' . $tot . '</td>' . "\n";
     		echo '</tr>' . "\n";
 		mysqli_close($DbConnect);
 	}
 
-	function shoBrowsers() {
+	function showBrowsers() {
 		$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
 		$query = "SELECT browser, COUNT(*) AS browserCount FROM tbl_clicks WHERE url_name = '" . $this->url_name . "' GROUP BY browser ORDER BY browser DESC";
 		$result = $DbConnect->query($query);
@@ -77,9 +70,11 @@ class Stats {
 			echo '<tr>' . "\n";
 			echo '<td class="border">' . $row['browser'] . '</td>' . "\n";
 			echo '<td class="border">' . $row['browserCount'] . '</td>' . "\n";
+			echo '</tr>' . "\n";
       			$tot=$tot+$row['browserCount'];
 		}
-    		echo '<td class="border">' . 'Total' . '</td>' . "\n";
+		echo '<tr>' . "\n";
+    		echo '<td class="border"><strong>Total</td>' . "\n";
     		echo '<td class="border">' . $tot . '</td>' . "\n";
     		echo '</tr>' . "\n";
 		mysqli_close($DbConnect);	
