@@ -1,5 +1,6 @@
 <?php include('config.php'); ?>
 <?php
+	// Version 2.3 changes environment variables for docker env and take changes after each start/stop of the container in case a parameter had change
 	// logout asked logout
 	if ((isset($_GET['logout'])) && ($_GET['logout'] == 'y')) {
 		setcookie('zipsme-login', 'n');
@@ -8,7 +9,7 @@
 		$alert = 'You\'ve successfully logged out';
 		header("Refresh:0; url=admin.php");
 	} 
-	
+
 	// login buton submited, check if the user exist in Ldap
 	if ( isset($_POST['login_submitted']) && $_POST['username'] != ""  )  {
 		if ( authenticate($_POST['username'],$_POST['password']) ) {
