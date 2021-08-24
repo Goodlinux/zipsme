@@ -31,7 +31,7 @@ RUN echo "server { " > /etc/nginx/http.d/default.conf  \
     &&  echo "}  " >> /etc/nginx/http.d/default.conf
 
 #Import project from GitHub
-RUN git clone https://github.com/Goodlinux/zipsme.git /var/www/zipsme/ && rm /var/www/zipsme/Dockerfile
+RUN git clone https://github.com/Goodlinux/zipsme.git /var/www/zipsme/ && rm /var/www/zipsme/Dockerfile && touch /var/www/zipsme/error.txt
 
 # before using env variables, replacement of text in config.php, obsolet, now using env variables in config.php
 #	&& echo "echo mise a jour de la config php"  >>  /usr/local/bin/entrypoint.sh  \
