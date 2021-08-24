@@ -45,7 +45,7 @@ class Stats {
 			//echo '<td class="border">' . date('F Y', $month) . '</td>' . "\n";
       			echo '<td class="border">' . $row['date'] . '</td>' . "\n";
       			echo '<td class="border">' . $row['monthCount'] . '</td>' . "\n";
-      			$tot=$tot + $row['monthCount']
+      			$tot=$tot + $row['monthCount'];
 		} 
       		echo '<td class="border">' . 'Total' . '</td>' . "\n";
       		echo '<td class="border">' . $tot . '</td>' . "\n";
