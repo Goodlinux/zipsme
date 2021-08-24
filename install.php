@@ -26,13 +26,13 @@ else {
 	}
 }
 
-//create links table
+//create clicks table
 $query = "select * from tbl_clicks";
 if (!$DbConnect->query($query)) {
 	if ( $DbConnect->errno == "1146" ) {
       		//#1146 - La table 'xxxx' n'existe pas
 		echo "Création de la table Clicks \n";
-		$query = "CREATE TABLE IF NOT EXISTS tbl_clicks (click_id int(11) NOT NULL auto_increment,click_time datetime NOT NULL,url_name varchar(255) NOT NULL,referrer varchar(255) NOT NULL,user_agent varchar(255) NOT NULL,ip_address varchar(255) NOT NULL,  PRIMARY KEY  (click_id))";
+		$query = "CREATE TABLE IF NOT EXISTS tbl_clicks (click_id int(11) NOT NULL auto_increment,click_time datetime NOT NULL,url_name varchar(255) NOT NULL, os varchar(255) NOT NULL, browser varchar(255) NOT NULL,ip_address varchar(255) NOT NULL,  PRIMARY KEY  (click_id))";
 		$result = $DbConnect->query($query);
 	}
 }
