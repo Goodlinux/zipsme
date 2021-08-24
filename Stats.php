@@ -19,8 +19,6 @@ class Stats {
 		$result = $DbConnect->query($query);
 		$row = mysqli_fetch_array($result);
 		$this->total_clicks = $row['urlCount'];	
-		$this->calcBrowsers();
-		$this->calcOS();
 		mysqli_close($DbConnect);
 	}
 	
@@ -35,7 +33,7 @@ class Stats {
 	function showClicks() {
 		$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
 		//$query = "SELECT click_time, COUNT(url_name) AS monthCount FROM tbl_clicks WHERE url_name = '" . $this->url_name . "' ROUP BY EXTRACT(MONTH FROM click_time) ORDER BY click_time DESC";
-		$query = "SELECT DATE_FORMAT(click_time,"%Y-%m") as date, COUNT(url_name) AS monthCount FROM tbl_clicks WHERE url_name = '" . $this->url_name . "' GROUP BY EXTRACT(YEAR_MONTH FROM click_time) ORDER BY click_time DESC"
+		$query = "SELECT DATE_FORMAT(click_time,'%Y-%m') as date, COUNT(url_name) AS monthCount FROM tbl_clicks WHERE url_name = '" . $this->url_name . "' GROUP BY EXTRACT(YEAR_MONTH FROM click_time) ORDER BY click_time DESC"
     		$result = $DbConnect->query($query);
     		$tot = 0;
 		while ($row = mysqli_fetch_array($result));
