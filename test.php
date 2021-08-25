@@ -1,6 +1,8 @@
 <?php
 include("config.php");
 
-$Browsinf = new BrowserDetection();
+$BrowsInf = new BrowserDetection();
+
+echo "\n" . $BrowsInf->getInfo() . "\n";
 
 ?>
