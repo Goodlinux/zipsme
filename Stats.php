@@ -32,6 +32,9 @@ class Stats {
 		//$query = "SELECT click_time, COUNT(url_name) AS monthCount FROM tbl_clicks WHERE url_name = '" . $this->url_name . "' ROUP BY EXTRACT(MONTH FROM click_time) ORDER BY click_time DESC";
 		$query = "SELECT DATE_FORMAT(click_time,'%Y-%m') as date, COUNT(url_name) AS monthCount FROM tbl_clicks WHERE url_name = '" . $this->url_name . "' GROUP BY EXTRACT(YEAR_MONTH FROM click_time) ORDER BY click_time DESC";
     		$result = $DbConnect->query($query);
+		if (! IS_ENV_PRODUCTION) {                                                                                                                                                                  
+                        echo "Stats-->showClicks SQL : " . $DbConnect->errno . " " . $DbConnect->error;                                                                                                     
+                }		
 		$tot = 0;
 		while ($row = mysqli_fetch_array($result));
 		{
@@ -55,7 +58,10 @@ class Stats {
 		$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
 		$query = "SELECT os, COUNT(*) AS osCount FROM tbl_clicks WHERE url_name = '" . $this->url_name . "' GROUP BY os ORDER BY os DESC";
 		$result = $DbConnect->query($query);
-    		$tot=0;
+    		if (! IS_ENV_PRODUCTION) {                                                                                                                                                                  
+                        echo "Stats-->showClicks SQL : " . $DbConnect->errno . " " . $DbConnect->error;                                                                                                     
+                }
+		$tot=0;
 		while ($row = mysqli_fetch_array($result));  {
 			echo '<tr>' . "\n";
 			echo '<td class="border">' . $row['os'] . '</td>' . "\n";
@@ -77,6 +83,9 @@ class Stats {
 		$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
 		$query = "SELECT browser, COUNT(*) AS browserCount FROM tbl_clicks WHERE url_name = '" . $this->url_name . "' GROUP BY browser ORDER BY browser DESC";
 		$result = $DbConnect->query($query);
+		if (! IS_ENV_PRODUCTION) {                                                                                                                                                                  
+                        echo "Stats-->showClicks SQL : " . $DbConnect->errno . " " . $DbConnect->error;                                                                                                     
+                }
     		$tot=0;
 		while ($row = mysqli_fetch_array($result)) {
 			echo '<tr>' . "\n";
