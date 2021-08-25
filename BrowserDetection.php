@@ -13,7 +13,7 @@ class BrowserDetection {
               'Midori' => 'Midori', 'QupZilla' => 'QupZilla', 'Namoroka' => 'Namoroka', 'NetSurf' => 'NetSurf', 'BOLT' => 'BOLT', 'EudoraWeb' => 'EudoraWeb',
               'shadowfox' => 'ShadowFox', 'Swiftfox' => 'Swiftfox', 'Uzbl' => 'Uzbl', 'UCBrowser' => 'UCBrowser', 'Kindle' => 'Kindle', 'wOSBrowser' => 'wOSBrowser',
               'Epiphany' => 'Epiphany', 'SeaMonkey' => 'SeaMonkey', 'Avant Browser' => 'Avant Browser', 'Firefox' => 'Firefox', 'Chrome' => 'Google Chrome',
-              'MSIE' => 'Internet Explorer', 'Internet Explorer' => 'Internet Explorer', 'Safari' => 'Safari', 'Mozilla' => 'Mozilla'  
+              'MSIE' => 'Internet Explorer', 'Internet Explorer' => 'Internet Explorer', 'Safari' => 'Safari', 'Mozilla' => 'Mozilla', 'Edg' => 'Edge'  
               );
     private $_basic_platform = array(
               'windows' => 'Windows', 'iPad' => 'iPad', 'iPod' => 'iPod', 'iPhone' => 'iPhone', 'mac' => 'Apple', 'android' => 'Android', 'linux' => 'Linux',
@@ -24,6 +24,9 @@ class BrowserDetection {
   
   
 function __construct($ua = '') {
+    if (! IS_ENV_PRODUCTION) {
+			echo "BrowserDetection" . $ua;
+	}
     if(empty($ua)) {
         $this->_user_agent = (!empty($_SERVER['HTTP_USER_AGENT'])?$_SERVER['HTTP_USER_AGENT']:getenv('HTTP_USER_AGENT'));
         }
@@ -81,6 +84,9 @@ function detectPlatform() {
   
  
 function getBrowser() {
+    if (! IS_ENV_PRODUCTION) {
+			echo "BrowserDetection-->getBrowser";
+	}
         if(!empty($this->_name)) {
             return $this->_name;
           }
@@ -88,11 +94,17 @@ function getBrowser() {
   
   
 function getVersion() {
+    if (! IS_ENV_PRODUCTION) {
+			echo "BrowserDetection-->getVersion";
+	}
       return $this->_version;
 }
   
   
 function getPlatform() {
+    if (! IS_ENV_PRODUCTION) {
+			echo "BrowserDetection-->getPlatform";
+	}
       if(!empty($this->_platform)) {
             return $this->_platform;
       }
