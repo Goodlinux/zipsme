@@ -24,8 +24,8 @@ class BrowserDetection {
   
   
 function __construct($ua = '') {
-    if (! IS_ENV_PRODUCTION) {
-			echo "BrowserDetection" . $ua;
+    	if (! IS_ENV_PRODUCTION) {
+		echo "BrowserDetection" . $ua . " \n";
 	}
     if(empty($ua)) {
         $this->_user_agent = (!empty($_SERVER['HTTP_USER_AGENT'])?$_SERVER['HTTP_USER_AGENT']:getenv('HTTP_USER_AGENT'));
@@ -82,28 +82,25 @@ function detectPlatform() {
       }
 }
   
- 
 function getBrowser() {
-    if (! IS_ENV_PRODUCTION) {
-			echo "BrowserDetection-->getBrowser";
+    	if (! IS_ENV_PRODUCTION) {
+		echo "BrowserDetection-->getBrowser \n";
 	}
         if(!empty($this->_name)) {
             return $this->_name;
           }
 }        
   
-  
 function getVersion() {
     if (! IS_ENV_PRODUCTION) {
-			echo "BrowserDetection-->getVersion";
+		echo "BrowserDetection-->getVersion \n";
 	}
       return $this->_version;
 }
   
-  
 function getPlatform() {
     if (! IS_ENV_PRODUCTION) {
-			echo "BrowserDetection-->getPlatform";
+		echo "BrowserDetection-->getPlatform \n";
 	}
       if(!empty($this->_platform)) {
             return $this->_platform;
@@ -117,7 +114,7 @@ function getUserAgent() {
 
   
 function getInfo() {
-      return "<strong>Browser Name:</strong> {$this->getBrowser()}<br/>\n" .
+      return " \n <strong>Browser Name:</strong> {$this->getBrowser()}<br/>\n" .
               "<strong>Browser Version:</strong> {$this->getVersion()}<br/>\n" .
               "<strong>Browser User Agent String:</strong> {$this->getUserAgent()}<br/>\n" .
               "<strong>Platform:</strong> {$this->getPlatform()}<br/>";
