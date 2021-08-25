@@ -7,8 +7,8 @@ if (linkExists($url_name)) {
 	// name exist, so add a new click for stats
 	$referrer = $_SERVER['HTTP_REFERER'];
 	$browserInfo = new BrowserDetection();
-	$browserName = $browserInfo->getBrowser();
-	$osName = $browserInfo->getPlatform();
+	$browserName = $browserInfo->detect()->getBrowser();
+	$osName = $browserInfo->detect()->getPlatform();
 	$user_agent = $_SERVER['HTTP_USER_AGENT'];
 	$ip_address = getIpAddress();	
 //	echo $url_name . ":" . $referrer . ":" . $user_agent . ":" .  $ip_address;
