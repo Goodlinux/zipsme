@@ -2,7 +2,7 @@
 
 function sqlConnect() {
 	if (! IS_ENV_PRODUCTION) {
-		echo "Function-->sqlConnect";
+		echo "Function-->sqlConnect \n";
 	}
 	$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
 	if (!$DbConnect) 
@@ -24,7 +24,7 @@ function prepOutputText($text) {
 
 function redirect($url, $type='internal') {
 	if (! IS_ENV_PRODUCTION) {
-		echo "Function-->redirect";
+		echo "Function-->redirect \n";
 	}
 	if (!headers_sent()) {
 		if ($type == '301') {
@@ -39,7 +39,7 @@ function redirect($url, $type='internal') {
 //function insertClick($url_name, $referrer, $user_agent, $ip_address) {
 function insertClick($url_name, $osName, $browserName, $ip_address) {
 	if (! IS_ENV_PRODUCTION) {
-		echo "Function-->insertClick";
+		echo "Function-->insertClick \n";
 	}
 	$url_name = strtolower($url_name);
 	$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
@@ -51,7 +51,7 @@ function insertClick($url_name, $osName, $browserName, $ip_address) {
 
 function insertLink($url_name, $url, $user, $type) {
 	if (! IS_ENV_PRODUCTION) {
-		echo "Function-->insertLink";
+		echo "Function-->insertLink \n";
 	}
 	$url_name = strtolower($url_name);
 	$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
@@ -62,7 +62,7 @@ function insertLink($url_name, $url, $user, $type) {
 
 function getUserLink($url_name) {
 	if (! IS_ENV_PRODUCTION) {
-		echo "Function-->getUserLink";
+		echo "Function-->getUserLink \n";
 	}
 	$url_name = strtolower($url_name);
 	$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
@@ -75,7 +75,7 @@ function getUserLink($url_name) {
 
 function updateLink($url_name, $url, $type) {
 	if (! IS_ENV_PRODUCTION) {
-		echo "Function-->updateLink";
+		echo "Function-->updateLink \n";
 	}
 	$url_name = strtolower($url_name);
 	$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
@@ -86,7 +86,7 @@ function updateLink($url_name, $url, $type) {
 
 function deleteLink($url_name) {
 	if (! IS_ENV_PRODUCTION) {
-		echo "Function-->deleteLink";
+		echo "Function-->deleteLink \n";
 	}
 	$url_name = strtolower($url_name);
 	$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
@@ -99,7 +99,7 @@ function deleteLink($url_name) {
 
 function linkAvailable($url_name) {
 	if (! IS_ENV_PRODUCTION) {
-		echo "Function-->linkAvailable";
+		echo "Function-->linkAvailable \n";
 	}
 	$url_name = strtolower($url_name);
 	$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
@@ -115,7 +115,7 @@ function linkAvailable($url_name) {
 
 function getIpAddress() {
 	if (! IS_ENV_PRODUCTION) {
-		echo "Function-->getIpAddress";
+		echo "Function-->getIpAddress \n";
 	}
     	if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
       		$ip=$_SERVER['HTTP_CLIENT_IP'];
@@ -130,7 +130,7 @@ function getIpAddress() {
 
 function linkExists($url_name) {
 	if (! IS_ENV_PRODUCTION) {
-		echo "Function-->linkExists";
+		echo "Function-->linkExists \n";
 	}
 	$url_name = strtolower($url_name);
 	$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
@@ -146,7 +146,7 @@ function linkExists($url_name) {
 
 function redirectClick($url_name) {
 	if (! IS_ENV_PRODUCTION) {
-		echo "Function-->redirectClick";
+		echo "Function-->redirectClick \n";
 	}
 	$url_name = strtolower($url_name);
 	$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
@@ -159,7 +159,7 @@ function redirectClick($url_name) {
 
 function stripLink($url_name) {
 	if (! IS_ENV_PRODUCTION) {
-		echo "Function-->stripLink";
+		echo "Function-->stripLink \n";
 	}
 	$url_name = strtolower($url_name);
 	$stripped = preg_replace("/[^a-zA-Z0-9]/", "", $url_name);
@@ -168,7 +168,7 @@ function stripLink($url_name) {
 
 function showLinkHistory() {
 	if (! IS_ENV_PRODUCTION) {
-		echo "Function-->showLinkHistory";
+		echo "Function-->showLinkHistory \n";
 	}
 	$user_connected = getUserName($_COOKIE['zipsme-user']);
 	
@@ -218,7 +218,7 @@ function showLinkHistory() {
 
 function getUserId($username) {
 	if (! IS_ENV_PRODUCTION) {
-		echo "Function-->getUserId";
+		echo "Function-->getUserId \n";
 	}
 	$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
 	$query = "Select user_id from users where username = '{$username}'";
@@ -233,7 +233,7 @@ function getUserId($username) {
 
 function getUserName($userid) {
 	if (! IS_ENV_PRODUCTION) {
-		echo "Function-->getUserName";
+		echo "Function-->getUserName \n";
 	}
 	$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
 	$query = "Select username from users where user_id = '{$userid}'";
@@ -248,7 +248,7 @@ function getUserName($userid) {
 
 function existUser($username) {
 	if (! IS_ENV_PRODUCTION) {
-		echo "Function-->existUser";
+		echo "Function-->existUser \n";
 	}
 	$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
 	$query = "Select count(user_id) as userid from users where username = '{$username}'";
@@ -261,7 +261,7 @@ function existUser($username) {
 
 function addUser($username) {
 	if (! IS_ENV_PRODUCTION) {
-		echo "Function-->addUser";
+		echo "Function-->addUser \n";
 	}
 	if (! existUser($username)) { 
 		$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
@@ -274,7 +274,7 @@ function addUser($username) {
 
 function authenticate($username, $password) { 
 	if (! IS_ENV_PRODUCTION) {
-		echo "Function-->authenticate";
+		echo "Function-->authenticate \n";
 	}
 	$ldap_Userdn = getUserDN($username); 
 	if($ldap_Userdn!="") 
@@ -295,7 +295,7 @@ function authenticate($username, $password) {
 
 function getUserDN($username) { 
 	if (! IS_ENV_PRODUCTION) {
-		echo "Function-->getUserDN";
+		echo "Function-->getUserDN \n";
 	}
 	$data = ""; 
 	$ldap_con = ldap_connect(LDAP_SRV); 
