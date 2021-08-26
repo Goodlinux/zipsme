@@ -13,7 +13,7 @@ class Info {
 		$this->type = $row['type'];
 		mysqli_close($DbConnect);
 	}
-	
+
 	function __get($name) {
 		return $this->$name;
 	}
