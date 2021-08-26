@@ -28,20 +28,20 @@ class Stats {
 		if (! IS_ENV_PRODUCTION) {
 			echo "Stats-->showClicks";
 		}		
+		
 		$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
-		$query = "SELECT DATE_FORMAT(click_time,'%Y-%m') as date, COUNT(url_name) AS monthCount FROM tbl_clicks WHERE url_name = '" . 
-			$this->url_name . "' GROUP BY EXTRACT(YEAR_MONTH FROM click_time) ORDER BY click_time DESC";
-    		$result = $DbConnect->query($query);
+		$query = "SELECT DATE_FORMAT(click_time,'%Y-%m') as date, COUNT(*) AS ClickCount FROM tbl_clicks WHERE url_name = '" . $this->url_name . "' GROUP BY DATE_FORMAT(click_time,'%Y-%m') ORDER BY DATE_FORMAT(click_time,'%Y-%m') DESC";
+		$result = $DbConnect->query($query);
 		if (! IS_ENV_PRODUCTION) {                                                                                                                          
-                        echo "Stats-->showClicks SQL : " . $DbConnect->errno . " " . $DbConnect->error;                                                             
-                }		
-		$tot = 0;
+                        echo "Stats-->showBrowsers SQL : " . $DbConnect->errno . " " . $DbConnect->error;                                                             
+                }
+    		$tot=0;
 		while ($row = mysqli_fetch_array($result)) {
 			echo '<tr>' . "\n";
       			echo '<td class="border">' . $row['date'] . '</td>' . "\n";
-      			echo '<td class="border">' . $row['monthCount'] . '</td>' . "\n";
+      			echo '<td class="border">' . $row['ClickCount'] . '</td>' . "\n";
 			echo '</tr>' . "\n";
-      			$tot=$tot + $row['monthCount'];
+      			$tot=$tot + $row['ClickCount'];
 		} 
 		echo '<tr>' . "\n";
       		echo '<td class="border"><strong>Total</td>' . "\n";
@@ -55,18 +55,18 @@ class Stats {
 			echo "Stats-->showOs";
 		}
 		$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
-		$query = "SELECT os, COUNT(*) AS osCount FROM tbl_clicks WHERE url_name = '" . $this->url_name . "' GROUP BY os ORDER BY os DESC";
+		$query = "SELECT os, COUNT(*) AS ClickCount FROM tbl_clicks WHERE url_name = '" . $this->url_name . "' GROUP BY os ORDER BY os DESC";
 		$result = $DbConnect->query($query);
-    		if (! IS_ENV_PRODUCTION) {                                                                                                                          
+		if (! IS_ENV_PRODUCTION) {                                                                                                                          
                         echo "Stats-->showOs SQL : " . $DbConnect->errno . " " . $DbConnect->error;                                                             
                 }
-		$tot=0;
+    		$tot=0;
 		while ($row = mysqli_fetch_array($result)) {
 			echo '<tr>' . "\n";
 			echo '<td class="border">' . $row['os'] . '</td>' . "\n";
-			echo '<td class="border">' . $row['osCount'] . '</td>' . "\n";
+			echo '<td class="border">' . $row['ClickCount'] . '</td>' . "\n";
 			echo '</tr>' . "\n";
-      			$tot=$tot+$row['osCount'];
+      			$tot=$tot+$row['ClickCount'];
 		}
 		echo '<tr>' . "\n";
     		echo '<td class="border"><strong>Total</td>' . "\n";
@@ -80,7 +80,7 @@ class Stats {
 			echo "Stats-->showBrowser";
 		}
 		$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
-		$query = "SELECT browser, COUNT(*) AS browserCount FROM tbl_clicks WHERE url_name = '" . $this->url_name . "' GROUP BY browser ORDER BY browser DESC";
+		$query = "SELECT browser, COUNT(*) AS ClickCount FROM tbl_clicks WHERE url_name = '" . $this->url_name . "' GROUP BY browser ORDER BY browser DESC";
 		$result = $DbConnect->query($query);
 		if (! IS_ENV_PRODUCTION) {                                                                                                                          
                         echo "Stats-->showBrowsers SQL : " . $DbConnect->errno . " " . $DbConnect->error;                                                             
@@ -89,9 +89,9 @@ class Stats {
 		while ($row = mysqli_fetch_array($result)) {
 			echo '<tr>' . "\n";
 			echo '<td class="border">' . $row['browser'] . '</td>' . "\n";
-			echo '<td class="border">' . $row['browserCount'] . '</td>' . "\n";
+			echo '<td class="border">' . $row['ClickCount'] . '</td>' . "\n";
 			echo '</tr>' . "\n";
-      			$tot=$tot+$row['browserCount'];
+      			$tot=$tot+$row['ClickCount'];
 		}
 		echo '<tr>' . "\n";
     		echo '<td class="border"><strong>Total</td>' . "\n";
