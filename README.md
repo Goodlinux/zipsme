@@ -47,11 +47,13 @@ If you pass to the url http://go/xxx and xxx is not yet defined, it ask you if y
  TZ=Europe/Paris  
  
 # First Launch 
- When your conatiner is alive and the envoronments variable are ok,  
- Run the install.php file in your browser. If your URL shortener is http://go/,  
+ In the entrypoint.sh of the container, there is a script "CreateConf.sh" that update the constants "Const.php"
+ to take into acount any change of a parameter of the container.
+ When your container is alive and the environments variable are ok,  
+ Run the "install.php" file in your browser. If your URL shortener is http://go/,  
  the file will be located at http://go/install.php.  
 
- After the install script has created the database,  
+ After the install script has created or update the database,  
  it will display a link to the admin section (located at http://go/admin.php).  
  You can now log in with the username/password combination from your LDAP.  
  You can create, delete or update shortcuts only if you are connected to the ldap  
