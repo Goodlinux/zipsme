@@ -44,7 +44,7 @@ If you pass to the url http://go/xxx and xxx is not yet defined, it ask you if y
  LDAP_SRV = url of the LDAP server. ex : ldap://192.168.10.159:389 or ldap://localhost:389     
  LDAP_DOMAIN = Domain of your ldap serveur 'mydomain' in the chain 'dc=mydomain, dc=com'    
  LDAP_EXT = Extention of the domain of your LDAP 'com' in the chain 'dc=mydomain, dc=com'  
- TZ=Europe/Paris  
+ TZ=Europe/Paris  Time zone of the container
  
 # First Launch 
  In the entrypoint.sh of the container, there is a script "CreateConf.sh" that update the constants "Const.php"
