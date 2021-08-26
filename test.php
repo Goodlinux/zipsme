@@ -3,6 +3,6 @@ include("config.php");
 
 $BrowsInf = new BrowserDetection();
 
-echo "\n" . $BrowsInf->getInfo() . "\n";
+echo "\n" . $BrowsInf->detect()->getInfo() . "\n";
 
 ?>
