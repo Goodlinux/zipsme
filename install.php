@@ -10,7 +10,8 @@ if (!$DbConnect->query($query)) {
     if ( $DbConnect->errno == "1146" ) {
       //#1146 - La table 'xxxx' n'existe pas
 	    echo  "Création de la table Links \n";
-	    $query = "CREATE TABLE tbl_links (url_name varchar(255) NOT NULL, url text NOT NULL, user varchar(255), type varchar(255) NOT NULL, active char(1) NOT NULL, PRIMARY KEY  (url_name))";
+	    $query = "CREATE TABLE tbl_links (url_name varchar(255) NOT NULL, url text NOT NULL, user varchar(255), type varchar(255) NOT NULL, " . 
+		    "active char(1) NOT NULL, PRIMARY KEY  (url_name))";
 	    $result = $DbConnect->query($query);
     }
 }
@@ -32,31 +33,51 @@ if (!$DbConnect->query($query)) {
 	if ( $DbConnect->errno == "1146" ) {
       		//#1146 - La table 'xxxx' n'existe pas
 		echo "Création de la table Clicks \n";
-		$query = "CREATE TABLE IF NOT EXISTS tbl_clicks (click_id int(11) NOT NULL auto_increment,click_time datetime NOT NULL,url_name varchar(255) NOT NULL, os varchar(255) NOT NULL, browser varchar(255) NOT NULL,ip_address varchar(255) NOT NULL,  PRIMARY KEY  (click_id))";
+		$query = "CREATE TABLE IF NOT EXISTS tbl_clicks (click_id int(11) NOT NULL auto_increment,click_time datetime NOT NULL," . 
+			"url_name varchar(255) NOT NULL, referrer VARCHAR(255), user_agent VARCHAR(255), os varchar(255) NOT NULL, " . 
+			"browser varchar(255) NOT NULL,ip_address varchar(255) NOT NULL, PRIMARY KEY  (click_id))";
 		$result = $DbConnect->query($query);
 	}
 }
 else {
-	// Rename column referrer in os 
-	$query = "select referrer from tbl_clicks";
+	// Add column os 
+	$query = "select os from tbl_clicks";
 	if ( !$DbConnect->query($query) ) {
 		if ( $DbConnect->errno == "1054" ) {
-      		//#1054 - Champ 'referrer' inconnu dans field list
-			echo  "Renommage de la colonne 'referrer' en 'os' \n";
-			$query = "ALTER TABLE tbl_clicks CHANGE `referrer` `os` VARCHAR(255)";
+      		//#1054 - Champ 'os' inconnu dans field list
+			echo  "Ajout de la colonne 'os' \n";
+			$query = "ALTER TABLE tbl_clicks ADD COLUMN `os` VARCHAR(255)";
 			$result = $DbConnect->query($query);
 		}
 	}
-	// Rename column user_agent  in browser 
-	$query = "select user_agent from tbl_clicks";
+	// Add column browser 
+	$query = "select browser from tbl_clicks";
 	if ( !$DbConnect->query($query) ) {
 		if ( $DbConnect->errno == "1054" ) {
       		//#1054 - Champ 'user_agent' inconnu dans field list
-			echo  "Renommage de la colonne 'user_agent ' en 'browser' \n";
-			$query = "ALTER TABLE tbl_clicks CHANGE `user_agent` `browser` VARCHAR(255)";
+			echo  "Ajout de la colonne 'browser' \n";
+			$query = "ALTER TABLE tbl_clicks ADD COLUMN `browser` VARCHAR(255)";
 			$result = $DbConnect->query($query);
 		}
 	}
+	
+	// convertir les anciens User Agent  en Browser et OS Migration des données
+	$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
+	$query = "SELECT click_id, user_agent FROM tbl_clicks";
+	$result = $DbConnect->query($query);
+	echo "SQL : " . $DbConnect->errno . " " . $DbConnect->error;
+	echo "\n";
+	while ($row = mysqli_fetch_array($result)) {
+        	$br = new BrowserDetection($row["user_agent"]);
+        	$connect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
+        	$updtquery = "UPDATE tbl_clicks SET os = '" . $br->detect()->getplatform() . "', browser = '" . $br->detect()->getBrowser() . "' WHERE click_id = '" . $row["click_id"] ."'";
+        	$update = $connect->query($updtquery);
+
+        	mysqli_close($connect);
+	}
+	
+mysqli_close($DbConnect);
+	
 }
 
 // create table users to store id for cookies purpose		       
