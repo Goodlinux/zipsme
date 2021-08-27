@@ -72,8 +72,6 @@ else {
         	$connect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
         	$updtquery = "UPDATE tbl_clicks SET os = '" . $br->detect()->getplatform() . "', browser = '" . $br->detect()->getBrowser() . "' WHERE click_id = '" . $row["click_id"] ."'";
         	$update = $connect->query($updtquery);
-
-        	mysqli_close($connect);
 	}
 	
 mysqli_close($DbConnect);
