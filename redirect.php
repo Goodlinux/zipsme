@@ -9,12 +9,13 @@ if (linkExists($url_name)) {
 	$browserInfo = new BrowserDetection();
 	$browserName = $browserInfo->detect()->getBrowser();
 	$osName = $browserInfo->detect()->getPlatform();
-	$user_agent = $_SERVER['HTTP_USER_AGENT'];
+//	$user_agent = $_SERVER['HTTP_USER_AGENT'];
+	$user_agent = $browserInfo->detect()->getUserAgent();
 	$ip_address = getIpAddress();	
 //	echo $url_name . ":" . $referrer . ":" . $user_agent . ":" .  $ip_address;
-	echo $url_name . ":" . $osName . ":" . $browserName . ":" .  $ip_address;
+	echo $url_name . ":" . $osName . ":" . $browserName . ":" .  $ip_address . ":" . $user_agent;
 //	insertClick($url_name, $referrer, $user_agent, $ip_address);
-	insertClick($url_name, $osName, $browserName, $ip_address);
+	insertClick($url_name, $referrer, $user_agent, $osName, $browserName, $ip_address);
 	
 	redirectClick($url_name);
 } else {
