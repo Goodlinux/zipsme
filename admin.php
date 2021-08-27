@@ -157,6 +157,15 @@
                                 		</tr>
                                 		<?php $summary->showClicks(); ?>
                             		</tbody></table>
+					
+					<h3>OS & Browser</h3>
+                            		<table cellspacing="0" cellpadding="2" border="0" class="border"><tbody>                	
+                                		<tr>
+                                    			<td class="border"><strong>Os : Browser</strong></td>
+                                    			<td class="border"><strong>Clicks</strong></td>
+                                		</tr>
+                                		<?php $summary->showOsBrowsers() ; ?>
+                            		</tbody></table>
 						
 					<h3>Browsers</h3>
                             		<table cellspacing="0" cellpadding="2" border="0" class="border"><tbody>                	
