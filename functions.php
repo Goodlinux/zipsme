@@ -37,14 +37,15 @@ function redirect($url, $type='internal') {
 }
 
 //function insertClick($url_name, $referrer, $user_agent, $ip_address) {
-function insertClick($url_name, $osName, $browserName, $ip_address) {
+function insertClick($url_name, $referrer, $user_agent, $osName, $browserName, $ip_address) {
 	if (! IS_ENV_PRODUCTION) {
 		echo "Function-->insertClick \n";
 	}
 	$url_name = strtolower($url_name);
 	$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
 	//$query = "INSERT INTO tbl_clicks (click_time, url_name, referrer, user_agent, ip_address) VALUES (NOW(), '{$url_name}', '{$referrer}', '{$user_agent}', '{$ip_address}')";
-	$query = "INSERT INTO tbl_clicks (click_time, url_name, os, browser, ip_address) VALUES (NOW(), '{$url_name}', '{$osName}', '{$browserName}', '{$ip_address}')";
+	$query = "INSERT INTO tbl_clicks (click_time, url_name, referrer, user_agent, os, browser, ip_address) " . 
+		"VALUES (NOW(), '{$url_name}', '{$referrer}', '{$user_agent}', '{$osName}', '{$browserName}', '{$ip_address}')";
 	$result = $DbConnect->query($query);
 	mysqli_close($DbConnect);
 }
