@@ -100,5 +100,30 @@ class Stats {
 		mysqli_close($DbConnect);	
 	}
 	
+	function showOsBrowsers() {
+		if (! IS_ENV_PRODUCTION) {
+			echo "Stats-->showBrowser";
+		}
+		$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
+		$query = "SELECT os, browser, COUNT(*) AS ClickCount FROM tbl_clicks WHERE url_name = '" . $this->url_name . "' GROUP BY os, browser ORDER BY os, browser DESC";
+		$result = $DbConnect->query($query);
+		if (! IS_ENV_PRODUCTION) {                                                                                                                          
+                        echo "Stats-->showBrowsers SQL : " . $DbConnect->errno . " " . $DbConnect->error;                                                             
+                }
+    		$tot=0;
+		while ($row = mysqli_fetch_array($result)) {
+			echo '<tr>' . "\n";
+			echo '<td class="border">' . $row['os'] . " : " . $row['browser'] . '</td>' . "\n";
+			echo '<td class="border">' . $row['ClickCount'] . '</td>' . "\n";
+			echo '</tr>' . "\n";
+      			$tot=$tot+$row['ClickCount'];
+		}
+		echo '<tr>' . "\n";
+    		echo '<td class="border"><strong>Total</td>' . "\n";
+    		echo '<td class="border">' . $tot . '</td>' . "\n";
+    		echo '</tr>' . "\n";
+		mysqli_close($DbConnect);	
+	}
+	
 }
 ?>
