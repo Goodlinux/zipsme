@@ -73,9 +73,6 @@ else {
         	$updtquery = "UPDATE tbl_clicks SET os = '" . $br->detect()->getplatform() . "', browser = '" . $br->detect()->getBrowser() . "' WHERE click_id = '" . $row["click_id"] ."'";
         	$update = $connect->query($updtquery);
 	}
-	
-mysqli_close($DbConnect);
-	
 }
 
 // create table users to store id for cookies purpose		       
