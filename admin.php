@@ -18,13 +18,15 @@
 			setcookie('zipsme-user', md5($_POST['username']));
 			setcookie('zipsme-login', 'y');
 			$logged_in = 'y'; 
+			header("Refresh:0; url=admin.php");
 		}
 		else {
 			setcookie('zipsme-user', '');
 			setcookie('zipsme-login', 'n');
 			$alert = 'Connexion error, username or password is not valid';
+			$logged_in = 'n'; 
+			$view = 'login';
 		}
-		header("Refresh:0; url=admin.php");
 	}
 	
 	// demande de login change view to login
@@ -127,7 +129,7 @@
 <body>
 	<center>
     <div id="container">
-        <div id="header"><h1><?php echo SITE_NAME; ?> Admin</h1></div>
+        <div id="header"><h1><?php echo SITE_NAME; ?></h1></div>
         <div id="content">
  <!-- Alert -->
         <?php if (isset($alert)) { ?><p class="alert"><?php echo $alert; ?></p><?php } ?>
