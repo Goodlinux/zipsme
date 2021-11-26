@@ -1,9 +1,7 @@
 <?php
 
 function sqlConnect() {
-	if (! IS_ENV_PRODUCTION) {
-		echo "Function-->sqlConnect \n";
-	}
+	if (! IS_ENV_PRODUCTION) { echo "Function-->sqlConnect \n"; }
 	$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
 	if (!$DbConnect) 
    		{ print_r("Could not connect. Please make sure that you have configured the config.php file correctly : " . mysqli_error());  }
@@ -23,9 +21,7 @@ function prepOutputText($text) {
 }
 
 function redirect($url, $type='internal') {
-	if (! IS_ENV_PRODUCTION) {
-		echo "Function-->redirect \n";
-	}
+	if (! IS_ENV_PRODUCTION) { echo "Function-->redirect \n"; }
 	if (!headers_sent()) {
 		if ($type == '301') {
 			header("HTTP/1.1 301 Moved Permanently");
@@ -38,9 +34,7 @@ function redirect($url, $type='internal') {
 
 //function insertClick($url_name, $referrer, $user_agent, $ip_address) {
 function insertClick($url_name, $referrer, $user_agent, $osName, $browserName, $ip_address) {
-	if (! IS_ENV_PRODUCTION) {
-		echo "Function-->insertClick \n";
-	}
+	if (! IS_ENV_PRODUCTION) { echo "Function-->insertClick \n"; 	}
 	$url_name = strtolower($url_name);
 	$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
 	//$query = "INSERT INTO tbl_clicks (click_time, url_name, referrer, user_agent, ip_address) VALUES (NOW(), '{$url_name}', '{$referrer}', '{$user_agent}', '{$ip_address}')";
@@ -51,9 +45,7 @@ function insertClick($url_name, $referrer, $user_agent, $osName, $browserName, $
 }
 
 function insertLink($url_name, $url, $user, $type) {
-	if (! IS_ENV_PRODUCTION) {
-		echo "Function-->insertLink \n";
-	}
+	if (! IS_ENV_PRODUCTION) { echo "Function-->insertLink \n"; }
 	$url_name = strtolower($url_name);
 	$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
 	$query = "INSERT INTO tbl_links (url_name, url, user, type, active) VALUES ('{$url_name}', '{$url}', '{$user}', '{$type}', 'y')";
@@ -62,9 +54,7 @@ function insertLink($url_name, $url, $user, $type) {
 }
 
 function getUserLink($url_name) {
-	if (! IS_ENV_PRODUCTION) {
-		echo "Function-->getUserLink \n";
-	}
+	if (! IS_ENV_PRODUCTION) { echo "Function-->getUserLink \n"; }
 	$url_name = strtolower($url_name);
 	$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
 	$query = "SELECT user FROM tbl_links WHERE url_name = '{$url_name}'";
@@ -75,9 +65,7 @@ function getUserLink($url_name) {
 }
 
 function updateLink($url_name, $url, $type) {
-	if (! IS_ENV_PRODUCTION) {
-		echo "Function-->updateLink \n";
-	}
+	if (! IS_ENV_PRODUCTION) { echo "Function-->updateLink \n"; }
 	$url_name = strtolower($url_name);
 	$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
 	$query = "UPDATE tbl_links SET url = '{$url}', type = '{$type}' WHERE url_name = '{$url_name}'";
@@ -86,9 +74,7 @@ function updateLink($url_name, $url, $type) {
 }
 
 function deleteLink($url_name) {
-	if (! IS_ENV_PRODUCTION) {
-		echo "Function-->deleteLink \n";
-	}
+	if (! IS_ENV_PRODUCTION) { echo "Function-->deleteLink \n"; }
 	$url_name = strtolower($url_name);
 	$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
 	$query = "DELETE FROM tbl_links WHERE url_name = '{$url_name}'";
@@ -99,9 +85,7 @@ function deleteLink($url_name) {
 }
 
 function linkAvailable($url_name) {
-	if (! IS_ENV_PRODUCTION) {
-		echo "Function-->linkAvailable \n";
-	}
+	if (! IS_ENV_PRODUCTION) { echo "Function-->linkAvailable \n"; }
 	$url_name = strtolower($url_name);
 	$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
 	$query = "SELECT * FROM tbl_links WHERE url_name = '{$url_name}' LIMIT 1";
@@ -115,9 +99,7 @@ function linkAvailable($url_name) {
 }
 
 function getIpAddress() {
-	if (! IS_ENV_PRODUCTION) {
-		echo "Function-->getIpAddress \n";
-	}
+	if (! IS_ENV_PRODUCTION) { echo "Function-->getIpAddress \n"; }
     	if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
       		$ip=$_SERVER['HTTP_CLIENT_IP'];
     	}
@@ -130,9 +112,7 @@ function getIpAddress() {
 }
 
 function linkExists($url_name) {
-	if (! IS_ENV_PRODUCTION) {
-		echo "Function-->linkExists \n";
-	}
+	if (! IS_ENV_PRODUCTION) { echo "Function-->linkExists \n"; }
 	$url_name = strtolower($url_name);
 	$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
 	$query = "SELECT * FROM tbl_links WHERE url_name = '{$url_name}' AND active = 'y' LIMIT 1";
@@ -146,9 +126,7 @@ function linkExists($url_name) {
 }
 
 function redirectClick($url_name) {
-	if (! IS_ENV_PRODUCTION) {
-		echo "Function-->redirectClick \n";
-	}
+	if (! IS_ENV_PRODUCTION) { echo "Function-->redirectClick \n"; }
 	$url_name = strtolower($url_name);
 	$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
 	$query = "SELECT * FROM tbl_links WHERE url_name = '{$url_name}' LIMIT 1";
@@ -159,18 +137,14 @@ function redirectClick($url_name) {
 }
 
 function stripLink($url_name) {
-	if (! IS_ENV_PRODUCTION) {
-		echo "Function-->stripLink \n";
-	}
+	if (! IS_ENV_PRODUCTION) { echo "Function-->stripLink \n"; }
 	$url_name = strtolower($url_name);
 	$stripped = preg_replace("/[^a-zA-Z0-9]/", "", $url_name);
 	return $stripped;
 }
 
 function showLinkHistory() {
-	if (! IS_ENV_PRODUCTION) {
-		echo "Function-->showLinkHistory \n";
-	}
+	if (! IS_ENV_PRODUCTION) { echo "Function-->showLinkHistory \n"; }
 	$user_connected = getUserName($_COOKIE['zipsme-user']);
 	
 	$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
@@ -218,9 +192,7 @@ function showLinkHistory() {
 //}
 
 function getUserId($username) {
-	if (! IS_ENV_PRODUCTION) {
-		echo "Function-->getUserId \n";
-	}
+	if (! IS_ENV_PRODUCTION) { echo "Function-->getUserId \n"; }
 	$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
 	$query = "Select user_id from users where username = '{$username}'";
 	$result = $DbConnect->query($query);
@@ -233,9 +205,7 @@ function getUserId($username) {
 }
 
 function getUserName($userid) {
-	if (! IS_ENV_PRODUCTION) {
-		echo "Function-->getUserName \n";
-	}
+	if (! IS_ENV_PRODUCTION) { echo "Function-->getUserName \n"; }
 	$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
 	$query = "Select username from users where user_id = '{$userid}'";
 	$result = $DbConnect->query($query);
@@ -248,9 +218,7 @@ function getUserName($userid) {
 }
 
 function existUser($username) {
-	if (! IS_ENV_PRODUCTION) {
-		echo "Function-->existUser \n";
-	}
+	if (! IS_ENV_PRODUCTION) { echo "Function-->existUser \n"; }
 	$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
 	$query = "Select count(user_id) as userid from users where username = '{$username}'";
 	$result = $DbConnect->query($query);
@@ -261,9 +229,7 @@ function existUser($username) {
 
 
 function addUser($username) {
-	if (! IS_ENV_PRODUCTION) {
-		echo "Function-->addUser \n";
-	}
+	if (! IS_ENV_PRODUCTION) { echo "Function-->addUser \n"; }
 	if (! existUser($username)) { 
 		$DbConnect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
 		$id = md5($username);                                                                                                                                                                       
@@ -273,49 +239,69 @@ function addUser($username) {
 	}
 }
 
-function authenticate($username, $password) { 
-	if (! IS_ENV_PRODUCTION) {
-		echo "Function-->authenticate \n";
-	}
-	$ldap_Userdn = getUserDN($username); 
-	if($ldap_Userdn!="") 
-	{
-		$ldap_con = ldap_connect(LDAP_SRV);
 
-		ldap_set_option($ldap_con, LDAP_OPT_PROTOCOL_VERSION, 3); 
-        	if(ldap_bind($ldap_con, $ldap_Userdn, $password)) 
-			{ 
-				addUser($username);
-				return true; 
-			} 
-		else { return false; }
-	}
-    	else { echo "Error to find user DN" . ldap_error($ldap_con); }
-	ldap_close($ldap_con);
+
+function authenticate($username, $password) {                                                                                                                                                               
+        if (! IS_ENV_PRODUCTION) { echo "Function-->authenticate \n"; }                                                                                                                                                                                                   
+        $ldap_Userdn = getUserDN($username);                                                                                                                                                                
+        $ldap_con = ldap_connect(LDAP_SRV);                                                                                                                                                                 
+        if($ldap_Userdn != "")                                                                                                                                                                              
+        {                                                                                                                                                                                                   
+                ldap_set_option($ldap_con, LDAP_OPT_PROTOCOL_VERSION, 3);                                                                                                                                   
+                if(ldap_bind($ldap_con, $ldap_Userdn, $password))                                                                                                                                           
+                        {                                                                                                                                                                                   
+                                if (! IS_ENV_PRODUCTION) {  echo "Function-->authenticate Password Ok \n";  }                                                                                               
+                                addUser($username);                                                                                                                                                         
+                                return true;                                                                                                                                                                
+                        }                                                                                                                                                                                   
+                else {                                                                                                                                                                                      
+                        if (! IS_ENV_PRODUCTION) { echo "Function-->authenticate Password Ko \n";   }                                                                                                       
+                        return false;                                                                                                                                                                       
+                }                                                                                                                                                                                           
+        }                                                                                                                                                                                                   
+        else {                                                                                                                                                                                              
+                if (! IS_ENV_PRODUCTION) { echo "Function-->authenticate User does not exist \n";   } 
+		return false;
+        }                                                                                                                                                                                                   
+//echo "Error to find user DN" . ldap_error($ldap_con); }                                                                                                                                                   
+        ldap_close($ldap_con);                                                                                                                                                                              
 }
 
-function getUserDN($username) { 
-	if (! IS_ENV_PRODUCTION) {
-		echo "Function-->getUserDN \n";
-	}
-	$data = ""; 
-	$ldap_con = ldap_connect(LDAP_SRV); 
-	if (substr(LDAP_SRV,0,4) == "ldap") {                                                                                                                                                            
+function getUserDN($username) {                                                                                                                                                                             
+        if (! IS_ENV_PRODUCTION) {  echo "Function-->getUserDN \n";  }                                                                                                                                      
+        $data = "";                                                                                                                                                                                         
+        $ldap_con = ldap_connect(LDAP_SRV);                                                                                                                                                                 
+        if (substr(LDAP_SRV,0,4) == "ldap") {                                                                                                                                                               
                 $srv = LDAP_SRV;}                                                                                                                                                                           
         else {                                                                                                                                                                                              
                 $srv = "ldaps://" . LDAP_SRV;                                                                                                                                                               
         }                                                                                                                                                                                                   
- 	$ldap_con = ldap_connect($srv); 
-
-	ldap_set_option($ldap_con, LDAP_OPT_PROTOCOL_VERSION, 3); 
-	ldap_set_option($ldap_con, LDAP_OPT_REFERRALS, 0); 
-    	
-   	$filter="(cn=$username)"; 
-	$res = ldap_search($ldap_con, LDAP_RACINE, $filter); 
-	$first = ldap_first_entry($ldap_con, $res); 
-	$data = ldap_get_dn($ldap_con, $first);
-   	ldap_close($ldap_con); 
-	return $data;
-}
+        $ldap_con = ldap_connect($srv);                                                                                                                                                                     
+                                                                                                                                                                                                            
+        if (! IS_ENV_PRODUCTION) { echo "Function-->getUserDN ldap_con : " . $ldap_con . " \n";   }                                                                                                         
+                                                                                                                                                                                                            
+        ldap_set_option($ldap_con, LDAP_OPT_PROTOCOL_VERSION, 3);                                                                                                                                           
+        ldap_set_option($ldap_con, LDAP_OPT_REFERRALS, 0);                                                                                                                                                  
+                                                                                                                                                                                                            
+        $filter="(cn=$username)";                                                                                                                                                                           
+        $res = ldap_search($ldap_con, LDAP_RACINE, $filter);                                                                                                                                                
+                                                                                                                                                                                                            
+        $info = ldap_get_entries($ldap_con, $res);                                                                                                                                                          
+                                                                                                                                                                                                            
+        if ( $info["count"] != 0) {                                                                                                                                                                         
+                echo $info["count"]." entries returned\n";                                                                                                                                                  
+                echo $info . " first entry \n";                                                                                                                                                             
+                                                                                                                                                                                                            
+                $first = ldap_first_entry($ldap_con, $res);                                                                                                                                                 
+                                                                                                                                                                                                            
+                if (! IS_ENV_PRODUCTION) { echo "Function-->getUserDN first : " . $first . " \n";  }                                                                                                        
+                                                                                                                                                                                                            
+                if (! is_null($first) or $first == "" or empty($first) ) {                                                                                                                                  
+                        $data = ldap_get_dn($ldap_con, $first);                                                                                                                                             
+                }                                                                                                                                                                                           
+                ldap_close($ldap_con);                                                                                                                                                                      
+        }                                                                                                                                                                                                   
+        return $data;                                                                                                                                                                                       
+} 
 
 ?>
