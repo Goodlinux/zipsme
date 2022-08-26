@@ -197,11 +197,6 @@
                 	 <h2>Edit <strong><?php echo $edit->url_name; ?></strong></h2>
                     	<form action="admin.php" method="post" id="url-form">
                         <label>Original Link</label><input type="text" name="url" size="50" value="<?php echo $edit->url; ?>" /><br />                        
-                        <label>Type</label>
-                        	<select name="type">
-                        		<option <?php if ($edit->type == '301') { echo 'selected="selected"'; } ?> value="301">301 Permanent Redirect</option>
-                        		<option <?php if ($edit->type == '302') { echo 'selected="selected"'; } ?> value="302">302 Temporary Redirect</option>
-                        	</select><br />
                         <input type="hidden" value="1" name="edit_submitted"/>
                         <input type="hidden" value="<?php echo $edit->url_name; ?>" name="url_name"/>
                         <input type="submit" value="Update" id="form-button"/>
@@ -212,7 +207,15 @@
        				<h2>Login</h2>
            			<form action="admin.php" method="post" id="login-form">
            				<label>Username:</label><input type="text" maxlength="100" name="username" /><br />
-           				<label>Password:</label><input type="password" maxlength="100" name="password" /><br />
+           				<label>Password:</label><input t<label>Type</label>
+201
+                                <select name="type">
+202
+                                        <option <?php if ($edit->type == '301') { echo 'selected="selected"'; } ?> value="301">301 Permanent Redirect</option>
+203
+                                        <option <?php if ($edit->type == '302') { echo 'selected="selected"'; } ?> value="302">302 Temporary Redirect</option>
+204
+                                </select><br />ype="password" maxlength="100" name="password" /><br />
                			<input type="hidden" value="1" name="login_submitted"/>
                			<input type="submit" value="Log In" id="form-button"/>
            			</form>
@@ -241,7 +244,7 @@
     <!-- End Case -->
         <?php  endswitch;  ?>
         </div>
-        <div id="footer">Powered by <a href="http://z.ips.me">Z.ips.ME</a>      we using cookies for connection purpose only</div>
+        <div id="footer">Powered by <a href="http://z.ips.me">Z.ips.ME</a> <?php echo SRV_NAME; ?>  we using cookies for connection purpose only</div>
 	</div>
     </center>
 </body>
