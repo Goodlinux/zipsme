@@ -44,7 +44,7 @@
 			$url_name = stripLink($url_name);
 			//$user = $_COOKIE['zipsme-user'];
 			$user = getUserName($_COOKIE['zipsme-user']);
-			$type = '301'    // $_POST['type'];
+			$type = '301';    // $_POST['type'];
 			if (linkAvailable($url_name)) {
 				insertLink($url_name, $url, $user, $type);
 				$alert = 'Link created successfully! <a target="_blank" href="'. $url_name . '">' . SITE_URL . $url_name . '</a> now redirects to ' . $url;		
@@ -63,7 +63,7 @@
 			$url_name = prepQueryText($_POST['url_name']);
 			if (getUserLink($url_name) == getUserName($_COOKIE['zipsme-user'])) {
 				$url = prepQueryText($_POST['url']);
-				$type = '301'     //$_POST['type'];
+				$type = '301';     //$_POST['type'];
 				updateLink($url_name, $url, $type);
 				$alert = 'Update successful!';
 				}
