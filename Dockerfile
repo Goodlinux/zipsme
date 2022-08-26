@@ -11,7 +11,8 @@ ENV DB_USER=zipsme \
     SITE_URL=go/  \
     LDAP_SRV=ldap://192.168.10.159:389   \
     LDAP_DOMAIN='domain'   \
-    LDAP_EXT='org'  \
+    LDAP_EXT='org'  \ 
+    SRV_TXT='Srv Name'   \ 
     TZ=Europe/Paris
 
 #Construction of redirection and php use for nginx
