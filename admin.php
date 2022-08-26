@@ -44,7 +44,7 @@
 			$url_name = stripLink($url_name);
 			//$user = $_COOKIE['zipsme-user'];
 			$user = getUserName($_COOKIE['zipsme-user']);
-			$type = $_POST['type'];
+			$type = '301'    // $_POST['type'];
 			if (linkAvailable($url_name)) {
 				insertLink($url_name, $url, $user, $type);
 				$alert = 'Link created successfully! <a target="_blank" href="'. $url_name . '">' . SITE_URL . $url_name . '</a> now redirects to ' . $url;		
@@ -63,7 +63,7 @@
 			$url_name = prepQueryText($_POST['url_name']);
 			if (getUserLink($url_name) == getUserName($_COOKIE['zipsme-user'])) {
 				$url = prepQueryText($_POST['url']);
-				$type = $_POST['type'];
+				$type = '301'     //$_POST['type'];
 				updateLink($url_name, $url, $type);
 				$alert = 'Update successful!';
 				}
@@ -196,25 +196,24 @@
     			<?php case 'edit':   ?>
                 	 <h2>Edit <strong><?php echo $edit->url_name; ?></strong></h2>
                     	<form action="admin.php" method="post" id="url-form">
-                        <label>Original Link</label><input type="text" name="url" size="50" value="<?php echo $edit->url; ?>" /><br />                        
+                        <label>Original Link</label><input type="text" name="url" size="50" value="<?php echo $edit->url; ?>" /><br /> 
+	<!--		<label>Type</label>                                                                                                                 
+                                <select name="type">                                                                                                        
+                                        <option <?php if ($edit->type == '301') { echo 'selected="selected"'; } ?> value="301">301 Permanent Redirect</opti>
+                                        <option <?php if ($edit->type == '302') { echo 'selected="selected"'; } ?> value="302">302 Temporary Redirect</opti>
+                                </select><br /> 
+	-->
                         <input type="hidden" value="1" name="edit_submitted"/>
                         <input type="hidden" value="<?php echo $edit->url_name; ?>" name="url_name"/>
                         <input type="submit" value="Update" id="form-button"/>
                     	</form>
             		<?php break; ?>
-            	  <!-- Edit -->	
+            	  <!-- Login -->	
     			<?php case 'login':   ?>
        				<h2>Login</h2>
            			<form action="admin.php" method="post" id="login-form">
            				<label>Username:</label><input type="text" maxlength="100" name="username" /><br />
            				<label>Password:</label><input t<label>Type</label>
-201
-                                <select name="type">
-202
-                                        <option <?php if ($edit->type == '301') { echo 'selected="selected"'; } ?> value="301">301 Permanent Redirect</option>
-203
-                                        <option <?php if ($edit->type == '302') { echo 'selected="selected"'; } ?> value="302">302 Temporary Redirect</option>
-204
                                 </select><br />ype="password" maxlength="100" name="password" /><br />
                			<input type="hidden" value="1" name="login_submitted"/>
                			<input type="submit" value="Log In" id="form-button"/>
@@ -226,7 +225,7 @@
                 	<form action="admin.php" method="post" id="url-form">
                     	<label>Original Link</label><input type="text" name="url" size="50" /><br />
                     	<label>New Link Name</label><input maxlength="255" type="text" name="url_name" value="<?php echo $url_name; ?>" /><br />
-                    	<label>Type</label><select name="type"><option selected="selected" value="301">301 Permanent Redirect</option><option value="302">302 Temporary Redirect</option></select><br />
+                 <!--   	<label>Type</label><select name="type"><option selected="selected" value="301">301 Permanent Redirect</option><option value="302">302 Temporary Redirect</option></select><br /> -->
                     	<input type="hidden" value="1" name="url_submitted"/>
                     	<input type="submit" value="Shorten It!" id="form-button"/>
             		</form>
@@ -237,7 +236,7 @@
                         	<td class="border"><strong>Clicks</strong></td>
 				<td class="border"><strong>User</strong></td>
                         	<td class="border"><strong>Options</strong></td>                        
-						</tr>
+			</tr>
                     	<?php showLinkHistory(); ?>
                 		</tbody></table>
                 	 <?php break; ?>
