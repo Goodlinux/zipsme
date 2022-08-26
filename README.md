@@ -35,16 +35,16 @@ If you pass to the url http://go/xxx and xxx is not yet defined, it ask you if y
 # ENV VARIABLES  
  used in the config.php  
  
- DB_USER = Data Base Username  
- DB_PASSWORD = Data Base Password  
- DB_NAME = Name Of Base   
- DB_SERVER = Url of the Database server. ex : 192.168.110.55:3306 or localhost:3306  
- SITE_NAME = Name of you website  
- SITE_URL = Url to access to your Site (do not forget to end it with '/'). ex : http://go/ or https://My.domain.ext/  or go/
- LDAP_SRV = url of the LDAP server. ex : ldap://192.168.10.159:389 or ldaps://localhost if ssl then do not give port information.     
- LDAP_DOMAIN = Domain of your ldap serveur 'mydomain' in the chain 'dc=mydomain, dc=com'    
- LDAP_EXT = Extention of the domain of your LDAP 'com' in the chain 'dc=mydomain, dc=com'  
- TZ=Europe/Paris  Time zone of the container
+ > **DB_USER** = Data Base Username  
+ > **DB_PASSWORD** = Data Base Password  
+ > **DB_NAME** = Name Of Base   
+ > **DB_SERVER** = Url of the Database server. ex : 192.168.110.55:3306 or localhost:3306  
+ > **SITE_NAME** = Name of you website  
+ > **SITE_URL** = Url to access to your Site (do not forget to end it with '/'). ex : http://go/ or https://My.domain.ext/  or go/
+ > **LDAP_SRV** = url of the LDAP server. ex : ldap://192.168.10.159:389 or ldaps://localhost if ssl then do not give port information.     
+ > **LDAP_DOMAIN** = Domain of your ldap serveur 'mydomain' in the chain 'dc=mydomain, dc=com'    
+ > **LDAP_EXT** = Extention of the domain of your LDAP 'com' in the chain 'dc=mydomain, dc=com'  
+ > **TZ** =Europe/Paris  Time zone of the container
  
 # First Launch 
  In the entrypoint.sh of the container, there is a script "CreateConf.sh" that update the constants "Const.php"
