@@ -208,18 +208,17 @@
                         <input type="submit" value="Update" id="form-button"/>
                     	</form>
             		<?php break; ?>
- <!-- Login -->	
-    			<?php case 'login':   ?>
-       				<h2>Login</h2>
-           			<form action="admin.php" method="post" id="login-form">
-           				<label>Username:</label><input type="text" maxlength="100" name="username" /><br />
-           				<label>Password:</label><input t<label>Type</label>
-                                </select><br />ype="password" maxlength="100" name="password" /><br />
-               			<input type="hidden" value="1" name="login_submitted"/>
-               			<input type="submit" value="Log In" id="form-button"/>
-           			</form>
-           		<?php break; ?>
-   			</center></body>
+ <!-- Login -->	                                                                                                                           
+                        <?php case 'login':   ?>                                                                                                            
+                                <h2>Login</h2>                                                                                                              
+                                <form action="admin.php" method="post" id="login-form">                                                                     
+                                        <label>Username:</label><input type="text" maxlength="100" name="username" /><br />                                 
+                                        <label>Password:</label><input type="password" maxlength="100" name="password" /><br /> 
+                                <input type="hidden" value="1" name="login_submitted"/>                                                                     
+                                <input type="submit" value="Log In" id="form-button"/>                                                                      
+                                </form>                                                                                                                     
+                        <?php break; ?>                                                                                                                     
+                        </center></body> 
             	<?php default:   ?>   
             		<h2>Shorten a New Link</h2>
                 	<form action="admin.php" method="post" id="url-form">
