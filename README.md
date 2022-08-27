@@ -44,7 +44,7 @@ If you pass to the url http://go/xxx and xxx is not yet defined, it ask you if y
  > **LDAP_SRV** = url of the LDAP server. ex : ldap://192.168.10.159:389 or ldaps://localhost if ssl then do not give port information.     
  > **LDAP_DOMAIN** = Domain of your ldap serveur 'mydomain' in the chain 'dc=mydomain, dc=com'    
  > **LDAP_EXT** = Extention of the domain of your LDAP 'com' in the chain 'dc=mydomain, dc=com'  
- > **SRV_NAME** = server name display at the footer of the admin page ex : 'docker 1 server'
+ > **SRV_NAME** = server name display at the footer of the admin page ex : 'docker 1 server'  
  > **TZ** =Europe/Paris  Time zone of the container
  
 # First Launch 
