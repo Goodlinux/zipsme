@@ -339,6 +339,6 @@ function authenticate($username, $password) {
 //        }                                                                                                                                                                                                   
 //        return $data;                              
 //	}                                                                                                                                                         
-} 
+//} 
 
 ?>
