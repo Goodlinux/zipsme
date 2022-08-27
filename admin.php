@@ -208,7 +208,7 @@
                         <input type="submit" value="Update" id="form-button"/>
                     	</form>
             		<?php break; ?>
-            	  <!-- Login -->	
+ <!-- Login -->	
     			<?php case 'login':   ?>
        				<h2>Login</h2>
            			<form action="admin.php" method="post" id="login-form">
@@ -225,7 +225,7 @@
                 	<form action="admin.php" method="post" id="url-form">
                     	<label>Original Link</label><input type="text" name="url" size="50" /><br />
                     	<label>New Link Name</label><input maxlength="255" type="text" name="url_name" value="<?php echo $url_name; ?>" /><br />
-                 <!--   	<label>Type</label><select name="type"><option selected="selected" value="301">301 Permanent Redirect</option><option value="302">302 Temporary Redirect</option></select><br /> -->
+ <!--					   	<label>Type</label><select name="type"><option selected="selected" value="301">301 Permanent Redirect</option><option value="302">302 Temporary Redirect</option></select><br /> -->
                     	<input type="hidden" value="1" name="url_submitted"/>
                     	<input type="submit" value="Shorten It!" id="form-button"/>
             		</form>
@@ -243,7 +243,7 @@
     <!-- End Case -->
         <?php  endswitch;  ?>
         </div>
-        <div id="footer">Powered by <a href="http://z.ips.me">Z.ips.ME</a> <?php echo SRV_NAME; ?>  we using cookies for connection purpose only</div>
+        <div id="footer">Derived from <a href="http://z.ips.me">Z.ips.ME</a> <?php echo SRV_NAME; ?>  we use cookies for connection purpose only</div>
 	</div>
     </center>
 </body>
