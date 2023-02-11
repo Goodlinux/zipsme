@@ -1,8 +1,8 @@
 # INFO 
 [![zipsme](https://img.shields.io/static/v1?label=based_on&message=zipsme&color=blue)](https://github.com/zipsme/zipsme)
 
-[![alpine](https://img.shields.io/static/v1?label=using&message=alpine&color=orange)](https://alpinelinux.org)
-[![php](https://img.shields.io/static/v1?label=using&message=php-8&color=orange)](link=https://www.php.net)
+[![alpine](https://img.shields.io/static/v1?label=using&message=alpine3.17&color=orange)](https://alpinelinux.org)
+[![php](https://img.shields.io/static/v1?label=using&message=php-8.1&color=orange)](link=https://www.php.net)
 [![mysqli](https://img.shields.io/static/v1?label=using&message=mysqli-php&color=orange)](https://www.php.net/manual/en/class.mysqli)
 [![nginx](https://img.shields.io/static/v1?label=using&message=nginx&color=orange)](https://www.nginx.com,float="left")
 
@@ -40,7 +40,7 @@ If you pass to the url http://go/xxx and xxx is not yet defined, it ask you if y
  > **DB_NAME** = Name Of Base   
  > **DB_SERVER** = Url of the Database server. ex : 192.168.110.55:3306 or localhost:3306  
  > **SITE_NAME** = Name of you website  
- > **SITE_URL** = Url to access to your Site (do not forget to end it with '/'). ex : http://go/ or https://My.domain.ext/  or go/
+ > **SITE_URL** = Url to access to your Site (do not forget to end it with '/'). ex : http://go/ or https://My.domain.ext/  or go/  
  > **LDAP_SRV** = url of the LDAP server. ex : ldap://192.168.10.159:389 or ldaps://localhost if ssl then do not give port information.     
  > **LDAP_DOMAIN** = Domain of your ldap serveur 'mydomain' in the chain 'dc=mydomain, dc=com'    
  > **LDAP_EXT** = Extention of the domain of your LDAP 'com' in the chain 'dc=mydomain, dc=com'  
