@@ -11,7 +11,8 @@ Create your own url shortener running on docker.
 You can find the modified sources for docker here :  
 [![src](https://img.shields.io/static/v1?label=sources&message=zipsme_for_docker&color=green)](link=https://github.com/Goodlinux/zipsme)
 
-I have update the code to use with alpine 3.13, nginx server, php8   
+I have update the code to use with alpine 3.17, nginx server, php8.1 
+In Alpine 3.17 php8 packages are not availables, changed by php81 
 I have also change the mysql-php by msqli-php library in all the code
 I have change from admin password a connection to a LDAP SERVER, each shortcut is the property of the one who created it  
 You don't have to be connected to use all the shortcuts even if it has been created by someone else 
