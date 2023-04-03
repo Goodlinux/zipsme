@@ -1,7 +1,7 @@
 FROM alpine:latest
 MAINTAINER Ludovic MAILLET <Ludo.goodlinux@gmail.com>
 
-RUN apk -U add php81 php81-fpm php81-mysqli php81-ldap nginx git tzdata
+RUN apk -U add php81 php81-fpm php81-mysqli php81-curl php81-session nginx git tzdata
 EXPOSE 80
 ENV DB_USER=zipsme \
     DB_PASSWORD=DbPassword \
