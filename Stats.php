@@ -2,6 +2,7 @@
 class Stats {
 	public $url_name;
 	public $total_clicks;
+	public $url;
 	
 	function __construct($url_name) {
 		$this->url_name = strtolower($url_name);
@@ -13,13 +14,20 @@ class Stats {
 		if (! IS_ENV_PRODUCTION) {
 			echo "Stats--> url : " . $this->url_name . " " . $row['urlCount'];
 		}
+		$query = "SELECT url FROM tbl_links WHERE url_name = '" . $this->url_name . "'";
+		$result = $DbConnect->query($query);
+		$row = mysqli_fetch_array($result);
+		$this->url = $row['url'];	
+		if (! IS_ENV_PRODUCTION) {
+			echo "Stats--> url : " . $this->url_name . " " . $row['url'];
+		}
 		mysqli_close($DbConnect);
 	}
 	
 	function __get($name) {
 		return $this->$name;
 	}
-	
+		
 	function __set($name, $value){
 		$this->$name = $value;
 	}	

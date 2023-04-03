@@ -14,7 +14,7 @@ You can find the modified sources for docker here :
 I have update the code to use with alpine 3.17, nginx server, php8.1
 In Alpine 3.17 php8 packages are not availables, changed by php81
 I have also change the mysql-php by msqli-php library in all the code
-I have change from admin password a connection to a LDAP SERVER, each shortcut is the property of the one who created it  
+I have change from LDAP connexion with Synology SSO server, each shortcut is the property of the one who created it  
 You don't have to be connected to use all the shortcuts even if it has been created by someone else 
 But to create a new shortcut, you have to be connected. 
 To Delete or Update an existing shortcut you have to be owner of it. 
@@ -28,6 +28,10 @@ If you pass to the url http://go/xxx and xxx is not yet defined, it ask you if y
  Note of the database name, the database user name, and the password.  
  Launch the container, and modify the environments variables to full fill your
  Database Name, User and Password and the others parameters
+ in Synology SSO add your application get informations of app id (param **APPID_SSO**) and app uri (param **SITE_URL**)
+ 
+ ![image](https://user-images.githubusercontent.com/880813/229581707-329e3ce2-f722-47c2-ae3e-3735d7d2e45c.png)
+
  
  You can change variables before building the container in the DockerFile, 
  then create the container whith the command line : docker build -t containername.     
@@ -41,10 +45,9 @@ If you pass to the url http://go/xxx and xxx is not yet defined, it ask you if y
  > **DB_NAME** = Name Of Base   
  > **DB_SERVER** = Url of the Database server. ex : 192.168.110.55:3306 or localhost:3306  
  > **SITE_NAME** = Name of you website  
- > **SITE_URL** = Url to access to your Site (do not forget to end it with '/'). ex : http://go/ or https://My.domain.ext/  or go/  
- > **LDAP_SRV** = url of the LDAP server. ex : ldap://192.168.10.159:389 or ldaps://localhost if ssl then do not give port information.     
- > **LDAP_DOMAIN** = Domain of your ldap serveur 'mydomain' in the chain 'dc=mydomain, dc=com'    
- > **LDAP_EXT** = Extention of the domain of your LDAP 'com' in the chain 'dc=mydomain, dc=com'  
+ > **SITE_URL** = Url to access to your Site.  it should be the same as the redirection uri in SSO server ex : http://go or https://My.domain.ext   
+ > **SERVEUR_SSO** = url of the SSO server. ex : https://192.168.10.159.     
+ > **APPID_SSO** = Application Id in the SSO server "Application list" page       
  > **SRV_NAME** = server name display at the footer of the admin page ex : 'docker 1 server'  
  > **TZ** =Europe/Paris  Time zone of the container
  
