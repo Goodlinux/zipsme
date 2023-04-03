@@ -14,7 +14,7 @@ You can find the modified sources for docker here :
 I have update the code to use with alpine 3.17, nginx server, php8.1
 In Alpine 3.17 php8 packages are not availables, changed by php81
 I have also change the mysql-php by msqli-php library in all the code
-I have change from admin password a connection to a LDAP SERVER, each shortcut is the property of the one who created it  
+I have change from LDAP connexion with Synology SSO server, each shortcut is the property of the one who created it  
 You don't have to be connected to use all the shortcuts even if it has been created by someone else 
 But to create a new shortcut, you have to be connected. 
 To Delete or Update an existing shortcut you have to be owner of it. 
@@ -28,6 +28,10 @@ If you pass to the url http://go/xxx and xxx is not yet defined, it ask you if y
  Note of the database name, the database user name, and the password.  
  Launch the container, and modify the environments variables to full fill your
  Database Name, User and Password and the others parameters
+ in Synology SSO add your application get informations of app id (param **APPID_SSO**) and app uri (param **SITE_URL**)
+ 
+ ![image](https://user-images.githubusercontent.com/880813/229581707-329e3ce2-f722-47c2-ae3e-3735d7d2e45c.png)
+
  
  You can change variables before building the container in the DockerFile, 
  then create the container whith the command line : docker build -t containername.     
