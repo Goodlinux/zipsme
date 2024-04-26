@@ -46,7 +46,7 @@ RUN echo "#! /bin/sh" > /usr/local/bin/entrypoint.sh \
 	&& echo "echo Timezone $TZ" >> /usr/local/bin/entrypoint.sh  \
 	&& echo "cp /usr/share/zoneinfo/\$TZ /etc/localtime && echo \$TZ >  /etc/timezone" >> /usr/local/bin/entrypoint.sh \
 	&& echo "cd /var/www/zipsme" >> /usr/local/bin/entrypoint.sh  \
-	&& echo "echo 'Connectez vous sur le site '\$SITE_URL'\install.php pour installer la base de donnée'"  >>  /usr/local/bin/entrypoint.sh  \
+	&& echo "echo 'Connectez vous sur le site '\$SITE_URL'/install.php pour installer la base de donnée'"  >>  /usr/local/bin/entrypoint.sh  \
 	&& echo "exec /bin/sh" >> /usr/local/bin/entrypoint.sh  \
 	&& chmod a+x /usr/local/bin/*
 
