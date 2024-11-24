@@ -174,7 +174,7 @@
 		<?php if ( $_COOKIE['zipsme-login'] == 'y' ) { ?>
 			<button onclick="window.location.href = 'admin.php'" id="home">Home</button> | <button id="login_btn" onclick="logout()">Logout <?=$user; ?></button>
 		<?php } else { ?>
-			<button onclick="window.location.href = 'admin.php'" id="home">Home</button> | <button id="login_btn"onclick="login()">Login</button>
+			<button onclick="window.location.href = 'admin.php'" id="home">Home</button> | <button id="login_btn" onclick="login()">Login</button>
 		<?php }  ?>	
 <!--		<button onclick="window.location.href = 'admin.php'" id="home">Home</button> | <button id="login_btn">Login</button> -->
 
