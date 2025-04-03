@@ -44,7 +44,7 @@ RUN echo "#! /bin/sh" > /usr/local/bin/entrypoint.sh \
 	&& echo "echo lancement de nginx" >> /usr/local/bin/entrypoint.sh  \
 	&& echo "nginx" >> /usr/local/bin/entrypoint.sh  \
 	&& echo "echo lancement de php" >> /usr/local/bin/entrypoint.sh  \
-    	&& echo "php-fpm$PHP_Ver" >> /usr/local/bin/entrypoint.sh  \
+	&& echo "php-fpm$PHP_Ver" >> /usr/local/bin/entrypoint.sh  \
 	&& echo "echo Timezone $TZ" >> /usr/local/bin/entrypoint.sh  \
 	&& echo "cp /usr/share/zoneinfo/\$TZ /etc/localtime && echo \$TZ >  /etc/timezone" >> /usr/local/bin/entrypoint.sh \
 	&& echo "cd /var/www/zipsme" >> /usr/local/bin/entrypoint.sh  \
