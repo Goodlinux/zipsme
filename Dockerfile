@@ -9,7 +9,7 @@ ENV DB_USER=zipsme \
     SITE_URL=https://go  \
     SERVEUR_SSO=https://192.168.10.159   \
     APPID_SSO='xxxxxx'   \
-    PHP_Ver = 83 \
+    PHP_Ver=83 \
     SRV_NAME='zipme server name'   \ 
     TZ=Europe/Paris
 
