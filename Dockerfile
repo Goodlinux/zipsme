@@ -1,20 +1,18 @@
 FROM alpine:latest
 MAINTAINER Ludovic MAILLET <Ludo.goodlinux@gmail.com>
 
+RUN apk -U add php83 php83-fpm php83-mysqli php83-curl php83-session nginx git tzdata
+EXPOSE 80
 ENV DB_USER=zipsme \
     DB_PASSWORD=DbPassword \
     DB_NAME=zipsme \
-    DB_SERVER=192.168.10.159:3306 \
+    DB_SERVER=192.1.11.1:3306 \
     SITE_NAME="URL Shortener" \
     SITE_URL=https://go  \
-    SERVEUR_SSO=https://192.168.10.159   \
+    SERVEUR_SSO=https://192.1.1.2   \
     APPID_SSO='xxxxxx'   \
-    PHP_Ver=83 \
     SRV_NAME='zipme server name'   \ 
     TZ=Europe/Paris
-
-RUN apk -U add php$PHP_Ver php$PHP_Ver-fpm php$PHP_Ver-mysqli php$PHP_Ver-curl php$PHP_Ver-session nginx git tzdata
-EXPOSE 80
 
 #Construction of redirection and php use for nginx
 RUN echo "server { " > /etc/nginx/http.d/default.conf  \
@@ -44,7 +42,7 @@ RUN echo "#! /bin/sh" > /usr/local/bin/entrypoint.sh \
 	&& echo "echo lancement de nginx" >> /usr/local/bin/entrypoint.sh  \
 	&& echo "nginx" >> /usr/local/bin/entrypoint.sh  \
 	&& echo "echo lancement de php" >> /usr/local/bin/entrypoint.sh  \
-	&& echo "php-fpm$PHP_Ver" >> /usr/local/bin/entrypoint.sh  \
+    && echo "php-fpm83" >> /usr/local/bin/entrypoint.sh  \
 	&& echo "echo Timezone $TZ" >> /usr/local/bin/entrypoint.sh  \
 	&& echo "cp /usr/share/zoneinfo/\$TZ /etc/localtime && echo \$TZ >  /etc/timezone" >> /usr/local/bin/entrypoint.sh \
 	&& echo "cd /var/www/zipsme" >> /usr/local/bin/entrypoint.sh  \
