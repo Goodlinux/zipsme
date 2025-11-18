@@ -7,16 +7,14 @@ GetSecrets()
 {
 # $1 contient le nom de la variable à lire
 var_name="$1"
-log "Nom de la variable : $var_name"
-
+#log "Nom de la variable : $var_name"
 eval "val=\$$var_name"
-log "Valeur : $val"
-
+#log "Valeur : $val"
 if [ -f $val ]; then
-        log "dossier ok"
+#        log "dossier ok"
         secret=$(cat $val)
 else
-        log "Dossier pas ok"
+#        log "Dossier pas ok"
         secret=$val
 fi
 }
