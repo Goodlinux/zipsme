@@ -1,7 +1,7 @@
 FROM alpine:latest
 MAINTAINER Ludovic MAILLET <Ludo.goodlinux@gmail.com>
 
-RUN apk -U add php83 php83-fpm php83-mysqli php83-curl php83-session nginx git tzdata
+RUN apk -U add php85 php85-fpm php85-mysqli php85-curl php85-session nginx git tzdata
 EXPOSE 80
 ENV DB_USER=zipsme \
     DB_PASSWORD=DbPassword \
@@ -42,7 +42,7 @@ RUN echo "#! /bin/sh" > /usr/local/bin/entrypoint.sh \
 	&& echo "echo lancement de nginx" >> /usr/local/bin/entrypoint.sh  \
 	&& echo "nginx" >> /usr/local/bin/entrypoint.sh  \
 	&& echo "echo lancement de php" >> /usr/local/bin/entrypoint.sh  \
-    && echo "php-fpm83" >> /usr/local/bin/entrypoint.sh  \
+    && echo "php-fpm85" >> /usr/local/bin/entrypoint.sh  \
 	&& echo "echo Timezone $TZ" >> /usr/local/bin/entrypoint.sh  \
 	&& echo "cp /usr/share/zoneinfo/\$TZ /etc/localtime && echo \$TZ >  /etc/timezone" >> /usr/local/bin/entrypoint.sh \
 	&& echo "cd /var/www/zipsme" >> /usr/local/bin/entrypoint.sh  \
